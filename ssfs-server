@@ -57,6 +57,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   chroot        $(gettext "Chroot to Ssfs storage root.")
   gen-vdisk     $(gettext "Create a vdisk with chroot for files storage.")
   clean-vdisk   $(gettext "Clean the vdisk but skip home and root.")
+  check-vdisk   $(gettext "Check vdisk filesystem with e2fsck.")
   mount-vdisk   $(gettext "Mount ssfs virtual disk.")
   umount-vdisk  $(gettext "Unmount the vdisk and free loop device.")
 
@@ -122,10 +123,14 @@ umount_vdisk() {
 }
 
 mount_vdisk() {
-	umount_vdisk
-	[ -d "$root" ] || mkdir -p $root
-	gettext "Mounting virtual disk:"; echo " $vdisk $root"
-	mount -o loop -t ext3 $vdisk $root
+	if ! mount | fgrep -q $root; then
+		[ -d "$root" ] || mkdir -p $root
+		gettext "Mounting virtual disk:"
+		mount -o loop -t ext3 $vdisk $root
+	else
+		gettext "Ssfs vdisk is already mounted:"
+	fi
+	echo " $vdisk $root"
 }
 
 #
@@ -165,7 +170,7 @@ case "$1" in
 		
 		# We don't want any files from /etc/skel.
 		gettext "Cleaning home and creating: Sync/..."
-		rm -rf $home && mkdir -p $home/Sync && status
+		rm -rf $home && mkdir -p $home/Sync $home/.ssh && status
 		gettext "Changing mode on user home: 0700..."
 		chown -R $login.$login $home
 		chmod 0700 $home && status
@@ -260,6 +265,19 @@ case "$1" in
 		mount_vdisk ;;
 	umount-vdisk)
 		umount_vdisk ;;
+	check-vdisk)
+		# Check vdisk with e2fsck.
+		echo ""
+		gettext -e "Checking Ssfs virtual disk\n"
+		separator
+		gettext "Virtual disk     : "; du -sh $vdisk
+		gettext "Filesystem usage : "; du -sh $root
+		gettext "Remounting vdisk read/only before e2fsck -p..."
+		mount -o remount,loop,ro $vdisk $root && status
+		e2fsck -p $vdisk
+		gettext "Remounting vdisk read/write..."
+		mount -o remount,loop,rw $vdisk $root && status
+		separator && echo "" ;;
 	clean-vdisk)
 		# clean up the vdisk storage chroot.
 		if [ ! -d "$root/bin" ] || [ ! -d "$root/usr" ]; then
