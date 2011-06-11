@@ -19,5 +19,5 @@ install:
 	install -m 0755 $(PACKAGE)-box $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 $(PACKAGE)-server $(DESTDIR)$(PREFIX)/sbin
 	install -m 0644 README $(DESTDIR)$(DOCDIR)/$(PACKAGE)
-	install -m 0600 data/$(PACKAGE)-server.conf $(DESTDIR)/etc/$(PACKAGE)
+	install -m 0644 data/$(PACKAGE)-server.conf $(DESTDIR)/etc/$(PACKAGE)
 
