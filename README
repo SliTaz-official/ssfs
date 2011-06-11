@@ -2,77 +2,77 @@ SliTaz Secure File Storage
 ===============================================================================
 
 
-Ssfs is a personnal and secure, fast and light online file storage powered by
-SSH, Rsync, Lsyncd and SHell script. It monitor a local folder and automaticaly
-synchronize the remote server, when files are tranfert they are compressed and
-encrypted with SSH. Connection to the remote host is automate with a RSA key,
-and for each client the key must be sent to the server via SSH password login.
+Ssfs is personal, secure, fast and light online file storage powered by
+SSH, Rsync, Lsyncd and SHell script. It monitors a local folder and automatically
+synchronizes the remote server. When files are transferred they are compressed and
+encrypted with SSH. Connections to the remote host are automated with a RSA key,
+and for each client the key must be sent to the server via a SSH password login.
 
-Using ssfs let you have a live synchronized and secure folder between many
-computers with an online copy on a secure Linux server. But even without
-connections you have access to your files. Connection to the remote server
+Using ssfs lets you have a live synchronized and secure folder between many
+computers with an online copy on a secure Linux server. But even without any
+connections you have access to your files. Connections to the remote server
 can also be done using the command line and 'ssh' from any clients such as
 BSD, Android, OSX or Windows via Putty.
 
-Ssfs is very easy to install, setup and configure to make you own secure online
-file storage. It provide a cmdline tool for the client and the server with a
-build in help, this README is also a howto in itself.
+Ssfs is very easy to install, setup and configure to make your own secure online
+file storage. It provides a cmdline tool for the client and the server with a
+built in help. This README is also a howto in itself.
 
 On the server side admin can choose by creating standard accounts or chrooted
-accounts wich enforce server security by restricting available commands in a
+accounts which enforce server security by restricting available commands in a
 minimal chroot environment. User $HOME should be set to 0700 so users can't see
 other users files.
 
 
 Installation
 ------------
-To work you need an SSH client, 'rsync' and 'lsyncd' installed, on SliTaz you
-can simply install ssfs and it dependencies or to 'make install' from the
+To work you need a SSH client, 'rsync' and 'lsyncd' installed. On SliTaz you
+can simply install ssfs and it's dependencies or 'make install' from the
 source directory (see the Development section). 
 
 
 Client help and setup
 ---------------------
-The cmdline interface ssfs let you setup a client and start the daemon and live
-synchronization with your system session via the Window Manager autostart
-script or your personnal ~/.profile file. To get a list of commands with
+The cmdline interface ssfs lets you setup a client and start the daemon and
+synchronize live with your system session via the Window Manager autostart
+script or your personal ~/.profile file. To get a list of commands with
 a short description:
 
 $ ssfs help
 
 To setup a client by creating a Lua configuration file and sending the RSA key
 to the server, you can use the command 'setup'. Setup needs a login name and
-server name or IP adress and it will also create a secure RSA if no existing:
+server name or IP address and it will also create a secure RSA if none exists:
 
 $ ssfs setup --login=user --host=server
 
 
 GUI & Web interface
 -------------------
-Actually they is a smal GTK/Yad but no web interface. The tool ssfs-box will
-dipply info if a configuration file exist or start the setup box.
+Actually there is a small GTK/Yad but no web interface. The tool ssfs-box will
+display info if a configuration file exists or start the setup box.
 
 
 Get configs on boot
 -------------------
-Ssfs can be used in a boot scripts to connect to remote host and retrive data
-before user session is started. It can be usful to provide persitent data for
+Ssfs can be used in a boot scripts to connect to a remote host and retrieve data
+before a user session is started. It can be useful to provide persistent data for
 Live systems and web boot.
 
 
 Server setup
 ------------
 On the server you must have a SSH server running and an user account with a
-~/Sync folder. If you want to create a chroot for users you can use use the
+~/Sync folder. If you want to create a chroot for users you can use the
 tool ssfs-server. Here is a short example to create a chroot and create a user
-login 'tux-sync' with a protected $HOME in the chroot, the root directory can
+login 'tux-sync' with a protected $HOME in the chroot. The root directory can
 be specified on the command line or changed in the configuration file:
 
 # ssfs-server gen-chroot
 # ssfs-server adduser --login=tux-sync --id=2000 --pass=tuX0cc
 
-Users can be listed or completely deleted including all file in home. More
-information with: ssfs-server usage
+Users can be listed or completely deleted including all files in home. More
+information can be found with: ssfs-server usage
 
 
 Server users config
@@ -84,19 +84,19 @@ login name.
 
 Development and Bugs
 --------------------
-If you want to install latest code to test and help in developement you can
-clone ssfs Mercurial repository. As usual cose folloy SliTaz light philosofy
-with speed and security in mind:
+If you want to install the latest code to test and help in development you can
+clone the ssfs Mercurial repository. As usual, closely follow the SliTaz light 
+philosophy with speed and security in mind:
 
  $ hg clone http://hg.slitaz.org/ssfs
 
-Install with 'make install' (DESTDIR is supported for packaging), update POT
-file if any new string have been added with 'make pot' and merger PO files with
-the command 'make msgmerge'. Any ideas are welcome and can be discuss, if you
+Install with 'make install' (DESTDIR is supported for packaging), update the POT
+file if any new strings have been added with 'make pot', and merger PO files with
+the command 'make msgmerge'. Any ideas are welcome and can be discussed. If you
 are searching for something to do you can have a look to the TODO file :-)
 
-Bugs can be reported on SliTaz mailing list, forum or scn since devel forum is
-synced, all sites are liked from the main website at: http://www.slitaz.org/
+Bugs can be reported on the SliTaz mailing list, forum or scn since the devel forum 
+is synced. All sites are liked from the main website at: http://www.slitaz.org/
 
 
 ===============================================================================

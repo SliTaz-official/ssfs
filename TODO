@@ -1,4 +1,4 @@
 
-	* Check if can use only Dropbear as SSH clinet and server.
+	* Check if we can use only Dropbear as SSH client and server.
 	* A Web interface in CGI (SHell or Python) or PHP.
 	* Handle user quota.
