@@ -1,0 +1,134 @@
+#!/bin/sh
+#
+# SliTaz Secure File Storage. Fast live sync using: SSH, Rsync, Lsyncd.
+# Configuration file is a LUA script in user space.
+#
+# Copyright (C) SliTaz GNU/Linux - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
+
+app=$(basename $0)
+pid=$HOME/.local/var/run/$app.pid
+logdir=$HOME/.local/var/log/$app
+config=$HOME/.config/$app/client.lua
+
+# Parse cmdline options.
+for opt in $@
+do
+	case "$opt" in
+		--login=*)
+			login=${opt#--login=} ;;
+		--host=*)
+			host=${opt#--host=} ;;
+		*)
+			continue ;;
+	esac
+done
+
+#
+# Functions
+#
+
+# Built-in usage.
+help() {
+	cat << EOT
+
+$(echo -e "\033[1m$(gettext "Usage:")\033[0m") $app [command] [--option=]
+
+$(echo -e "\033[1m$(gettext "Commands:")\033[0m")
+  help          $(gettext "Display this short usage.")
+  info          $(gettext "Display configuration settings.")
+  setup         $(gettext "Setup client configuration and RSA key.")
+  sync          $(gettext "Sync from server and start daemon.")
+  stop          $(gettext "Stop monitoring ~/Sync folder.")
+
+$(echo -e "\033[1m$(gettext "Options:")\033[0m")
+  --login=      $(gettext "Login name on remote host.")
+  --host=       $(gettext "Server host name or IP.")
+
+EOT
+}
+
+# Display config settings.
+config_info() {
+	[ ! -f "$config" ] && exit 0
+	fgrep '=' $config | sed s'/^	//'	
+}
+
+# Create a Lua configuration file for lsyncd.
+gen_config() {
+	mkdir -p $(dirname $config)
+	cat > $config << EOT
+-- Configuration file for SliTaz Secure Filesystem lsyncd daemon.
+
+sync {
+	default.rsyncssh,
+	source    = "$HOME/Sync",
+	host      = "$login@$host",
+	targetdir = "Sync/"
+}
+EOT
+}
+
+#
+# Commands
+#
+
+case "$1" in
+	info)
+		size=$(du -sh $HOME/Sync | awk '{print $1}')
+		echo "" && config_info && echo ""
+		gettext "RSA key   :"; echo " $HOME/.ssh/id_rsa"
+		gettext "Sync size :"; echo " $size"
+		echo "" ;;
+	setup)
+		# We need a login and host name or IP.
+		if [ -z "$login" ] || [ -z "$host" ]; then
+			gettext -e "\nUsage:"; echo -e \
+				" $(basename $0) setup --login=user --host=server\n" && exit 0
+		fi
+		gen_config
+		mkdir -p $logdir $(dirname $pid)
+		
+		# Configure passwordless login via RSA key.
+		if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+			mkdir -p $HOME/.ssh
+			ssh-keygen -b 2048 -f $HOME/.ssh/id_rsa -P ''
+		fi
+		
+		# Upload key to the server.
+		gettext "Sending RSA secure key to:"; echo " $host"
+		cat $HOME/.ssh/id_rsa.pub | \
+			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' ;;
+	sync)
+		# Sync can be called at session startup or from cmdline to retrive
+		# files from the server.
+		[ ! -f "$config" ] && gettext -e "Missing config file\n" && exit 1
+		at=$(fgrep host $config | cut -d '"' -f 2)
+		login=${at%@*}
+		host=${at#*@}
+		gettext -e "\nSyncing from:"; echo " $login@$host"
+		
+		# First sync host with server.
+		rsync -r -a -v -h -z -u --delete \
+			--log-file=$logdir/rsync.log \
+			-e "ssh -l $login" $host:~/Sync/ ~/Sync/ | \
+				sed -e "/^$/"d -e "/^.\/$/"d
+		
+		# Monitor local folder if not yet running.
+		if [ ! -f "$pid" ]; then
+			gettext "Starting lsyncd daemon..."
+			lsyncd -pidfile $pid -log all -logfile $logdir/lsyncd.log $config
+		else
+			gettext "Lcyncd daemon running PID:"; echo " $(cat $pid)"
+		fi && echo "" ;;
+	stop)
+		# Kill daemon and remove pidfile.
+		[ ! -f "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
+		kill=$(cat $pid)
+		gettext "Stopping"; echo "$app PID: $kill"
+		kill $kill && rm -f $pid ;;
+	*)
+		help ;;
+esac
+exit 0
