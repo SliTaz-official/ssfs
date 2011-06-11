@@ -87,6 +87,13 @@ before a user session is started. It can be useful to provide persistent data fo
 Live systems and web boot.
 
 
+Quota management
+----------------
+Actually the quota storage is based on a shared idea, the vdisk have a size and
+all users share the space. For a pay service the vdisk can grow follwing the
+users donations or monthly subscription.
+
+
 Server setup
 ------------
 On the server you must have a SSH server running and an user account with a
@@ -134,6 +141,7 @@ and a line into the file /etc/fstab:
 
 # adduser -S -g "Ssfs Server" -h /ssfs -s /bin/false ssfs
 /home/ssfs.ext3    /ssfs ext3    rw,loop,ssfs,ssfs  0 0
+
 
 Server users config
 -------------------
