@@ -28,15 +28,15 @@ Installation
 ------------
 To work you need an SSH client, 'rsync' and 'lsyncd' installed, on SliTaz you
 can simply install ssfs and it dependencies or to 'make install' from the
-source directory (see the Development section). To get a list of commands with
-a sort description:
+source directory (see the Development section). 
 
 
 Client help and setup
 ---------------------
 The cmdline interface ssfs let you setup a client and start the daemon and live
 synchronization with your system session via the Window Manager autostart
-script or your personnal ~/.profile file.
+script or your personnal ~/.profile file. To get a list of commands with
+a short description:
 
 $ ssfs help
 
@@ -49,8 +49,8 @@ $ ssfs setup --login=user --host=server
 
 GUI & Web interface
 -------------------
-Actually they is no frontend or web interface, but it should be just a matter
-of free time!
+Actually they is a smal GTK/Yad but no web interface. The tool ssfs-box will
+dipply info if a configuration file exist or start the setup box.
 
 
 Get configs on boot
