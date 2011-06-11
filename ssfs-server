@@ -45,7 +45,7 @@ $(echo -e "\033[1m$(gettext "Usage:")\033[0m") $app [command] [--option=]
 
 $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   help          $(gettext "Display this short usage.")
-  users         $(gettext "List users account and stats.")
+  users         $(gettext "List user accounts and stats.")
   adduser       $(gettext "Add a user to the system with \$HOME in chroot.")
   deluser       $(gettext "Delete a user and remove \$HOME files.")
   chroot        $(gettext "Chroot to Ssfs storage root.")
@@ -121,7 +121,7 @@ case "$1" in
 		
 		gettext -e "\nChecking:"; echo " /etc/passwd"
 		if grep ^$login: /etc/passwd; then
-			gettext -e "Exiting user already exist:"
+			gettext -e "Exiting, user already exists:"
 			echo -e " $login\n" && exit 0
 		fi
 		gettext "Creating user: $login..."
@@ -129,14 +129,14 @@ case "$1" in
 			adduser -h "$home" -g "Ssfs User" -u $id $login >/dev/null
 		status
 		
-		# We dont want any files from /etc/skel.
+		# We don't want any files from /etc/skel.
 		gettext "Cleaning home and creating: Sync/..."
 		rm -rf $home && mkdir -p $home/Sync && status
 		gettext "Changing mode on user home: 0700..."
 		chown -R $login.$login $home
 		chmod 0700 $home && status
 
-		# Create a custom config peer user in SSFS_USERS.
+		# Create a custom config per user in SSFS_USERS.
 		[ ! -d "$SSFS_USERS" ] && mkdir -p $SSFS_USERS
 		user_config ;;
 	deluser)
@@ -155,9 +155,9 @@ case "$1" in
 		gettext -e "\nBack to the host system:"
 		echo -e " $(hostname)\n" ;;
 	gen-chroot)
-		# Generated a minimal chroot for Ssfs users home.
+		# Generate a minimal chroot for Ssfs users home.
 		if [ -d "$root/bin" ]; then
-			gettext -e "A chroot already exist in:"; echo " $root"
+			gettext -e "A chroot already exists in:"; echo " $root"
 			exit 0
 		fi
 		gettext -e "\nCreating chroot in:"; echo " $root"

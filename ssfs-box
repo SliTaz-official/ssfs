@@ -29,7 +29,7 @@ tools_main() {
 	if [ ! -s "$config" ]; then
 		$0 setup && exit 0
 	fi
-	text=$(gettext "<b>Welcome to Ssfs GTK user interface</b>")
+	text=$(gettext "<b>Welcome to the Ssfs GTK user interface</b>")
 	info | yad \
 		--list --title="Ssfs GTK tools" \
 		--width=460 --height=280 --image-on-top \
@@ -64,7 +64,7 @@ tools() {
 # Setup GUI box function.
 setup_main() {
 	text=$(gettext \
-"<b>Welcome to Ssfs Setup</b>\n
+"<b>Welcome to the Ssfs Setup</b>\n
 Any account on a server yet ? You can vist www.slitaz.org
 services or setup your own server in a few minutes!\n")
 	yad --form --title="Ssfs GTK Setup" \
