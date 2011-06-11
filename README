@@ -1,0 +1,104 @@
+SliTaz Secure File Storage
+===============================================================================
+
+
+Ssfs is a personnal and secure, fast and light online file storage powered by
+SSH, Rsync, Lsyncd and SHell script. It monitor a local folder and automaticaly
+synchronize the remote server, when files are tranfert they are compressed and
+encrypted with SSH. Connection to the remote host is automate with a RSA key,
+and for each client the key must be sent to the server via SSH password login.
+
+Using ssfs let you have a live synchronized and secure folder between many
+computers with an online copy on a secure Linux server. But even without
+connections you have access to your files. Connection to the remote server
+can also be done using the command line and 'ssh' from any clients such as
+BSD, Android, OSX or Windows via Putty.
+
+Ssfs is very easy to install, setup and configure to make you own secure online
+file storage. It provide a cmdline tool for the client and the server with a
+build in help, this README is also a howto in itself.
+
+On the server side admin can choose by creating standard accounts or chrooted
+accounts wich enforce server security by restricting available commands in a
+minimal chroot environment. User $HOME should be set to 0700 so users can't see
+other users files.
+
+
+Installation
+------------
+To work you need an SSH client, 'rsync' and 'lsyncd' installed, on SliTaz you
+can simply install ssfs and it dependencies or to 'make install' from the
+source directory (see the Development section). To get a list of commands with
+a sort description:
+
+
+Client help and setup
+---------------------
+The cmdline interface ssfs let you setup a client and start the daemon and live
+synchronization with your system session via the Window Manager autostart
+script or your personnal ~/.profile file.
+
+$ ssfs help
+
+To setup a client by creating a Lua configuration file and sending the RSA key
+to the server, you can use the command 'setup'. Setup needs a login name and
+server name or IP adress and it will also create a secure RSA if no existing:
+
+$ ssfs setup --login=user --host=server
+
+
+GUI & Web interface
+-------------------
+Actually they is no frontend or web interface, but it should be just a matter
+of free time!
+
+
+Get configs on boot
+-------------------
+Ssfs can be used in a boot scripts to connect to remote host and retrive data
+before user session is started. It can be usful to provide persitent data for
+Live systems and web boot.
+
+
+Server setup
+------------
+On the server you must have a SSH server running and an user account with a
+~/Sync folder. If you want to create a chroot for users you can use use the
+tool ssfs-server. Here is a short example to create a chroot and create a user
+login 'tux-sync' with a protected $HOME in the chroot, the root directory can
+be specified on the command line or changed in the configuration file:
+
+# ssfs-server gen-chroot
+# ssfs-server adduser --login=tux-sync --id=2000 --pass=tuX0cc
+
+Users can be listed or completely deleted including all file in home. More
+information with: ssfs-server usage
+
+
+Server users config
+-------------------
+When adding a user with 'ssfs-server adduser', the user is added to the host
+/etc/passwd and a custom user config file is created in SSFS_USERS with the
+login name. Actually the config file have unused variables but here in futur
+prevision: PUBLIC="HTTP Public directory"
+
+
+Development and Bugs
+--------------------
+If you want to install latest code to test and help in developement you can
+clone ssfs Mercurial repository. As usual cose folloy SliTaz light philosofy
+with speed and security in mind:
+
+ $ hg clone http://hg.slitaz.org/ssfs
+
+Install with 'make install' (DESTDIR is supported for packaging), update POT
+file if any new string have been added with 'make pot' and merger PO files with
+the command 'make msgmerge'. Any ideas are welcome and can be discuss, if you
+are searching for something to do you can have a look to the TODO file :-)
+
+Bugs can be reported on SliTaz mailing list, forum or scn since devel forum is
+synced, all sites are liked from the main website at: http://www.slitaz.org/
+
+
+===============================================================================
+
