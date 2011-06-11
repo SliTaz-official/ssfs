@@ -1,0 +1,100 @@
+#!/bin/sh
+#
+# SliTaz Secure File Storage GTK user interface using Yad.
+#
+# Copyright (C) SliTaz GNU/Linux - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
+
+app=$(basename $0)
+config=$HOME/.config/ssfs/client.lua
+
+#
+# Functions
+#
+
+info() {
+	size=$(du -sh $HOME/Sync | awk '{print $1}')
+	host=$(fgrep 'host' $config | cut -d '"' -f 2)
+	login=${host%@*}
+	host=${host#*@}
+	echo -e "Login\n$login
+Host\n$host
+Size\n$size
+RSA Key\n~/.ssh/id_rsa"
+}
+
+# Default tools GUI box function.
+tools_main() {
+	if [ ! -s "$config" ]; then
+		$0 setup
+	fi
+	text=$(gettext "<b>Welcome to Ssfs GTK user interface</b>")
+	info | yad \
+		--list --title="Ssfs GTK tools" \
+		--width=460 --height=280 --image-on-top \
+		--text="$text" --image="slitaz-menu" \
+		--column "Ssfs" --column "$(gettext "Value")" \
+		--button="$(gettext "Edit config"):3" \
+		--button="$(gettext "Browse files"):2" \
+		--button="gtk-close:1"
+}
+
+# Default tools functions.
+tools() {
+	# Store box results
+	main=$(tools_main)
+	# Deal with --button values
+	case $? in
+		1) exit 0 ;;
+		2) file-manager $HOME/Sync ;;
+		3) editor $config ;;
+		*) continue ;;
+	esac
+	case $main in
+		RSA*)
+			yad --text-info --title="RSA Key" \
+				--width=560 --height=380 \
+				--filename=$HOME/.ssh/id_rsa ;;
+		*)
+			echo "TODO: $main" ;;
+	esac
+}
+
+# Setup GUI box function.
+setup_main() {
+	text=$(gettext \
+"<b>Welcome to Ssfs Setup</b>\n
+Any account on a server yet ? You can vist www.slitaz.org
+services or setup your own server in a few minutes!\n")
+	yad --form --title="Ssfs GTK Setup" \
+		--width=460 --height=200 --image-on-top \
+		--text="$text" --image="slitaz-menu" \
+		--field="Login" --field="Server"
+}
+
+# Default tools functions.
+setup() {
+	# Store box results and setup.
+	main=$(setup_main)
+	[ $? == 1 ] && exit 0
+	login=$(echo $main | cut -d '|' -f 1)
+	host=$(echo $main | cut -d '|' -f 2)
+	[ "$host" ] || exit 0
+	terminal -hold -geometry 72x10 \
+		-e "ssfs setup --login=$login --host=$host"
+}
+
+#
+# Commands
+#
+
+case "$1" in
+	help)
+		echo "Usage: $app [command]" ;;
+	setup)
+		setup ;;
+	*) 
+		tools ;;
+esac
+exit 0
