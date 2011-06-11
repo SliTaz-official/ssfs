@@ -48,7 +48,7 @@ Quick start guide
     * On the client side: ssfs-box setup or from the cmdline:
       $ ssfs setup --login=demo --host="server name or ip"
     * On client you can start ssfs on user login via the WM
-      autostart script and this call to ssfs: ssfs sync &
+      autostart script and or the command $ ssfs sync
 
 
 Installation

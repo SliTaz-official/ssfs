@@ -99,7 +99,8 @@ case "$1" in
 		# Upload key to the server.
 		gettext "Sending RSA secure key to:"; echo " $host"
 		cat $HOME/.ssh/id_rsa.pub | \
-			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' ;;
+			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
+		gettext "Client is setup you can now sync"; echo ;;
 	sync)
 		# Sync can be called at session startup or from cmdline to retrive
 		# files from the server.
