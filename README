@@ -35,6 +35,21 @@ Overview
     * Easy to backup and maintain
 
 
+Quick start guide
+-----------------
+
+    * Install ssfs on server and clients if not yet done
+    * Create a vdisk on server # ssfs-server gen-vdisk
+    * Check if chroot works (exit to quit) # ssfs-server chroot
+    * Add a chrooted user to the Ssfs virtual disk so it can sync
+      files or connect via SSH from a client:
+      # ssfs-server adduser --login=demo --id=2000 --pass=demo
+    * On the client side: ssfs-box setup or from the cmdline:
+      $ ssfs setup --login=demo --host="server name or ip"
+    * On client you can start ssfs on user login via the WM
+      autostart script and this call to ssfs: ssfs sync &
+
+
 Installation
 ------------
 To work you need a SSH client, 'rsync' and 'lsyncd' installed. On SliTaz you
