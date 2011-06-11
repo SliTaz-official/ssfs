@@ -28,11 +28,12 @@ Overview
 --------
 
     * Online live sync with encrypted data
+    * Drop files in a folder and they will be sync
     * Even without connection you have your data
-    * Fast and light using stable GNU tools
-    * Easy to setup on clent and server
+    * Fast and light using stable and mature GNU tools
+    * Easy to setup on the client and server side
     * Virtual disk for storage with minimal chroot
-    * Easy to backup and maintain
+    * Easy to backup, update and maintain vdisk
 
 
 Quick start guide
