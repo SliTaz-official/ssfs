@@ -27,7 +27,7 @@ RSA Key\n~/.ssh/id_rsa"
 # Default tools GUI box function.
 tools_main() {
 	if [ ! -s "$config" ]; then
-		$0 setup
+		$0 setup && exit 0
 	fi
 	text=$(gettext "<b>Welcome to Ssfs GTK user interface</b>")
 	info | yad \
@@ -81,7 +81,7 @@ setup() {
 	login=$(echo $main | cut -d '|' -f 1)
 	host=$(echo $main | cut -d '|' -f 2)
 	[ "$host" ] || exit 0
-	terminal -hold -geometry 72x10 \
+	terminal -hold -geometry 72x14 \
 		-e "ssfs setup --login=$login --host=$host"
 }
 

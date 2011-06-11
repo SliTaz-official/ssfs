@@ -79,8 +79,7 @@ Server users config
 -------------------
 When adding a user with 'ssfs-server adduser', the user is added to the host
 /etc/passwd and a custom user config file is created in SSFS_USERS with the
-login name. Actually the config file have unused variables but here in futur
-prevision: PUBLIC="HTTP Public directory"
+login name.
 
 
 Development and Bugs

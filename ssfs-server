@@ -89,7 +89,6 @@ user_config() {
 
 LOGIN="$login"
 QUOTA="$DEFAULT_QUOTA"
-PUBLIC="no"
 EOT
 	chmod 0600 $config && status
 	echo ""
