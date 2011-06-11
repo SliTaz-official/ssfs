@@ -1,0 +1,196 @@
+#!/bin/sh
+#
+# SliTaz Secure File Storage server side tool.
+#
+# Copyright (C) SliTaz GNU/Linux - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
+
+app=$(basename $0)
+[ -f "/etc/ssfs/$app.conf" ] && . /etc/ssfs/$app.conf
+[ -f "./data/$app.conf" ] && . ./data/$app.conf
+
+# Be sure we're root.
+[ $(id -u) != 0 ] && gettext "You must be root to run:" && \
+	echo " $app" && exit 0
+
+# Parse cmdline options.
+for opt in $@
+do
+	case "$opt" in
+		--login=*)
+			login=${opt#--login=} ;;
+		--id=*)
+			id=${opt#--id=} ;;
+		--pass=*)
+			pass=${opt#--pass=} ;;
+		--root=*)
+			root=${opt#--root=} ;;
+		*)
+			continue ;;
+	esac
+done
+
+[ "$root" ] || root=${SSFS_CHROOT}
+
+#
+# Functions
+#
+
+# Built-in help usage.
+help() {
+	cat << EOT
+
+$(echo -e "\033[1m$(gettext "Usage:")\033[0m") $app [command] [--option=]
+
+$(echo -e "\033[1m$(gettext "Commands:")\033[0m")
+  help          $(gettext "Display this short usage.")
+  users         $(gettext "List users account and stats.")
+  adduser       $(gettext "Add a user to the system with \$HOME in chroot.")
+  deluser       $(gettext "Delete a user and remove \$HOME files.")
+  chroot        $(gettext "Chroot to Ssfs storage root.")
+  gen-chroot    $(gettext "Create a chroot for users files storage.")
+  clean-chroot  $(gettext "Clean the chroot but skip home/ and root/.")
+
+$(echo -e "\033[1m$(gettext "Options:")\033[0m")
+  --login=      $(gettext "Login name for add or del an user.")
+  --id=         $(gettext "User id for adduser command.")
+  --pass=       $(gettext "User password for adduser.")
+  --root=       $(gettext "The path to the Ssfs chroot.")
+
+EOT
+}
+
+status() {
+	[ $? = 0 ] && echo " OK" 
+	[ $? = 1 ] && echo -e " ERROR\n" && exit 1
+}
+
+user_paths() {
+	config=$SSFS_USERS/$login.conf
+	home=$root/./home/$login
+}
+
+user_info() {
+	cat << EOT
+
+$(gettext "User login :") $login
+$(gettext "User quota :") $QUOTA
+$(gettext "Home usage :") $usage
+
+EOT
+}
+
+# Create a custom config when adding user to handle quota and user info.
+user_config() {
+	gettext "Creating Ssfs user configuration file..."
+	cat > $config << EOT
+# Ssfs user configuration file.
+
+LOGIN="$login"
+QUOTA="$DEFAULT_QUOTA"
+PUBLIC="no"
+EOT
+	chmod 0600 $config && status
+	echo ""
+}
+
+#
+# Commands
+#
+
+case "$1" in
+	users)
+		gettext -e "\nChecking:"; echo " /etc/passwd"
+		fgrep "Ssfs User" /etc/passwd | while read line
+		do
+			login=$(echo $line | cut -d ":" -f 1)
+			home="$root/home/$login"
+			usage=$(du -sm $home | awk '{print $1}')
+			config=$SSFS_USERS/$login.conf
+			. $config || gettext -e "WARNING: No config file\n"
+			user_info
+		done 
+		users=$(ls $SSFS_USERS | wc -l)
+		gettext "Users:"; echo -e " $users\n" ;;
+	adduser)
+		# Add a Ssfs user to the system with $HOME in chroot.
+		[ -z "$login" ] && gettext -e "Missing user login name.\n" && exit 0
+		[ -z "$id" ] && gettext -e "Missing user id.\n" && exit 0
+		[ -z "$pass" ] && gettext -e "Missing user password.\n" && exit 0
+		user_paths
+		
+		gettext -e "\nChecking:"; echo " /etc/passwd"
+		if grep ^$login: /etc/passwd; then
+			gettext -e "Exiting user already exist:"
+			echo -e " $login\n" && exit 0
+		fi
+		gettext "Creating user: $login..."
+		echo -e "$pass\n$pass" | \
+			adduser -h "$home" -g "Ssfs User" -u $id $login >/dev/null
+		status
+		
+		# We dont want any files from /etc/skel.
+		gettext "Cleaning home and creating: Sync/..."
+		rm -rf $home && mkdir -p $home/Sync && status
+		gettext "Changing mode on user home: 0700..."
+		chown -R $login.$login $home
+		chmod 0700 $home && status
+
+		# Create a custom config peer user in SSFS_USERS.
+		[ ! -d "$SSFS_USERS" ] && mkdir -p $SSFS_USERS
+		user_config ;;
+	deluser)
+		[ -z "$login" ] && gettext -e "Missing user login name.\n" && exit 0
+		user_paths
+		gettext -e "\nDeleting user:"; echo -n " $login..."
+		deluser $login || status && status
+		gettext "Removing all files in:"; echo -n " $home..."
+		rm -rf $home && status
+		gettext "Removing user config:"; echo -n " $login.conf..."
+		rm -rf $config && status
+		echo "" ;;
+	chroot)
+		gettext -e "\nChanging root to:"; echo -e " $root\n"
+		chroot $root
+		gettext -e "\nBack to the host system:"
+		echo -e " $(hostname)\n" ;;
+	gen-chroot)
+		# Generated a minimal chroot for Ssfs users home.
+		if [ -d "$root/bin" ]; then
+			gettext -e "A chroot already exist in:"; echo " $root"
+			exit 0
+		fi
+		gettext -e "\nCreating chroot in:"; echo " $root"
+		gettext "Installing SliTaz base files..."
+		yes | tazpkg get-install slitaz-base-files --root=$root >/dev/null
+		status
+		gettext "Installing Busybox..."
+		yes | tazpkg get-install busybox --root=$root >/dev/null
+		status
+		gettext "Cleaning Ssfs chroot..."
+		rm -f $root/init
+		status && echo "" ;;
+	clean-chroot)
+		# clean up the storage chroot.
+		if [ ! -d "$root/bin" ] || [ ! -d "$root/usr" ]; then
+			gettext -e "No chroot found in:"; echo " $root"
+			exit 0
+		fi
+		gettext -e "\nChanging directory to:"; echo " $root"
+		cd $root
+		for dir in *
+		do
+			size=$(du -sh $dir | awk '{print $1}')
+			case "$dir" in
+				home|root)
+					gettext "Skipping:"; echo " $dir $size *" ;;
+				*)
+					gettext "Removing:"; echo " $dir $size"
+					rm -rf $dir ;;
+			esac
+		done && echo "" ;;
+	*)
+		help ;;
+esac
+exit 0
