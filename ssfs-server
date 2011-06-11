@@ -26,12 +26,18 @@ do
 			pass=${opt#--pass=} ;;
 		--root=*)
 			root=${opt#--root=} ;;
+		--vdisk=*)
+			vdisk=${opt#--vdisk=} ;;
+		--size=*)
+			size=${opt#--size=} ;;
 		*)
 			continue ;;
 	esac
 done
 
 [ "$root" ] || root=${SSFS_CHROOT}
+[ "$vdisk" ] || vdisk=${SSFS_VDISK}
+[ "$size" ] || size=${SSFS_SIZE}
 
 #
 # Functions
@@ -49,14 +55,18 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   adduser       $(gettext "Add a user to the system with \$HOME in chroot.")
   deluser       $(gettext "Delete a user and remove \$HOME files.")
   chroot        $(gettext "Chroot to Ssfs storage root.")
-  gen-chroot    $(gettext "Create a chroot for users files storage.")
-  clean-chroot  $(gettext "Clean the chroot but skip home/ and root/.")
+  gen-vdisk     $(gettext "Create a vdisk with chroot for files storage.")
+  clean-vdisk   $(gettext "Clean the vdisk but skip home and root.")
+  mount-vdisk   $(gettext "Mount ssfs virtual disk.")
+  umount-vdisk  $(gettext "Unmount the vdisk and free loop device.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
   --login=      $(gettext "Login name for add or del an user.")
   --id=         $(gettext "User id for adduser command.")
   --pass=       $(gettext "User password for adduser.")
-  --root=       $(gettext "The path to the Ssfs chroot.")
+  --root=       $(gettext "The path to the Ssfs vdisk chroot.")
+  --vdisk=      $(gettext "Set the Ssfs vdisk path and name.")
+  --size=       $(gettext "Set the ext3 vdisk size in Gb.")
 
 EOT
 }
@@ -66,6 +76,11 @@ status() {
 	[ $? = 1 ] && echo -e " ERROR\n" && exit 1
 }
 
+separator() {
+	echo "================================================================================"
+}
+
+# We have custom config when adding user to handle quota and user info.
 user_paths() {
 	config=$SSFS_USERS/$login.conf
 	home=$root/./home/$login
@@ -81,7 +96,6 @@ $(gettext "Home usage :") $usage
 EOT
 }
 
-# Create a custom config when adding user to handle quota and user info.
 user_config() {
 	gettext "Creating Ssfs user configuration file..."
 	cat > $config << EOT
@@ -92,6 +106,26 @@ QUOTA="$DEFAULT_QUOTA"
 EOT
 	chmod 0600 $config && status
 	echo ""
+}
+
+# Handle Ssfs virtual disk.
+umount_vdisk() {
+	if mount | fgrep -q $root; then
+		loop=$(mount | fgrep $root | awk '{print $1}')
+		gettext "Unmounting Ssfs vdisk:"; echo " $vdisk"
+		umount $root && sleep 1
+		gettext "Detaching loop device:"; echo " $loop"
+		losetup  -d $loop
+	else
+		gettext "Ssfs vdisk is not mounted:"; echo " $vdisk"
+	fi
+}
+
+mount_vdisk() {
+	umount_vdisk
+	[ -d "$root" ] || mkdir -p $root
+	gettext "Mounting virtual disk:"; echo " $vdisk $root"
+	mount -o loop -t ext3 $vdisk $root
 }
 
 #
@@ -154,41 +188,99 @@ case "$1" in
 		chroot $root
 		gettext -e "\nBack to the host system:"
 		echo -e " $(hostname)\n" ;;
-	gen-chroot)
-		# Generate a minimal chroot for Ssfs users home.
+	gen-vdisk)
+		# Generated a virtual disk with a minimal chroot for Ssfs users home.
 		if [ -d "$root/bin" ]; then
 			gettext -e "A chroot already exists in:"; echo " $root"
 			exit 0
 		fi
-		gettext -e "\nCreating chroot in:"; echo " $root"
-		gettext "Installing SliTaz base files..."
-		yes | tazpkg get-install slitaz-base-files --root=$root >/dev/null
+		echo ""
+		gettext "Creating chroot in:"; echo " $root"
+		separator
+
+		# Create vdisk if missing.
+		if [ ! -f "$vdisk" ]; then
+			gettext "Creating virtual disk:"; echo " $vdisk ${size}Gb"
+			dd if=/dev/zero of=$vdisk bs=1G count=$size
+			du -sh $vdisk
+			gettext "Creating ext3 filesystem..."
+			mkfs.ext3 -q -T ext3 -L "Ssfs" -F $vdisk
+			status
+			mount_vdisk
+		fi
+
+		# Create a radicaly minimal chroot with all libs in /lib.
+		gettext "Creating base files..."
+		mkdir -p $root && cd $root
+		for d in etc tmp lib usr home root
+		do
+			mkdir -p $d
+		done && status
+		cp -a /etc/slitaz-release $root/etc
+		#cp -a /etc/nsswitch.conf $root/etc
+		echo "root:x:0:0:root:/root:/bin/sh" > etc/passwd
+		echo "root::13525:0:99999:7:::" > etc/shadow
+		echo "root:x:0:" > etc/group
+		echo "root:*::" > etc/gshadow
+		
+		gettext "Setting files permissions..."
+		chmod 640 etc/shadow etc/gshadow
+		chmod 0700 root && chmod 1777 tmp
 		status
+
+		# Busybox without deps (get && extract). No system comands are allowed
+		# in /etc/busybox.conf to restrict SSHed users.
 		gettext "Installing Busybox..."
-		yes | tazpkg get-install busybox --root=$root >/dev/null
+		cd $root/tmp
+		tazpkg get busybox >/dev/null
+		tazpkg extract busybox-* >/dev/null
+		rm -rf fs && mv -f busybox-*/fs . && rm -rf busybox-*
+		cp -a fs/bin fs/sbin $root
+		cp -a fs/usr/bin fs/usr/sbin $root/usr
+		rm -rf fs
 		status
-		gettext "Cleaning Ssfs chroot..."
-		rm -f $root/init
-		status && echo "" ;;
-	clean-chroot)
-		# clean up the storage chroot.
+		gettext "Creatin restrictive Busybox config file..."
+		echo '# /etc/busybox.conf: Ssfs Busybox configuration.' \
+			> $root/etc/busybox.conf
+		echo -e "\nsu = ---" >> $root/etc/busybox.conf
+		chmod 0600 $root/etc/busybox.conf
+		status
+
+		# Glib minimal libs, use host lib since package should be installed
+		# from same repo.
+		gettext "Installing Glibc libraries..."
+		for l in  ld-*.*so* libc-*.*so libc.so.* libnss_files*
+		do
+			cp -a /lib/$l* $root/lib
+		done && status
+		size=$(du -sh $root | awk '{print $1}')
+		separator
+		gettext "Vdisk used space:"; echo -e " $size\n" ;;
+	mount-vdisk)
+		mount_vdisk ;;
+	umount-vdisk)
+		umount_vdisk ;;
+	clean-vdisk)
+		# clean up the vdisk storage chroot.
 		if [ ! -d "$root/bin" ] || [ ! -d "$root/usr" ]; then
 			gettext -e "No chroot found in:"; echo " $root"
 			exit 0
 		fi
-		gettext -e "\nChanging directory to:"; echo " $root"
+		gettext -e "\nCleaning virtual disk\n"
+		separator
+		gettext "Changing directory to:"; echo " $root"
 		cd $root
 		for dir in *
 		do
 			size=$(du -sh $dir | awk '{print $1}')
 			case "$dir" in
-				home|root)
+				home|root|lost*)
 					gettext "Skipping:"; echo " $dir $size *" ;;
 				*)
 					gettext "Removing:"; echo " $dir $size"
 					rm -rf $dir ;;
 			esac
-		done && echo "" ;;
+		done && separator && echo "" ;;
 	*)
 		help ;;
 esac

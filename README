@@ -63,17 +63,50 @@ Live systems and web boot.
 Server setup
 ------------
 On the server you must have a SSH server running and an user account with a
-~/Sync folder. If you want to create a chroot for users you can use the
-tool ssfs-server. Here is a short example to create a chroot and create a user
-login 'tux-sync' with a protected $HOME in the chroot. The root directory can
-be specified on the command line or changed in the configuration file:
+~/Sync folder in user home. You can have both, staandard accounts or chrooted
+accounts, for a hosted service it is recommended to use a chroot and Ssfs
+virtual disk. The vdisk can be any size you want and have a minimal chroot
+environment that is under 3Mb.
 
-# ssfs-server gen-chroot
+If you want to create a vdisk and chroot automaticaly you can use use the tool
+ssfs-server. Here is a short example to create a chroot and create a user
+login 'tux-sync' with a protected $HOME in the chroot, the root directory can
+be specified on the command line or changed in the configuration file. The
+vdisk creation size is set in Gb and can be changed in config file or from
+the cmdline:
+
+# ssfs-server gen-vdisk --size=2
 # ssfs-server adduser --login=tux-sync --id=2000 --pass=tuX0cc
 
 Users can be listed or completely deleted including all files in home. More
 information can be found with: ssfs-server usage
 
+
+Ssfs virtual disk
+-----------------
+A virtual Ssfs disk is a raw file created with dd and formated in ext3. It is
+mounted by default on /ssfs and contain a minimal chroot environemt with users
+home directory. We use a virtual disk to enforce securiry and use a separate
+media for Ssfs secure files, it also protect the host and limit storage size.
+The tool ssfs-server handle vdisk creation but you can also create one manually
+or use a separate HD if the server have more than one disk. To create 2Gb
+vdisk and format it to ext3:
+
+# dd if=/dev/zero of=/home/ssfs.ext3 bs=1G count=2
+# mkfs.ext3 -T ext3 -L "Ssfs" -F /home/ssfs.ext3
+
+Now you have a virtual disk you can mount it, the path must match SSFS_CHROOT
+found in ssfs-server.conf, default mount point is /ssfs to clearly separate
+the filesystem from the standard host file hierarchy:
+
+# mkdir /ssfs
+# mount -o loop -t ext3 /home/ssfs.ext3 /ssfs
+
+To automaticaly mount the vdisk on boot you may want to add a ssfs system user
+and a line into the file /etc/fstab:
+
+# adduser -S -g "Ssfs Server" -h /ssfs -s /bin/false ssfs
+/home/ssfs.ext3    /ssfs ext3    rw,loop,ssfs,ssfs  0 0
 
 Server users config
 -------------------
@@ -88,15 +121,17 @@ If you want to install the latest code to test and help in development you can
 clone the ssfs Mercurial repository. As usual, closely follow the SliTaz light 
 philosophy with speed and security in mind:
 
- $ hg clone http://hg.slitaz.org/ssfs
+$ hg clone http://hg.slitaz.org/ssfs
 
 Install with 'make install' (DESTDIR is supported for packaging), update the POT
 file if any new strings have been added with 'make pot', and merger PO files with
 the command 'make msgmerge'. Any ideas are welcome and can be discussed. If you
 are searching for something to do you can have a look to the TODO file :-)
 
-Bugs can be reported on the SliTaz mailing list, forum or scn since the devel forum 
-is synced. All sites are liked from the main website at: http://www.slitaz.org/
+Bugs can be reported on the SliTaz mailing list, forum or scn since the devel
+forum is synced. All sites are liked from the main website at:
+
+http://www.slitaz.org/
 
 
 ===============================================================================
