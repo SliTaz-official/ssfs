@@ -163,9 +163,7 @@ Development and Bugs
 --------------------
 If you want to install the latest code to test and help in development you can
 clone the ssfs Mercurial repository. As usual, closely follow the SliTaz light 
-philosophy with speed and security in mind:
-
-$ hg clone http://hg.slitaz.org/ssfs
+philosophy with speed and security in mind: hg clone http://hg.slitaz.org/ssfs
 
 Install with 'make install' (DESTDIR is supported for packaging), update the POT
 file if any new strings have been added with 'make pot', and merger PO files with
@@ -173,9 +171,7 @@ the command 'make msgmerge'. Any ideas are welcome and can be discussed. If you
 are searching for something to do you can have a look to the TODO file :-)
 
 Bugs can be reported on the SliTaz mailing list, forum or scn since the devel
-forum is synced. All sites are liked from the main website at:
-
-http://www.slitaz.org/
+forum is synced. All sites are liked from: http://www.slitaz.org/
 
 To share ideas and get involved into Ssfs project you can join the Ssfs group
 on the SliTaz Community Network website : http://scn.slitaz.org/groups/ssfs/
