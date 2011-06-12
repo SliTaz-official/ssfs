@@ -60,6 +60,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   gen-vdisk     $(gettext "Create a vdisk with chroot for files storage.")
   clean-vdisk   $(gettext "Clean the vdisk but skip home and root.")
   check-vdisk   $(gettext "Check the vdisk filesystem with e2fsck.")
+  up-vdisk      $(gettext "Update a vdisk filesystem.")
   mount-vdisk   $(gettext "Mount a ssfs virtual disk.")
   umount-vdisk  $(gettext "Unmount the vdisk and free loop device.")
   note          $(gettext "Write a public note for users.")
@@ -285,7 +286,6 @@ case "$1" in
 		status
 
 		gettext "Setting files permissions..."
-		chmod 0640 $root/etc/*shadow
 		chmod 0700 $root/root
 		chmod 4755 $root/bin/busybox
 		chmod 0600 $root/etc/busybox.conf
@@ -340,6 +340,9 @@ case "$1" in
 		gettext "Remounting vdisk read/write..."
 		mount -o remount,loop,rw $vdisk $root && status
 		separator && echo "" ;;
+	up-vdisk)
+		$0 clean-vdisk
+		$0 gen-vdisk ;;
 	clean-vdisk)
 		# clean up the vdisk storage chroot.
 		if [ ! -d "$root/bin" ] || [ ! -d "$root/lib" ]; then
