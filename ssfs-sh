@@ -19,7 +19,7 @@ else
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
-	PS1="$USER@ssfs:\w$ "
+	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
 	export HOME SYNC SHELL PS1
 	cd $HOME && exec /bin/sh $@
 fi
