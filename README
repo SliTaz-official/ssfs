@@ -15,7 +15,7 @@ can also be done using the command line and 'ssh' from any clients such as
 BSD, Android, OSX or Windows via Putty.
 
 Ssfs is very easy to install, setup and configure to make your own secure online
-file storage. It provides a cmdline tool for the client and the server with a
+file storage. It provides a cmdline tool for the client and server with a
 built in help. This README is also a howto in itself.
 
 On the server side admin can choose by creating standard accounts or chrooted
@@ -28,11 +28,11 @@ Overview
 --------
 
     * Online live sync with encrypted data
-    * Drop files in a folder and they will be sync
-    * Even without connection you have your data
+    * Drop files in a folder and they will be synced
+    * Even without any connection you have your data
     * Fast and light using stable and mature GNU tools
     * Easy to setup on the client and server side
-    * Virtual disk for storage with minimal chroot
+    * Virtual disk for storage with a minimal chroot
     * Easy to backup, update and maintain vdisk
 
 
@@ -47,8 +47,8 @@ Quick start guide
       # ssfs-server adduser --login=demo --id=2000 --pass=demo
     * On the client side: ssfs-box setup or from the cmdline:
       $ ssfs setup --login=demo --host="server name or ip"
-    * On client you can start ssfs on user login via the WM
-      autostart script and or the command $ ssfs sync
+    * On the client you can start ssfs on user login via the WM
+      autostart script and/or the command $ ssfs sync
     * Get support and show your love for Ssfs on SCN group:
       http://scn.slitaz.org/groups/ssfs/
 
@@ -79,10 +79,10 @@ $ ssfs setup --login=user --host=server
 GUI & Web interface
 -------------------
 Actually there is a small GTK/Yad but no web interface. The tool ssfs-box will
-display info if a configuration file exists or start the setup box. Ther is no
+display info if a configuration file exists or start the setup box. There is no
 plan for a users files web interface since security if more important, actually
-user home have 0700 mode as so standard web server running user www can't see
-the files. We may implemnt a HTTP Public dir wich coul handle xHTML pages, a
+a user's home has 0700 mode so a standard web server running user www can't see
+the files. We may implement a HTTP Public dir which could handle xHTML pages, a
 wiki, etc.
 
 
@@ -99,31 +99,31 @@ default.
 
 Get configs on boot
 -------------------
-Ssfs can be used in a boot scripts to connect to a remote host and retrieve data
+Ssfs can be used in a boot script to connect to a remote host and retrieve data
 before a user session is started. It can be useful to provide persistent data for
 Live systems and web boot.
 
 
 Quota management
 ----------------
-Actually the quota storage is based on a shared idea, the vdisk have a size and
-all users share the space. For a pay service the vdisk can grow follwing the
+Actually the quota storage is based on a shared idea, the vdisk has a size and
+all users share the space. For a pay service the vdisk can grow following the
 users donations or monthly subscription.
 
 
 Server setup
 ------------
 On the server you must have a SSH server running and an user account with a
-~/Sync folder in user home. You can have both, staandard accounts or chrooted
-accounts, for a hosted service it is recommended to use a chroot and Ssfs
+~/Sync folder in user home. You can have both, standard accounts or chrooted
+accounts, for a hosted service it is recommended to use a chroot and a Ssfs
 virtual disk. The vdisk can be any size you want and have a minimal chroot
 environment that is under 3Mb.
 
-If you want to create a vdisk and chroot automaticaly you can use use the tool
+If you want to create a vdisk and chroot automatically you can use use the tool
 ssfs-server. Here is a short example to create a chroot and create a user
 login 'tux-sync' with a protected $HOME in the chroot, the root directory can
 be specified on the command line or changed in the configuration file. The
-vdisk creation size is set in Gb and can be changed in config file or from
+vdisk creation size is set in Gb and can be changed in the config file or from
 the cmdline:
 
 # ssfs-server gen-vdisk --size=2
@@ -138,11 +138,11 @@ information can be found with the built in help:
 Ssfs virtual disk
 -----------------
 A virtual Ssfs disk is a raw file created with dd and formated in ext3. It is
-mounted by default on /ssfs and contain a minimal chroot environemt with users
-home directory. We use a virtual disk to enforce securiry and use a separate
-media for Ssfs secure files, it also protect the host and limit storage size.
-The tool ssfs-server handle vdisk creation but you can also create one manually
-or use a separate HD if the server have more than one disk. To create 2Gb
+mounted by default on /ssfs and contains a minimal chroot environment with a user's
+home directory. We use a virtual disk to enforce security and use a separate
+media for Ssfs secure files, it also protects the host and limits storage size.
+The tool ssfs-server handles vdisk creation but you can also create one manually
+or use a separate HD if the server has more than one disk. To create a 2Gb
 vdisk and format it to ext3:
 
 # dd if=/dev/zero of=/home/ssfs.disk bs=1G count=2
@@ -171,9 +171,9 @@ login name.
 
 Server web interface
 --------------------
-Ssfs package provide a small CGI SHell web interface to the server. The goal
-to provide service status an information. It use the server configuration to
-know Ssfs virtual disk path and display statistics about the filesystem.
+Ssfs package provides a small CGI SHell web interface to the server. The goal is
+to provide a service status and information. It uses the server configuration to
+know the Ssfs virtual disk path and display statistics about the filesystem.
 
 
 Development and Bugs
@@ -188,9 +188,9 @@ the command 'make msgmerge'. Any ideas are welcome and can be discussed. If you
 are searching for something to do you can have a look to the TODO file :-)
 
 Bugs can be reported on the SliTaz mailing list, forum or scn since the devel
-forum is synced. All sites are liked from: http://www.slitaz.org/
+forum is synced. All sites are linked from: http://www.slitaz.org/
 
-To share ideas and get involved into Ssfs project you can join the Ssfs group
+To share ideas and get involved in the Ssfs project you can join the Ssfs group
 on the SliTaz Community Network website : http://scn.slitaz.org/groups/ssfs/
 
 
