@@ -41,7 +41,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   setup         $(gettext "Setup client configuration and RSA key.")
   sync          $(gettext "Sync from server and start daemon.")
   stop          $(gettext "Stop monitoring ~/Sync folder.")
-  connect       $(gettext "Connect to remote host via SSH.")
+  login         $(gettext "Connect to remote host via SSH.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
   --login=      $(gettext "Login name on remote host.")
@@ -140,7 +140,7 @@ case "$1" in
 		gettext "Stopping"; echo " $app PID: $kill"
 		kill $kill 2>/dev/null
 		rm -f $pid ;;
-	connect)
+	login)
 		# Connect user to Ssfs server via SSH.
 		get_config
 		ssh $login@$host ;;
