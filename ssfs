@@ -95,9 +95,12 @@ case "$1" in
 			mkdir -p $HOME/.ssh
 			ssh-keygen -b 2048 -f $HOME/.ssh/id_rsa -P ''
 		fi
+		echo ""
 		
 		# Upload key to the server.
 		gettext "Sending RSA secure key to:"; echo " $host"
+		gettexz "Please enter you Ssfs password."
+		echo -e "\n"
 		cat $HOME/.ssh/id_rsa.pub | \
 			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
 		gettext "Client is setup you can now sync"; echo ;;
