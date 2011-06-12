@@ -15,7 +15,7 @@ install:
 		$(DESTDIR)$(DOCDIR)/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/bin \
 		$(DESTDIR)$(PREFIX)/sbin \
-		$(DESTDIR)/var/cache/$(PACKAGE) \
+		$(DESTDIR)/var/lib/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/share/applications
 	install -m 0755 $(PACKAGE)-sh $(DESTDIR)/bin
 	install -m 0755 $(PACKAGE) $(DESTDIR)$(PREFIX)/bin
@@ -25,3 +25,4 @@ install:
 	install -m 0644 data/$(PACKAGE)-server.conf $(DESTDIR)/etc/$(PACKAGE)
 	install -m 0644 data/$(PACKAGE).desktop \
 		$(DESTDIR)$(PREFIX)/share/applications
+	touch $(DESTDIR)/var/lib/$(PACKAGE)/vdisk.files

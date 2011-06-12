@@ -7,9 +7,10 @@
 #
 
 app=$(basename $0)
-cache=/var/cache/ssfs
 [ -f "/etc/ssfs/$app.conf" ] && . /etc/ssfs/$app.conf
 [ -f "./data/$app.conf" ] && . ./data/$app.conf
+state=/var/lib/ssfs
+share=/usr/share/ssfs
 
 # Be sure we're root.
 [ $(id -u) != 0 ] && gettext "You must be root to run:" && \
@@ -210,15 +211,25 @@ case "$1" in
 		gettext -e "\nBack to the host system:"
 		echo -e " $(hostname)\n" ;;
 	gen-vdisk)
+<<<<<<< local
+		# Generated a virtual disk with a minimal chroot for Ssfs users home.
+		rootfs=$share/rootfs
+=======
 		# Generate a virtual disk with a minimal chroot for Ssfs users home.
+>>>>>>> other
 		if [ -d "$root/bin" ]; then
-			gettext -e "A chroot already exists in:"; echo " $root"
+			gettext "A chroot already exists in:"; echo " $root"
+			exit 0
+		fi
+		if [ ! -f "$rootfs/etc/busybox.conf" ]; then
+			gettext "Missing package ssfs-busybox"; echo
 			exit 0
 		fi
 		echo ""
-		gettext "Creating chroot in:"; echo " $root"
+		gettext "Creating Sshs vdisk minimal chroot"; echo
 		separator
-
+		echo "Chroot path: $root"
+		
 		# Create vdisk if missing.
 		if [ ! -f "$vdisk" ]; then
 			gettext "Creating virtual disk:"; echo " $vdisk ${size}Gb"
@@ -233,22 +244,35 @@ case "$1" in
 		# Create a radically minimal chroot with all libs in /lib.
 		gettext "Creating base files..."
 		mkdir -p $root && cd $root
-		for d in etc tmp lib usr home root
+		for d in etc lib home root
 		do
 			mkdir -p $d
 		done && status
-		cp -a /etc/slitaz-release $root/etc
-		echo "root:x:0:0:root:/root:/bin/sh" > etc/passwd
-		echo "root::13525:0:99999:7:::" > etc/shadow
-		echo "root:x:0:" > etc/group
-		echo "root:*::" > etc/gshadow
+
+		# /etc files.
+		cp -f /etc/slitaz-release $root/etc
+		if [ ! -f "$root/etc/passwd" ]; then
+			echo "root:x:0:0:root:/root:/bin/sh" > $root/etc/passwd
+			echo "root::13525:0:99999:7:::" > $root/etc/shadow
+			echo "root:x:0:" > $root/etc/group
+			echo "root:*::" > $root/etc/gshadow
+		fi
+
+		# /dev nodes.
 		#mknod -m 666 $root/dev/null c 1 3
-		
-		gettext "Setting files permissions..."
-		chmod 640 etc/shadow etc/gshadow
-		chmod 0700 root && chmod 1777 tmp
+
+		# Ssfs Busybox package install files in $cache and allow easy vdisk
+		# upgrade folowing SliTaz repo.
+		gettext "Installing Ssfs Busybox..."
+		cp -a $rootfs/* $root
 		status
 
+<<<<<<< local
+		gettext "Setting files permissions..."
+		chmod 0640 $root/etc/*shadow
+		chmod 0700 $root/root && status
+		chmod 4755 $root/bin/busybox
+=======
 		# Busybox without deps (get && extract). No system comands are allowed
 		# in /etc/busybox.conf to restrict SSH'd users.
 		gettext "Installing Busybox..."
@@ -265,8 +289,8 @@ case "$1" in
 			> $root/etc/busybox.conf
 		echo -e "\n[SUID]" >> $root/etc/busybox.conf
 		echo -e "su = --- root.root" >> $root/etc/busybox.conf
+>>>>>>> other
 		chmod 0600 $root/etc/busybox.conf
-		status
 
 		# Glib minimal libs, use host lib since package should be installed
 		# from same repo.
@@ -274,12 +298,19 @@ case "$1" in
 		for l in  ld-*.*so* libc-*.*so libc.so.* libnss_files*
 		do
 			cp -a /lib/$l* $root/lib
-		done && chmod 0644 $root/lib/* && status
+		done && status
 		
 		# Ssfs chroot SHell
 		gettext "Installing Ssfs SHell..."
 		install -m 0755 /bin/ssfs-sh $root/bin
 		status
+
+		# List of all system files.
+		cd $root
+		for d in bin etc lib sbin
+		do
+			find ./$d | sed s'/^.//'
+		done
 		
 		size=$(du -sh $root | awk '{print $1}')
 		separator
@@ -303,19 +334,19 @@ case "$1" in
 		separator && echo "" ;;
 	clean-vdisk)
 		# clean up the vdisk storage chroot.
-		if [ ! -d "$root/bin" ] || [ ! -d "$root/usr" ]; then
+		if [ ! -d "$root/bin" ] || [ ! -d "$root/lib" ]; then
 			gettext -e "No chroot found in:"; echo " $root"
 			exit 0
 		fi
 		gettext -e "\nCleaning virtual disk\n"
 		separator
-		gettext "Changing directory to:"; echo " $root"
+		echo "Chroot path: $root"
 		cd $root
 		for dir in *
 		do
 			size=$(du -sh $dir | awk '{print $1}')
 			case "$dir" in
-				home|root|lost*)
+				etc|home|root|lost*)
 					gettext "Skipping:"; echo " $dir $size *" ;;
 				*)
 					gettext "Removing:"; echo " $dir $size"

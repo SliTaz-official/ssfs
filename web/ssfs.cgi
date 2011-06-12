@@ -5,7 +5,7 @@ echo ""
 
 . /etc/ssfs/ssfs-server.conf
 
-notes=/var/cache/ssfs/notes
+notes=/var/lib/ssfs/notes
 root=$SSFS_CHROOT
 vdisk=$(basename $SSFS_VDISK)
 vsize=$(du -sh $SSFS_VDISK | awk '{print $1}')
