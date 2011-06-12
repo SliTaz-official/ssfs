@@ -298,8 +298,9 @@ case "$1" in
 		done && status
 		
 		# Ssfs chroot SHell and declare vdisk config.
-		gettext "Installing Ssfs SHell..."
+		gettext "Installing Ssfs SHell and utility..."
 		install -m 0755 /bin/ssfs-sh $root/bin
+		install -m 0755 $share/ssfs-env $root/bin
 		touch $root/etc/vdisk.conf
 		status
 

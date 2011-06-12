@@ -120,7 +120,7 @@ On the server you must have a SSH server running and an user account with a
 ~/Sync folder in user home. You can have both, standard accounts or chrooted
 accounts, for a hosted service it is recommended to use a chroot and a Ssfs
 virtual disk. The vdisk can be any size you want and have a minimal chroot
-environment that is under 3Mb.
+environment that is under 2Mb with all binaries in /bin and libraries in /lib.
 
 If you want to create a vdisk and chroot automatically you can use use the tool
 ssfs-server. Here is a short example to create a chroot and create a user

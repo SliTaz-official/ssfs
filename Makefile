@@ -17,11 +17,13 @@ install:
 		$(DESTDIR)$(PREFIX)/sbin \
 		$(DESTDIR)/var/lib/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/share/applications \
-		$(DESTDIR)$(PREFIX)/share/pixmaps
+		$(DESTDIR)$(PREFIX)/share/pixmaps \
+		$(DESTDIR)$(PREFIX)/share/$(PACKAGE)
 	install -m 0755 $(PACKAGE)-sh $(DESTDIR)/bin
 	install -m 0755 $(PACKAGE) $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 $(PACKAGE)-box $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 $(PACKAGE)-server $(DESTDIR)$(PREFIX)/sbin
+	install -m 0755 $(PACKAGE)-env $(DESTDIR)$(PREFIX)/share/$(PACKAGE)
 	install -m 0644 README $(DESTDIR)$(DOCDIR)/$(PACKAGE)
 	install -m 0644 data/$(PACKAGE)-server.conf $(DESTDIR)/etc/$(PACKAGE)
 	install -m 0644 data/$(PACKAGE).png $(DESTDIR)$(PREFIX)/share/pixmaps
