@@ -48,7 +48,7 @@ case ${QUERY_STRING} in
 	doc)
 		# Open a dic for content but keep small margins.
 		echo '<div>'
-		echo '<h1>Ssfs Documentation</h1>'
+		#echo '<h1>Ssfs Documentation</h1>'
 		echo '<pre>'
 		cat /usr/share/doc/ssfs/README | sed \
 			-e s"#^[\#|\$]\([^']*\)#<span style='color: brown;'>\0</span>#"g \
@@ -59,11 +59,11 @@ esac
 
 # Content
 cat << EOT
-<h1>Ssfs Server</h1>
+<!-- <h1>Ssfs Server</h1> -->
 
 <div id="content">
 
-<h2>Hostname $(hostname)</h2>
+<h2>Ssfs server $(hostname)</h2>
 <pre>
 Server time   : $date
 Time zone     : $tz
