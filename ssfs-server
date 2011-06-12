@@ -193,6 +193,7 @@ case "$1" in
 		if ! grep -q ^$login: $root/etc/passwd; then
 			echo "$login:x:$id:$id:Ssfs User:/home/$login:/bin/sh" >> \
 				$root/etc/passwd
+			echo "$login:x:$id:" >> $root/etc/group
 		fi
 		
 		# We don't want any files from /etc/skel.
@@ -210,6 +211,7 @@ case "$1" in
 		user_paths
 		gettext -e "\nDeleting user:"; echo -n " $login..."
 		sed -i /^$login:/d $root/etc/passwd
+		sed -i /^$login:/d $root/etc/group
 		deluser $login || status && status
 		gettext "Removing all files in:"; echo -n " $home..."
 		rm -rf $home && status
@@ -268,9 +270,9 @@ case "$1" in
 		cp -f /etc/slitaz-release $root/etc
 		if [ ! -f "$root/etc/passwd" ]; then
 			echo "root:x:0:0:root:/root:/bin/sh" > $root/etc/passwd
-			echo "root::13525:0:99999:7:::" > $root/etc/shadow
+			#echo "root::13525:0:99999:7:::" > $root/etc/shadow
 			echo "root:x:0:" > $root/etc/group
-			echo "root:*::" > $root/etc/gshadow
+			#echo "root:*::" > $root/etc/gshadow
 		fi
 
 		# /dev nodes.
