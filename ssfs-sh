@@ -26,10 +26,11 @@ else
 	# some env variables but don't source any profile.
 	echo -e "\n\033[1m  Welcome to the Ssfs SHell $USER\033[0m\n"
 	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
+	PATH='/bin:/sbin'
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
-	export PS1 HOME SYNC SHELL
+	export PS1 PATH HOME SYNC SHELL
 	cd $HOME
 	exec /bin/sh "$@"
 fi
