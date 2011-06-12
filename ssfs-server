@@ -211,12 +211,8 @@ case "$1" in
 		gettext -e "\nBack to the host system:"
 		echo -e " $(hostname)\n" ;;
 	gen-vdisk)
-<<<<<<< local
-		# Generated a virtual disk with a minimal chroot for Ssfs users home.
-		rootfs=$share/rootfs
-=======
 		# Generate a virtual disk with a minimal chroot for Ssfs users home.
->>>>>>> other
+		rootfs=$share/rootfs
 		if [ -d "$root/bin" ]; then
 			gettext "A chroot already exists in:"; echo " $root"
 			exit 0
@@ -267,30 +263,12 @@ case "$1" in
 		cp -a $rootfs/* $root
 		status
 
-<<<<<<< local
 		gettext "Setting files permissions..."
 		chmod 0640 $root/etc/*shadow
-		chmod 0700 $root/root && status
+		chmod 0700 $root/root
 		chmod 4755 $root/bin/busybox
-=======
-		# Busybox without deps (get && extract). No system comands are allowed
-		# in /etc/busybox.conf to restrict SSH'd users.
-		gettext "Installing Busybox..."
-		cd $root/tmp
-		tazpkg get busybox >/dev/null
-		tazpkg extract busybox-* >/dev/null
-		rm -rf fs && mv -f busybox-*/fs . && rm -rf busybox-*
-		cp -a fs/bin fs/sbin $root
-		cp -a fs/usr/bin fs/usr/sbin $root/usr
-		rm -rf fs && chmod 4755 $root/bin/busybox
-		status
-		gettext "Creating restrictive Busybox config file..."
-		echo '# Ssfs Busybox configuration.' \
-			> $root/etc/busybox.conf
-		echo -e "\n[SUID]" >> $root/etc/busybox.conf
-		echo -e "su = --- root.root" >> $root/etc/busybox.conf
->>>>>>> other
 		chmod 0600 $root/etc/busybox.conf
+		status
 
 		# Glib minimal libs, use host lib since package should be installed
 		# from same repo.
@@ -306,14 +284,16 @@ case "$1" in
 		status
 
 		# List of all system files.
-		cd $root
+		gettext "Creating the list of files... "
+		cd $root && rm -f $state/vdisk.files
 		for d in bin etc lib sbin
 		do
-			find ./$d | sed s'/^.//'
+			find ./$d | sed s'/^.//' >> $state/vdisk.files
 		done
+		cat $state/vdisk.files | wc -l
 		
-		size=$(du -sh $root | awk '{print $1}')
 		separator
+		size=$(du -sh $root | awk '{print $1}')
 		gettext "Vdisk used space:"; echo -e " $size\n" ;;
 	mount-vdisk)
 		mount_vdisk ;;
