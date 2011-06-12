@@ -73,7 +73,7 @@ case "$1" in
 		echo "Matching files" && separator
 		find $HOME | grep -i $query
 		echo -e "\nMatching commands" && separator
-		find /bin /sbin | grep -i $query
+		find /bin | grep -i $query
 		echo "" ;;
 	*)
 		help ;;

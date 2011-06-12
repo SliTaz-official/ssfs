@@ -307,7 +307,7 @@ case "$1" in
 		# List of all system files.
 		gettext "Creating the list of files... "
 		cd $root && rm -f $state/vdisk.files
-		for d in bin etc lib sbin
+		for d in bin etc lib
 		do
 			find ./$d | sed s'/^.//' >> $state/vdisk.files
 		done
