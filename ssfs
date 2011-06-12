@@ -127,8 +127,8 @@ case "$1" in
 		# Kill daemon and remove pidfile.
 		[ ! -f "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
 		kill=$(cat $pid)
-		gettext "Stopping"; echo "$app PID: $kill"
-		kill $kill && rm -f $pid ;;
+		gettext "Stopping"; echo " $app PID: $kill"
+		kill $kill 2>/dev/null && rm -f $pid ;;
 	*)
 		help ;;
 esac
