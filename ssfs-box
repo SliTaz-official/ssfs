@@ -81,7 +81,8 @@ setup() {
 	login=$(echo $main | cut -d '|' -f 1)
 	host=$(echo $main | cut -d '|' -f 2)
 	[ "$host" ] || exit 0
-	terminal -hold -geometry 72x14 \
+	rm -f $config
+	terminal -hold -geometry 76x16 -T "Ssfs connection" \
 		-e "ssfs setup --login=$login --host=$host"
 }
 
