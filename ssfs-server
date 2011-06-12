@@ -289,9 +289,9 @@ case "$1" in
 		status
 
 		# Glib minimal libs, use host lib since package should be installed
-		# from same repo.
+		# from same repo. ? libnss_compat*
 		gettext "Installing Glibc libraries..."
-		for l in  ld-*.*so* libc-*.*so libc.so.* libnss_files*
+		for l in  ld-*.*so* libc-*.*so libc.so.* libnss_files* 
 		do
 			cp -a /lib/$l* $root/lib
 		done && status

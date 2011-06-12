@@ -8,6 +8,11 @@
 # Author: Christophe Lincoln <pankso@slitaz.org>
 #
 
+# Handle rsync first, user is chrooted after.
+case "$@" in                                        
+	*rsync*) exec /bin/sh "$@" ;;
+esac
+
 # Ssfs server config doesn't exist in chroot.
 if [ -f /etc/ssfs/ssfs-server.conf ]; then
 	. /etc/ssfs/ssfs-server.conf
