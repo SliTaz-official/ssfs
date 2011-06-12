@@ -46,7 +46,7 @@ EOT
 
 case ${QUERY_STRING} in
 	doc)
-		# Open a dic for content but keep small margins.
+		# Open a doc for content but keep small margins.
 		echo '<div>'
 		#echo '<h1>Ssfs Documentation</h1>'
 		echo '<pre>'
@@ -82,7 +82,7 @@ Vdisk users   : $users
 	<div style="background: #d66018; width: $pct;">$pct</div>
 </div>
 <p>
-	Filesystem usage provided by 'df' include ext3 reserved space.
+	Filesystem usage provided by 'df' includes ext3 reserved space.
 </p>
 
 EOT

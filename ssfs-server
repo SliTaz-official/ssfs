@@ -58,12 +58,12 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   chroot        $(gettext "Chroot to Ssfs storage root.")
   gen-vdisk     $(gettext "Create a vdisk with chroot for files storage.")
   clean-vdisk   $(gettext "Clean the vdisk but skip home and root.")
-  check-vdisk   $(gettext "Check vdisk filesystem with e2fsck.")
-  mount-vdisk   $(gettext "Mount ssfs virtual disk.")
+  check-vdisk   $(gettext "Check the vdisk filesystem with e2fsck.")
+  mount-vdisk   $(gettext "Mount a ssfs virtual disk.")
   umount-vdisk  $(gettext "Unmount the vdisk and free loop device.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
-  --login=      $(gettext "Login name for add or del an user.")
+  --login=      $(gettext "Login name to add or del an user.")
   --id=         $(gettext "User id for adduser command.")
   --pass=       $(gettext "User password for adduser.")
   --root=       $(gettext "The path to the Ssfs vdisk chroot.")
@@ -160,7 +160,7 @@ case "$1" in
 		user_paths
 
 		# We need chroot command allowed for users to chroot them on SSH
-		# login. Ssfs user have /bin/ssfs-sh as SHell.
+		# login. Ssfs users have /bin/ssfs-sh as SHell.
 		grep -q ^chroot /etc/busybox.conf ||
 			echo 'chroot = ssx root.root' >> /etc/busybox.conf
 		
@@ -210,7 +210,7 @@ case "$1" in
 		gettext -e "\nBack to the host system:"
 		echo -e " $(hostname)\n" ;;
 	gen-vdisk)
-		# Generated a virtual disk with a minimal chroot for Ssfs users home.
+		# Generate a virtual disk with a minimal chroot for Ssfs users home.
 		if [ -d "$root/bin" ]; then
 			gettext -e "A chroot already exists in:"; echo " $root"
 			exit 0
@@ -230,7 +230,7 @@ case "$1" in
 			mount_vdisk
 		fi
 
-		# Create a radicaly minimal chroot with all libs in /lib.
+		# Create a radically minimal chroot with all libs in /lib.
 		gettext "Creating base files..."
 		mkdir -p $root && cd $root
 		for d in etc tmp lib usr home root
@@ -250,7 +250,7 @@ case "$1" in
 		status
 
 		# Busybox without deps (get && extract). No system comands are allowed
-		# in /etc/busybox.conf to restrict SSHed users.
+		# in /etc/busybox.conf to restrict SSH'd users.
 		gettext "Installing Busybox..."
 		cd $root/tmp
 		tazpkg get busybox >/dev/null

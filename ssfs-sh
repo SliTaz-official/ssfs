@@ -1,11 +1,11 @@
 #!/bin/sh
 #
 # Ssfs users SHell - Chroot user into the virtual disk on login. This tool must
-# be installed on server and in the vdisk chroot, it is executed when login and
-# when chrooting.
+# be installed on the server and in the vdisk chroot, it is executed when logging
+# in and when chrooting.
 #
 
-# Ssfs server config dont exist in chroot.
+# Ssfs server config doesn't exist in chroot.
 if [ -f /etc/ssfs/ssfs-server.conf ]; then
 	. /etc/ssfs/ssfs-server.conf
 	root=$SSFS_CHROOT
@@ -14,8 +14,8 @@ if [ -f /etc/ssfs/ssfs-server.conf ]; then
 	clear && exec chroot $root /bin/ssfs-sh
 else
 	# Chroot will drop user into /, so set new HOME and cd. Set also
-	# some env variables but dont source any profile.
-	echo -e "\nWelcome to Ssfs SHell $USER\n"
+	# some env variables but don't source any profile.
+	echo -e "\nWelcome to the Ssfs SHell $USER\n"
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
