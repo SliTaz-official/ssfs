@@ -3,6 +3,6 @@ Encoding=UTF-8
 Name=Ssfs Client
 Comment=Online SliTaz Secure File Storage
 Exec=ssfs-box
-Icon=folder-remote
+Icon=ssfs
 Type=Application
 Categories=Application;Network;
