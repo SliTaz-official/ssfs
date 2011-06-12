@@ -11,6 +11,7 @@
 # Handle rsync first, user is chrooted after.
 case "$@" in                                        
 	*rsync*) exec /bin/sh "$@" ;;
+	*help) echo "Usage: $(basename $0) [args]" && exit 0 ;;
 esac
 
 # Ssfs server config doesn't exist in chroot.
@@ -30,6 +31,5 @@ else
 	SHELL=/bin/sh
 	export PS1 HOME SYNC SHELL
 	cd $HOME
-	[ "$cmd" ] || exec /bin/sh
 	exec /bin/sh "$@"
 fi
