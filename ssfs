@@ -36,7 +36,7 @@ help() {
 $(echo -e "\033[1m$(gettext "Usage:")\033[0m") $app [command] [--option=]
 
 $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
-  help          $(gettext "Display this short usage.")
+  help          $(gettext "Display this short help usage.")
   info          $(gettext "Display configuration settings.")
   setup         $(gettext "Setup client configuration and RSA key.")
   sync          $(gettext "Sync from server and start daemon.")

@@ -1,0 +1,81 @@
+#!/bin/sh
+#
+# Ssfs vdisk chroot env utility - Help chrooted users use the environment.
+#
+# Copyright (C) SliTaz GNU/Linux - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
+
+app=$(basename $0)
+
+help() {
+	cat << EOT
+
+$(echo -e "\033[1mUsage:\033[0m") $app [command] [pattern]
+
+$(echo -e "\033[1mCommands:\033[0m")
+  help          Display this short help usage.
+  info          Display account and system information.
+  list          List all file in your Sync folder.
+  search        Search for a file or a system command.
+
+EOT
+}
+
+separator() {
+	echo "================================================================================"
+}
+
+# User and system summary.
+info() {
+	size=$(du -sh $HOME | awk {'print $1'})
+		all=$(find $HOME | wc -l)
+		sync=$(find $HOME/Sync | wc -l)
+		cmds=$(find /bin /sbin | wc -l)
+		users=$(ls /home | wc -l)
+		cat << EOT
+
+Account info
+$(separator)
+Home path       : $HOME
+SSH keys        : .ssh/authorized_keys
+Home usage      : $size
+All files       : $all
+Sync files      : $sync
+$(separator)
+
+System info
+$(separator)
+Server date     : $(date "+%H-%m-%d %H:%M")
+System commands : $cmds
+Vdisk users     : $users
+$(separator)
+
+EOT
+}
+
+#
+# Commands
+#
+
+case "$1" in
+	info)
+		info ;;
+	list)
+		echo -e "\nList of files in Sync"
+		separator
+		cd $HOME/Sync && find . | fgrep ./ | sed s'@./@@'
+		separator && echo "" ;;
+	search)
+		[ -z "$2" ] && echo "Usage: $app search file" && exit 0
+		query="$2"
+		echo -e "\n\033[1mSearching for:\033[0m $query\n"
+		echo "Matching files" && separator
+		find $HOME | grep -i $query
+		echo -e "\nMatching commands" && separator
+		find /bin /sbin | grep -i $query
+		echo "" ;;
+	*)
+		help ;;
+esac
+exit 0

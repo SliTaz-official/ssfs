@@ -52,7 +52,7 @@ help() {
 $(echo -e "\033[1m$(gettext "Usage:")\033[0m") $app [command] [--option=]
 
 $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
-  help          $(gettext "Display this short usage.")
+  help          $(gettext "Display this short help usage.")
   users         $(gettext "List user accounts and stats.")
   adduser       $(gettext "Add a user to the system with \$HOME in chroot.")
   deluser       $(gettext "Delete a user and remove \$HOME files.")
