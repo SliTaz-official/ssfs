@@ -8,6 +8,7 @@
 
 app=$(basename $0)
 config=$HOME/.config/ssfs/client.lua
+pixmap=/usr/share/pixmaps/ssfs.png
 
 #
 # Functions
@@ -15,12 +16,14 @@ config=$HOME/.config/ssfs/client.lua
 
 info() {
 	size=$(du -sh $HOME/Sync | awk '{print $1}')
+	files=$(find $HOME/Sync | wc -l)
 	host=$(fgrep 'host' $config | cut -d '"' -f 2)
 	login=${host%@*}
 	host=${host#*@}
 	echo -e "Login\n$login
 Host\n$host
 Size\n$size
+Files\n$files
 RSA Key\n~/.ssh/id_rsa"
 }
 
@@ -29,12 +32,14 @@ tools_main() {
 	if [ ! -s "$config" ]; then
 		$0 setup && exit 0
 	fi
+	[ "$opts" ] || opts="--width=460 --height=320"
 	text=$(gettext "<b>Welcome to the Ssfs GTK user interface</b>")
-	info | yad \
-		--list --title="Ssfs GTK tools" \
-		--width=460 --height=280 --image-on-top \
-		--text="$text" --image="slitaz-menu" \
+	info | yad $opts \
+		--list --title="Ssfs Box" \
+		--image-on-top --window-icon=$pixmap \
+		--text="$text" --image=$pixmap \
 		--column "Ssfs" --column "$(gettext "Value")" \
+		--button="$(gettext "Setup client"):4" \
 		--button="$(gettext "Edit config"):3" \
 		--button="$(gettext "Browse files"):2" \
 		--button="gtk-close:1"
@@ -49,15 +54,16 @@ tools() {
 		1) exit 0 ;;
 		2) file-manager $HOME/Sync ;;
 		3) editor $config ;;
+		4) $0 setup ;;
 		*) continue ;;
 	esac
 	case $main in
 		RSA*)
 			yad --text-info --title="RSA Key" \
-				--width=560 --height=380 \
+				--width=560 --height=420 \
 				--filename=$HOME/.ssh/id_rsa ;;
 		*)
-			echo "TODO: $main" ;;
+			continue ;;
 	esac
 }
 
@@ -68,8 +74,9 @@ setup_main() {
 Any account on a server yet ? You can vist www.slitaz.org
 services or setup your own server in a few minutes!\n")
 	yad --form --title="Ssfs GTK Setup" \
+		--window-icon=$pixmap \
 		--width=460 --height=200 --image-on-top \
-		--text="$text" --image="slitaz-menu" \
+		--text="$text" --image=$pixmap \
 		--field="Login" --field="Server"
 }
 
@@ -86,6 +93,13 @@ setup() {
 		-e "ssfs setup --login=$login --host=$host"
 }
 
+# Notification mode.
+notify() {
+	export opts="--geometry=460x320-40+40 --timeout=6 --skip-taskbar"
+	yad --notification --image=$pixmap --command=$0 \
+		--text="$(gettext "Ssfs Live Sync storage")"
+}
+
 #
 # Commands
 #
@@ -95,7 +109,9 @@ case "$1" in
 		echo "Usage: $app [command]" ;;
 	setup)
 		setup ;;
-	*) 
+	notify)
+		notify ;;
+	*)
 		tools ;;
 esac
 exit 0
