@@ -238,7 +238,6 @@ case "$1" in
 			mkdir -p $d
 		done && status
 		cp -a /etc/slitaz-release $root/etc
-		#cp -a /etc/nsswitch.conf $root/etc
 		echo "root:x:0:0:root:/root:/bin/sh" > etc/passwd
 		echo "root::13525:0:99999:7:::" > etc/shadow
 		echo "root:x:0:" > etc/group
@@ -261,8 +260,8 @@ case "$1" in
 		cp -a fs/usr/bin fs/usr/sbin $root/usr
 		rm -rf fs && chmod 4755 $root/bin/busybox
 		status
-		gettext "Creatin restrictive Busybox config file..."
-		echo '# /etc/busybox.conf: Ssfs Busybox configuration.' \
+		gettext "Creating restrictive Busybox config file..."
+		echo '# Ssfs Busybox configuration.' \
 			> $root/etc/busybox.conf
 		echo -e "\n[SUID]" >> $root/etc/busybox.conf
 		echo -e "su = --- root.root" >> $root/etc/busybox.conf
@@ -275,7 +274,13 @@ case "$1" in
 		for l in  ld-*.*so* libc-*.*so libc.so.* libnss_files*
 		do
 			cp -a /lib/$l* $root/lib
-		done && status
+		done && chmod 0644 $root/lib/* && status
+		
+		# Ssfs chroot SHell
+		gettext "Installing Ssfs SHell..."
+		install -m 0755 /bin/ssfs-sh $root/bin
+		status
+		
 		size=$(du -sh $root | awk '{print $1}')
 		separator
 		gettext "Vdisk used space:"; echo -e " $size\n" ;;

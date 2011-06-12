@@ -86,6 +86,17 @@ the files. We may implemnt a HTTP Public dir wich coul handle xHTML pages, a
 wiki, etc.
 
 
+Ssfs chroot SHell
+-----------------
+The tool ssfs-sh is used to chroot a user on login and set minimal environment
+variables. For each users ssfs-sh is the default SHell on the server and is
+executed inside the new root. So ssfs-sh must be installed on the server and
+in the virtual disk minimal chroot. Using a custom tool such as Ssfs SHell
+enforce security and let execute commands on login, ssfs-sh also export the
+new user $HOME and change directory do it since chroot will drop us in / by
+default.
+
+
 Get configs on boot
 -------------------
 Ssfs can be used in a boot scripts to connect to a remote host and retrieve data
