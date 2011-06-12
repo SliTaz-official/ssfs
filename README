@@ -33,7 +33,8 @@ Overview
     * Fast and light using stable and mature GNU tools
     * Encrypted file tranfert using SSH protocol
     * Easy to setup on the client and server side
-    * Virtual disk for storage with a minimal chroot
+    * Virtual disk for storage for quoto mamagement
+    * Minimal and restrictive but yet powerfull chroot
     * Command line chrooted SSH access for users
     * Easy to backup, update and maintain vdisk
 

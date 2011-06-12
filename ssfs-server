@@ -62,6 +62,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   check-vdisk   $(gettext "Check the vdisk filesystem with e2fsck.")
   mount-vdisk   $(gettext "Mount a ssfs virtual disk.")
   umount-vdisk  $(gettext "Unmount the vdisk and free loop device.")
+  note          $(gettext "Write a public note for users.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
   --login=      $(gettext "Login name to add or del an user.")

@@ -41,6 +41,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   setup         $(gettext "Setup client configuration and RSA key.")
   sync          $(gettext "Sync from server and start daemon.")
   stop          $(gettext "Stop monitoring ~/Sync folder.")
+  connect       $(gettext "Connect to remote host via SSH.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
   --login=      $(gettext "Login name on remote host.")
@@ -68,6 +69,12 @@ sync {
 	targetdir = "Sync/"
 }
 EOT
+}
+
+get_config() {
+	at=$(fgrep host $config | cut -d '"' -f 2)
+	login=${at%@*}
+	host=${at#*@}
 }
 
 #
@@ -99,7 +106,7 @@ case "$1" in
 		
 		# Upload key to the server.
 		gettext "Sending RSA secure key to:"; echo " $host"
-		gettexz "Please enter you Ssfs password."
+		gettext "Please enter you Ssfs password."
 		echo -e "\n"
 		cat $HOME/.ssh/id_rsa.pub | \
 			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
@@ -133,6 +140,10 @@ case "$1" in
 		gettext "Stopping"; echo " $app PID: $kill"
 		kill $kill 2>/dev/null
 		rm -f $pid ;;
+	connect)
+		# Connect user to Ssfs server via SSH.
+		get_config
+		ssh $login@$host ;;
 	*)
 		help ;;
 esac
