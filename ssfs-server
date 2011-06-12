@@ -158,16 +158,30 @@ case "$1" in
 		[ -z "$id" ] && gettext -e "Missing user id.\n" && exit 0
 		[ -z "$pass" ] && gettext -e "Missing user password.\n" && exit 0
 		user_paths
+
+		# We need chroot command allowed for users to chroot them on SSH
+		# login. Ssfs user have /bin/ssfs-sh as SHell.
+		grep -q ^chroot /etc/busybox.conf ||
+			echo 'chroot = ssx root.root' >> /etc/busybox.conf
 		
 		gettext -e "\nChecking:"; echo " /etc/passwd"
 		if grep ^$login: /etc/passwd; then
 			gettext -e "Exiting, user already exists:"
 			echo -e " $login\n" && exit 0
 		fi
+		
 		gettext "Creating user: $login..."
 		echo -e "$pass\n$pass" | \
-			adduser -h "$home" -g "Ssfs User" -u $id $login >/dev/null
+			adduser -h "$home" -g "Ssfs User" -u $id \
+				-s /bin/ssfs-sh $login >/dev/null
 		status
+
+		# Add user to chroot /etc/passwd
+		gettext "Checking vdisk chroot:"; echo " $root/etc/passwd"
+		if ! grep -q ^$login: $root/etc/passwd; then
+			echo "$login:x:$id:$id:Ssfs User:/home/$login:/bin/sh" >> \
+				$root/etc/passwd
+		fi
 		
 		# We don't want any files from /etc/skel.
 		gettext "Cleaning home and creating: Sync/..."
@@ -183,6 +197,7 @@ case "$1" in
 		[ -z "$login" ] && gettext -e "Missing user login name.\n" && exit 0
 		user_paths
 		gettext -e "\nDeleting user:"; echo -n " $login..."
+		sed -i /^$login:/d $root/etc/passwd
 		deluser $login || status && status
 		gettext "Removing all files in:"; echo -n " $home..."
 		rm -rf $home && status
@@ -228,6 +243,7 @@ case "$1" in
 		echo "root::13525:0:99999:7:::" > etc/shadow
 		echo "root:x:0:" > etc/group
 		echo "root:*::" > etc/gshadow
+		#mknod -m 666 $root/dev/null c 1 3
 		
 		gettext "Setting files permissions..."
 		chmod 640 etc/shadow etc/gshadow
@@ -243,12 +259,13 @@ case "$1" in
 		rm -rf fs && mv -f busybox-*/fs . && rm -rf busybox-*
 		cp -a fs/bin fs/sbin $root
 		cp -a fs/usr/bin fs/usr/sbin $root/usr
-		rm -rf fs
+		rm -rf fs && chmod 4755 $root/bin/busybox
 		status
 		gettext "Creatin restrictive Busybox config file..."
 		echo '# /etc/busybox.conf: Ssfs Busybox configuration.' \
 			> $root/etc/busybox.conf
-		echo -e "\nsu = ---" >> $root/etc/busybox.conf
+		echo -e "\n[SUID]" >> $root/etc/busybox.conf
+		echo -e "su = --- root.root" >> $root/etc/busybox.conf
 		chmod 0600 $root/etc/busybox.conf
 		status
 

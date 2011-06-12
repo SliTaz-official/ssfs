@@ -10,13 +10,14 @@ VERSION=0.1-beta
 all:
 
 install:
-	mkdir -p \
+	mkdir -p $(DESTDIR)/bin \
 		$(DESTDIR)/etc/$(PACKAGE) \
 		$(DESTDIR)$(DOCDIR)/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/bin \
 		$(DESTDIR)$(PREFIX)/sbin \
 		$(DESTDIR)/var/cache/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/share/applications
+	install -m 0755 $(PACKAGE)-sh $(DESTDIR)/bin
 	install -m 0755 $(PACKAGE) $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 $(PACKAGE)-box $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 $(PACKAGE)-server $(DESTDIR)$(PREFIX)/sbin
