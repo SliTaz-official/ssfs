@@ -49,6 +49,8 @@ Quick start guide
       $ ssfs setup --login=demo --host="server name or ip"
     * On client you can start ssfs on user login via the WM
       autostart script and or the command $ ssfs sync
+    * Get support and show your love for Ssfs on SCN group:
+      http://scn.slitaz.org/groups/ssfs/
 
 
 Installation
@@ -118,7 +120,9 @@ the cmdline:
 # ssfs-server adduser --login=tux-sync --id=2000 --pass=tuX0cc
 
 Users can be listed or completely deleted including all files in home. More
-information can be found with: ssfs-server usage
+information can be found with the built in help:
+
+# ssfs-server help
 
 
 Ssfs virtual disk
@@ -172,6 +176,9 @@ Bugs can be reported on the SliTaz mailing list, forum or scn since the devel
 forum is synced. All sites are liked from the main website at:
 
 http://www.slitaz.org/
+
+To share ideas and get involved into Ssfs project you can join the Ssfs group
+on the SliTaz Community Network website : http://scn.slitaz.org/groups/ssfs/
 
 
 ===============================================================================

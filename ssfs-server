@@ -7,6 +7,7 @@
 #
 
 app=$(basename $0)
+cache=/var/cache/ssfs
 [ -f "/etc/ssfs/$app.conf" ] && . /etc/ssfs/$app.conf
 [ -f "./data/$app.conf" ] && . ./data/$app.conf
 
@@ -207,7 +208,7 @@ case "$1" in
 		if [ ! -f "$vdisk" ]; then
 			gettext "Creating virtual disk:"; echo " $vdisk ${size}Gb"
 			dd if=/dev/zero of=$vdisk bs=1G count=$size
-			du -sh $vdisk
+			chmod 0600 $vdisk && du -sh $vdisk
 			gettext "Creating ext3 filesystem..."
 			mkfs.ext3 -q -T ext3 -L "Ssfs" -F $vdisk
 			status
