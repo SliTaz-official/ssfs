@@ -31,10 +31,10 @@ Overview
     * Drop files in a folder and they will be synced
     * Even without any connection you have your data
     * Fast and light using stable and mature GNU tools
-    * Encrypted file tranfert using SSH protocol
+    * Encrypted file transfer using SSH protocol
     * Easy to setup on the client and server side
-    * Virtual disk for storage for quoto mamagement
-    * Minimal and restrictive but yet powerfull chroot
+    * Virtual disk storage for quota management
+    * Minimal and restrictive but yet powerful chroot
     * Command line chrooted SSH access for users
     * Easy to backup, update and maintain vdisk
 

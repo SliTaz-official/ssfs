@@ -106,7 +106,7 @@ case "$1" in
 		
 		# Upload key to the server.
 		gettext "Sending RSA secure key to:"; echo " $host"
-		gettext "Please enter you Ssfs password."
+		gettext "Please enter your Ssfs password."
 		echo -e "\n"
 		cat $HOME/.ssh/id_rsa.pub | \
 			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
