@@ -31,8 +31,10 @@ Overview
     * Drop files in a folder and they will be synced
     * Even without any connection you have your data
     * Fast and light using stable and mature GNU tools
+    * Encrypted file tranfert using SSH protocol
     * Easy to setup on the client and server side
     * Virtual disk for storage with a minimal chroot
+    * Command line chrooted SSH access for users
     * Easy to backup, update and maintain vdisk
 
 
