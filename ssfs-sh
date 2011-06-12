@@ -16,10 +16,11 @@ else
 	# Chroot will drop user into /, so set new HOME and cd. Set also
 	# some env variables but don't source any profile.
 	echo -e "\n\033[1m  Welcome to the Ssfs SHell $USER\033[0m\n"
+	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
-	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
-	export HOME SYNC SHELL PS1
+	TERM=xterm
+	export PS1 HOME SYNC SHELL TERM
 	cd $HOME && exec /bin/sh $@
 fi
