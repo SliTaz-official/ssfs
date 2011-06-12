@@ -4,6 +4,9 @@
 # be installed on the server and in the vdisk chroot, it is executed when logging
 # in and when chrooting.
 #
+# Copyright (C) SliTaz GNU/Linux - BSD License
+# Author: Christophe Lincoln <pankso@slitaz.org>
+#
 
 # Ssfs server config doesn't exist in chroot.
 if [ -f /etc/ssfs/ssfs-server.conf ]; then
