@@ -128,7 +128,8 @@ case "$1" in
 		[ ! -f "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
 		kill=$(cat $pid)
 		gettext "Stopping"; echo " $app PID: $kill"
-		kill $kill 2>/dev/null && rm -f $pid ;;
+		kill $kill 2>/dev/null
+		rm -f $pid ;;
 	*)
 		help ;;
 esac
