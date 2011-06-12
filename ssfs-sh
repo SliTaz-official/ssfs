@@ -12,19 +12,20 @@
 if [ -f /etc/ssfs/ssfs-server.conf ]; then
 	. /etc/ssfs/ssfs-server.conf
 	root=$SSFS_CHROOT
-	TERM=xterm
 	# Make sure it's a valid Ssfs user.
 	[ -d "$root/home/$USER" ] || exit 0
 	exec chroot $root /bin/ssfs-sh $@
 else
 	# Chroot will drop user into /, so set new HOME and cd. Set also
 	# some env variables but don't source any profile.
+	cmd=$(echo $@ | sed s'/-c //') && clear
 	echo -e "\n\033[1m  Welcome to the Ssfs SHell $USER\033[0m\n"
 	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
-	TERM=xterm
-	export PS1 HOME SYNC SHELL TERM
-	cd $HOME && exec /bin/sh $@
+	export PS1 HOME SYNC SHELL
+	cd $HOME
+	[ "$cmd" ] || exec /bin/sh
+	exec /bin/sh -c "$cmd"
 fi
