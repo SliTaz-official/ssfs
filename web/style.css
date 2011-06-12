@@ -1,0 +1,14 @@
+/* CSS style fro Ssfs */
+
+html { height: 102%; }
+body { font-size: 96%; margin: 0 40px; }
+h1 { color: #351a0a; border-bottom: 1px dotted #ddd; }
+h2 { color: #444; font-size: 130%; }
+pre { font-size: 110%; }
+pre, .box {
+	padding: 10px; background: #f1f1f1;
+	border: 1px solid #ddd; border-radius: 4px;
+}
+#content { margin: 0 10%; }
+#footer { color: #888; text-align: center; padding: 40px; }
+#footer a { color: #888; }

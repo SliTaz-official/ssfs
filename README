@@ -83,8 +83,7 @@ display info if a configuration file exists or start the setup box. Ther is no
 plan for a users files web interface since security if more important, actually
 user home have 0700 mode as so standard web server running user www can't see
 the files. We may implemnt a HTTP Public dir wich coul handle xHTML pages, a
-wiki, etc. Actually they is some work on a Ssfs server web interface with the
-goal to provide service status an information.
+wiki, etc.
 
 
 Get configs on boot
@@ -157,6 +156,13 @@ Server users config
 When adding a user with 'ssfs-server adduser', the user is added to the host
 /etc/passwd and a custom user config file is created in SSFS_USERS with the
 login name.
+
+
+Server web interface
+--------------------
+Ssfs package provide a small CGI SHell web interface to the server. The goal
+to provide service status an information. It use the server configuration to
+know Ssfs virtual disk path and display statistics about the filesystem.
 
 
 Development and Bugs
