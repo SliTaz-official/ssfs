@@ -15,7 +15,7 @@ if [ -f /etc/ssfs/ssfs-server.conf ]; then
 else
 	# Chroot will drop user into /, so set new HOME and cd. Set also
 	# some env variables but don't source any profile.
-	echo -e "\nWelcome to the Ssfs SHell $USER\n"
+	echo -e "\n\033[1m  Welcome to the Ssfs SHell $USER\033[0m\n"
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
