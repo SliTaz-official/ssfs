@@ -10,6 +10,11 @@ app=$(basename $0)
 config=$HOME/.config/ssfs/client.lua
 pixmap=/usr/share/pixmaps/ssfs.png
 
+# Internationalization
+. /usr/bin/gettext.sh
+TEXTDOMAIN='ssfs'
+export TEXTDOMAIN
+
 #
 # Functions
 #

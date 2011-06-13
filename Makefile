@@ -6,8 +6,32 @@ DESTDIR?=
 
 PACKAGE=ssfs
 VERSION=0.1-beta
+LINGUAS?=fr
 
-all:
+all: msgmerge
+
+# i18n
+
+pot:
+	xgettext -o po/ssfs.pot -L Shell \
+		--package-name="Ssfs" \
+		--package-version="$(VERSION)" \
+		./ssfs ./ssfs-box
+
+msgmerge:
+	@for l in $(LINGUAS); do \
+		echo -n "Updating $$l po file."; \
+		msgmerge -U po/$$l.po po/ssfs.pot; \
+	done;
+
+msgfmt:
+	@for l in $(LINGUAS); do \
+		echo "Compiling $$l mo file..."; \
+		mkdir -p po/mo/$$l/LC_MESSAGES; \
+		msgfmt -o po/mo/$$l/LC_MESSAGES/ssfs.mo po/$$l.po; \
+	done;
+	
+# Installation
 
 install:
 	mkdir -p $(DESTDIR)/bin \
@@ -30,4 +54,5 @@ install:
 		$(DESTDIR)$(PREFIX)/share/applications
 	install -m 0755 $(PACKAGE)-env \
 		$(DESTDIR)$(PREFIX)/share/$(PACKAGE)/rootfs/bin
+	#cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
 	touch $(DESTDIR)/var/lib/$(PACKAGE)/vdisk.files

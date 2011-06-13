@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# SliTaz Secure File Storage server side tool.
+# SliTaz Secure File Storage server side tool. Use virtual disk with a minimal
+# chroot for more security and to protect server host.
 #
 # Copyright (C) SliTaz GNU/Linux - BSD License
 # Author: Christophe Lincoln <pankso@slitaz.org>
@@ -11,6 +12,11 @@ app=$(basename $0)
 [ -f "./data/$app.conf" ] && . ./data/$app.conf
 state=/var/lib/ssfs
 share=/usr/share/ssfs
+
+# Internationalization
+. /usr/bin/gettext.sh
+TEXTDOMAIN='ssfs'
+export TEXTDOMAIN
 
 # Be sure we're root.
 [ $(id -u) != 0 ] && gettext "You must be root to run:" && \

@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 # Ssfs vdisk chroot env utility - Help chrooted users use the environment.
+# No i18n in this script since gettext is not installed in vdisk chroot.
 #
 # Copyright (C) SliTaz GNU/Linux - BSD License
 # Author: Christophe Lincoln <pankso@slitaz.org>

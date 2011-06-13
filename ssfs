@@ -12,6 +12,11 @@ pid=$HOME/.local/var/run/$app.pid
 logdir=$HOME/.local/var/log/$app
 config=$HOME/.config/$app/client.lua
 
+# Internationalization
+. /usr/bin/gettext.sh
+TEXTDOMAIN='ssfs'
+export TEXTDOMAIN
+
 # Parse cmdline options.
 for opt in $@
 do
@@ -60,7 +65,7 @@ config_info() {
 gen_config() {
 	mkdir -p $(dirname $config)
 	cat > $config << EOT
--- Configuration file for SliTaz Secure Filesystem lsyncd daemon.
+-- Configuration file for SliTaz Secure File Storage lsyncd daemon.
 
 sync {
 	default.rsyncssh,
