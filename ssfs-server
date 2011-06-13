@@ -115,7 +115,7 @@ EOT
 
 vdisk_config() {
 	cat > $root/etc/vdisk.conf << EOT
-# /etc/vdisk.conf: Ssfs virtual auto-generated config file.
+# /etc/vdisk.conf: Ssfs virtual disk auto-generated config file.
 
 VDATE="$date"
 VSIZE="$size"
@@ -271,17 +271,12 @@ case "$1" in
 		cp -f /etc/slitaz-release $root/etc
 		if [ ! -f "$root/etc/passwd" ]; then
 			echo "root:x:0:0:root:/root:/bin/sh" > $root/etc/passwd
-			#echo "root::13525:0:99999:7:::" > $root/etc/shadow
 			echo "root:x:0:" > $root/etc/group
-			#echo "root:*::" > $root/etc/gshadow
 		fi
-
-		# /dev nodes.
-		#mknod -m 666 $root/dev/null c 1 3
-
-		# Ssfs Busybox package install files in $cache and allow easy vdisk
+		
+		# Ssfs Busybox package install files in $share and allow easy vdisk
 		# upgrade following SliTaz repo.
-		gettext "Installing Ssfs Busybox..."
+		gettext "Installing Ssfs root filesystem..."
 		cp -a $rootfs/* $root
 		status
 
@@ -300,9 +295,8 @@ case "$1" in
 		done && status
 		
 		# Ssfs chroot SHell and declare vdisk config.
-		gettext "Installing Ssfs SHell and utility..."
+		gettext "Installing Ssfs SHell..."
 		install -m 0755 /bin/ssfs-sh $root/bin
-		install -m 0755 $share/ssfs-env $root/bin
 		touch $root/etc/vdisk.conf
 		status
 

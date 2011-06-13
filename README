@@ -78,6 +78,13 @@ server name or IP address and it will also create a secure RSA if none exists:
 
 $ ssfs setup --login=user --host=server
 
+Once the client is setup you can synchronize from the server and start live
+sync. You can also get quick access to your files and ssfs info with a nice
+startup icon in the desktop panel. To sync and start Ssfs notify:
+
+$ ssfs sync
+$ ssfs-box notify &
+
 
 GUI & Web interface
 -------------------
@@ -87,6 +94,9 @@ plan for a users files web interface since security if more important, actually
 a user's home has 0700 mode so a standard web server running user www can't see
 the files. We may implement a HTTP Public dir which could handle xHTML pages, a
 wiki, etc.
+
+The GTK gui provide a notification mode as explained previewsly and the mian
+window can be started from the standard menu and under the Metwork category.
 
 
 Ssfs chroot SHell
@@ -136,6 +146,23 @@ Users can be listed or completely deleted including all files in home. More
 information can be found with the built in help:
 
 # ssfs-server help
+
+Vdisk chroot system can be extended if you want to provide more commands to
+users. The minimal SliTaz chroot is easily maintainable and builded using
+standard SliTaz packages. The package ssfs-busybox provide the minimal base
+commands such as ls, cp, mc, cat, grep and have no dependencies since we just
+need a few shared libs in /lib. Ssfs original chroot files are stored in the
+directory /usr/share/ssfs/rootfs. The virtual disk contain a Linux jounalized
+ext3 filesystem that you can check and verify with:
+
+# ssfs-server check-vdisk
+
+In a production environment dont forget to mount Ssfs vdisk on boot via fstab.
+For maitainance purpose you can manually mount or unmount the disk and also
+update it in a command, example:
+
+# ssfs-server mount-vdisk
+# ssfs-server up-vdisk
 
 
 Ssfs virtual disk

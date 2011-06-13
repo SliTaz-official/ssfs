@@ -4,6 +4,7 @@ echo "Content-Type: text/html"
 echo ""
 
 . /etc/ssfs/ssfs-server.conf
+export TZ=$(cat /etc/TZ)
 
 notes=/var/lib/ssfs/notes
 root=$SSFS_CHROOT
@@ -13,8 +14,6 @@ vused=$(du -sh $root | awk '{print $1}')
 users=$(ls $root/home | wc -l)
 pct=$(df $root | fgrep $root | awk '{print $5}')
 date=$(date "+%Y-%m-%d %H:%M")
-
-export TZ=$(cat /etc/TZ)
 
 # XHTML footer function.
 xhtml_footer() {

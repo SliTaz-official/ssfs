@@ -127,7 +127,7 @@ case "$1" in
 				sed -e "/^$/"d -e "/^.\/$/"d
 		
 		# Monitor local folder if not yet running.
-		if [ ! -f "$pid" ]; then
+		if [ ! -s "$pid" ]; then
 			gettext "Starting lsyncd daemon..."
 			lsyncd -pidfile $pid -log all -logfile $logdir/lsyncd.log $config
 		else
