@@ -149,7 +149,7 @@ or use a separate HD if the server has more than one disk. To create a 2Gb
 vdisk and format it to ext3:
 
 # dd if=/dev/zero of=/home/ssfs.disk bs=1G count=2
-# mkfs.ext3 -T ext3 -L "Ssfs" -F /home/ssfs.ext3
+# mkfs.ext3 -T ext3 -L "Ssfs" -F /home/ssfs.disk
 
 Now you have a virtual disk you can mount it, the path must match SSFS_CHROOT
 found in ssfs-server.conf, default mount point is /ssfs to clearly separate

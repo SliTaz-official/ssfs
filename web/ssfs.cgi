@@ -12,8 +12,9 @@ vsize=$(du -sh $SSFS_VDISK | awk '{print $1}')
 vused=$(du -sh $root | awk '{print $1}')
 users=$(ls $root/home | wc -l)
 pct=$(df $root | fgrep $root | awk '{print $5}')
-tz=$(cat /etc/TZ)
 date=$(date "+%Y-%m-%d %H:%M")
+
+export TZ=$(cat /etc/TZ)
 
 # XHTML footer function.
 xhtml_footer() {
@@ -66,7 +67,7 @@ cat << EOT
 <h2>Ssfs server $(hostname)</h2>
 <pre>
 Server time   : $date
-Time zone     : $tz
+Time zone     : $TZ
 </pre>
 
 <h2>Virtual disk stats</h2>
