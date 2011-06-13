@@ -1,0 +1,141 @@
+# French translations for Ssfs Client package.
+# Copyright (C) 2011 THE Ssfs Client'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Ssfs Client package.
+# Linux User <pankso@slitaz.org>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Client 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-13 23:21+0200\n"
+"PO-Revision-Date: 2011-06-13 23:38+0100\n"
+"Last-Translator: Christophe Lincoln <pankso@slitaz.org>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ssfs:41
+#: ssfs:99
+msgid "Usage:"
+msgstr "Utilisation:"
+
+#: ssfs:43
+msgid "Commands:"
+msgstr "Commandes:"
+
+#: ssfs:44
+msgid "Display this short help usage."
+msgstr "Affiche cette courte aide."
+
+#: ssfs:45
+msgid "Display configuration settings."
+msgstr "Affiche les données de configuration."
+
+#: ssfs:46
+msgid "Setup client configuration and RSA key."
+msgstr "Mise en route du client et envoi de la clé RSA."
+
+#: ssfs:47
+msgid "Sync from server and start daemon."
+msgstr "Synchronise depuis le server et lance le démon."
+
+#: ssfs:48
+msgid "Stop monitoring ~/Sync folder."
+msgstr "Stop le monitoring du dossier ~/Sync."
+
+#: ssfs:49
+msgid "Connect to remote host via SSH."
+msgstr "Se connecte $ l'hôte distant via SSH."
+
+#: ssfs:51
+msgid "Options:"
+msgstr "Options:"
+
+#: ssfs:52
+msgid "Login name on remote host."
+msgstr "Non de login sur l'hôte distant."
+
+#: ssfs:53
+msgid "Server host name or IP."
+msgstr "Non du server ou IP."
+
+#: ssfs:93
+msgid "RSA key   :"
+msgstr "Clé RSA          :"
+
+#: ssfs:94
+msgid "Sync size :"
+msgstr "Taille de Sync :"
+
+#: ssfs:113
+msgid "Sending RSA secure key to:"
+msgstr "Envoi de la clé sécurisée RSA vers:"
+
+#: ssfs:114
+msgid "Please enter your Ssfs password."
+msgstr "Veuillez entrer votre mot de passe Ssfs."
+
+#: ssfs:118
+msgid "Client is setup you can now sync"
+msgstr "Le client est installé, vous pouvez synvhroniser maintenant"
+
+#: ssfs:122
+msgid "Missing config file"
+msgstr "Manque le fichier de config"
+
+#: ssfs:127
+msgid "Syncing from:"
+msgstr "Synchronisation depuis:"
+
+#: ssfs:137
+msgid "Starting lsyncd daemon..."
+msgstr "Démarrage du démon lsyncd..."
+
+#: ssfs:142
+msgid "Daemon is not running"
+msgstr "Le démon n'est pas lançé"
+
+#: ssfs:145
+msgid "Stopping"
+msgstr "Arrêt"
+
+#: ssfs-box:41
+msgid "<b>Welcome to the Ssfs Client user interface</b>"
+msgstr "<b>Bienvenue à l'interface utilisateur du client Ssfs</b>"
+
+#: ssfs-box:46
+msgid "Value"
+msgstr "Valeur"
+
+#: ssfs-box:47
+msgid "Setup client"
+msgstr "Installation"
+
+#: ssfs-box:48
+msgid "Edit config"
+msgstr "Configuration"
+
+#: ssfs-box:49
+msgid "Browse files"
+msgstr "Fichiers"
+
+#: ssfs-box:78
+msgid ""
+"<b>Welcome to the Ssfs Setup</b>\\n"
+"\n"
+"Any account on a server yet ? You can vist www.slitaz.org\n"
+"services or setup your own server in a few minutes!\\n"
+msgstr ""
+"<b>Bienvenue à la mise en place du client Ssfs</b>\\n"
+"\n"
+"Aucun compte sur un server ? Vous pouvez visiter les services\n"
+"sur www.slitaz.org ou mettre en place votre propre server Ssfs\n"
+"en quelques minutes!\\n"
+
+#: ssfs-box:105
+msgid "Ssfs Live Sync storage"
+msgstr "Stockage en temp réél Ssfs"
+
