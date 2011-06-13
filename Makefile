@@ -6,33 +6,33 @@ DESTDIR?=
 
 PACKAGE=ssfs
 VERSION=1.0
-LINGUAS?=fr
+LINGUAS?=
 
 all: msgmerge
 
 # i18n
 
 pot:
-	xgettext -o po/ssfs.pot -L Shell \
+	xgettext -o po/ssfs/ssfs.pot -L Shell \
 		--package-name="Ssfs Client" \
 		--package-version="$(VERSION)" \
 		./ssfs ./ssfs-box
-	#xgettext -o po/ssfs-server.pot -L Shell \
-		#--package-name="Ssfs Server" \
-		#--package-version="$(VERSION)" \
-		#./ssfs-server
+	xgettext -o po/server/ssfs-server.pot -L Shell \
+		--package-name="Ssfs Client" \
+		--package-version="$(VERSION)" \
+		./ssfs-server
 
 msgmerge:
 	@for l in $(LINGUAS); do \
 		echo -n "Updating $$l po file."; \
-		msgmerge -U po/$$l.po po/ssfs.pot; \
+		msgmerge -U po/$$l.po po/ssfs/ssfs.pot; \
 	done;
 
 msgfmt:
 	@for l in $(LINGUAS); do \
 		echo "Compiling $$l mo file..."; \
 		mkdir -p po/mo/$$l/LC_MESSAGES; \
-		msgfmt -o po/mo/$$l/LC_MESSAGES/ssfs.mo po/$$l.po; \
+		msgfmt -o po/mo/$$l/LC_MESSAGES/ssfs.mo po/ssfs/$$l.po; \
 	done;
 	
 # Installation
