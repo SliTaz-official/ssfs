@@ -16,7 +16,7 @@ $(echo -e "\033[1mUsage:\033[0m") $app [command] [pattern]
 $(echo -e "\033[1mCommands:\033[0m")
   help          Display this short help usage.
   info          Display account and system information.
-  list          List all file in your Sync folder.
+  list          List all files in your Sync folder.
   search        Search for a file or a system command.
 
 EOT

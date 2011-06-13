@@ -14,9 +14,9 @@ connections you have access to your files. Connections to the remote server
 can also be done using the command line and 'ssh' from any clients such as
 BSD, Android, OSX or Windows via Putty.
 
-Ssfs is very easy to install, setup and configure to make your own secure online
-file storage. It provides a cmdline tool for the client and server with a
-built in help. This README is also a howto in itself.
+Ssfs is very easy to install, setup and configure to create your own secure 
+online file storage. It provides a cmdline tool for the client and server with 
+a built in help. This README is also a howto in itself.
 
 On the server side admin can choose by creating standard accounts or chrooted
 accounts which enforce server security by restricting available commands in a
@@ -78,7 +78,7 @@ server name or IP address and it will also create a secure RSA if none exists:
 
 $ ssfs setup --login=user --host=server
 
-Once the client is setup you can synchronize from the server and start live
+Once the client is setup you can synchronize from the server and start a live
 sync. You can also get quick access to your files and ssfs info with a nice
 startup icon in the desktop panel. To sync and start Ssfs notify:
 
@@ -95,8 +95,8 @@ a user's home has 0700 mode so a standard web server running user www can't see
 the files. We may implement a HTTP Public dir which could handle xHTML pages, a
 wiki, etc.
 
-The GTK gui provide a notification mode as explained previewsly and the main
-window can be started from the standard menu and under the Network category.
+The GTK gui provides a notification mode as explained previously and the main
+window can be started from the standard menu within the Network category.
 
 
 Ssfs chroot SHell
@@ -109,12 +109,12 @@ enforces security and lets you execute commands on login, ssfs-sh also exports
 the new user $HOME and changes the directory to it since chroot will drop us
 in / by default.
 
-The SHell is part of Ssfs featurs and provide a secure access to user, SSH
-login is automated with a RSA key, when chrooted users have access to all
-commands in /bin and a helper tool called 'ssfs-env' in avalaible. Ssfs-env
+The SHell is part of Ssfs features and provides a secure user access, SSH
+login is automated with a RSA key where chrooted users have access to all
+commands in /bin and a helper tool called 'ssfs-env' in available. Ssfs-env
 can display server info, list files and search for files or commands. Like
-all other Ssfs tools user can get a small built-in help usage. To connect
-to server and display ssfs-env help:
+all other Ssfs tools users can get a small built-in help usage. To connect
+to the server and display ssfs-env help:
 
 $ ssfs login
 user@ssfs:~$ ssfs-env help
@@ -131,8 +131,8 @@ Quota management
 ----------------
 Actually the quota storage is based on a shared idea, the vdisk has a size and
 all users share the space. For a pay service the vdisk can grow following the
-users donations or monthly subscription. Also when sshs-server create a user
-it assing a default quota that could be used for peer user quota.
+users donations or monthly subscription. Also when sshs-server creates a user
+it assigns a default quota that could be used as a per user quota.
 
 
 Server setup
@@ -158,19 +158,19 @@ information can be found with the built in help:
 
 # ssfs-server help
 
-Vdisk chroot system can be extended if you want to provide more commands to
-users. The minimal SliTaz chroot is easily maintainable and builded using
-standard SliTaz packages. The package ssfs-busybox provide the minimal base
-commands such as ls, cp, mc, cat, grep and have no dependencies since we just
+The vdisk chroot system can be extended if you want to provide more commands 
+to users. The minimal SliTaz chroot is easily maintainable and built using
+standard SliTaz packages. The package ssfs-busybox provides the minimal base
+commands such as ls, cp, mc, cat, grep and has no dependencies since we just
 need a few shared libs in /lib. Ssfs original chroot files are stored in the
-directory /usr/share/ssfs/rootfs. The virtual disk contain a Linux jounalized
+directory /usr/share/ssfs/rootfs. The virtual disk contains a Linux journalled
 ext3 filesystem that you can check and verify with:
 
 # ssfs-server check-vdisk
 
-In a production environment dont forget to mount Ssfs vdisk on boot via fstab.
-For maitainance purpose you can manually mount or unmount the disk and also
-update it in a command, example:
+In a production environment don't forget to mount Ssfs vdisk on boot via fstab.
+For maintenance purposes you can manually mount or unmount the disk and also
+update it with a command, example:
 
 # ssfs-server mount-vdisk
 # ssfs-server up-vdisk
@@ -178,7 +178,7 @@ update it in a command, example:
 
 Ssfs virtual disk
 -----------------
-A virtual Ssfs disk is a raw file created with dd and formated in ext3. It is
+A virtual Ssfs disk is a raw file created with dd and formatted in ext3. It is
 mounted by default on /ssfs and contains a minimal chroot environment with a user's
 home directory. We use a virtual disk to enforce security and use a separate
 media for Ssfs secure files, it also protects the host and limits storage size.
@@ -196,7 +196,7 @@ the filesystem from the standard host file hierarchy:
 # mkdir /ssfs
 # mount -o loop -t ext3 /home/ssfs.disk /ssfs
 
-To automaticaly mount the vdisk on boot you may want to add a ssfs system user
+To automatically mount the vdisk on boot you may want to add a ssfs system user
 and a line into the file /etc/fstab:
 
 # adduser -S -g "Ssfs Server" -h /ssfs -s /bin/false ssfs
