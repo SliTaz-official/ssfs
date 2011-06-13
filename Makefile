@@ -8,7 +8,7 @@ PACKAGE=ssfs
 VERSION=1.0
 LINGUAS?=fr
 
-all: msgmerge
+all: msgfmt
 
 # i18n
 
@@ -46,6 +46,7 @@ install:
 		$(DESTDIR)/var/lib/$(PACKAGE) \
 		$(DESTDIR)$(PREFIX)/share/applications \
 		$(DESTDIR)$(PREFIX)/share/pixmaps \
+		$(DESTDIR)$(PREFIX)/share/locale \
 		$(DESTDIR)$(PREFIX)/share/$(PACKAGE)/rootfs/bin
 	install -m 0755 $(PACKAGE)-sh $(DESTDIR)/bin
 	install -m 0755 $(PACKAGE) $(DESTDIR)$(PREFIX)/bin
@@ -58,5 +59,9 @@ install:
 		$(DESTDIR)$(PREFIX)/share/applications
 	install -m 0755 $(PACKAGE)-env \
 		$(DESTDIR)$(PREFIX)/share/$(PACKAGE)/rootfs/bin
-	#cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
+	cp -a po/mo/* $(DESTDIR)$(PREFIX)/share/locale
 	touch $(DESTDIR)/var/lib/$(PACKAGE)/vdisk.files
+
+clean:
+	rm -rf po/mo
+	rm -f po/*/*~

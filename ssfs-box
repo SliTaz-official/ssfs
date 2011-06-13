@@ -78,7 +78,7 @@ setup_main() {
 "<b>Welcome to the Ssfs Setup</b>\n
 Any account on a server yet ? You can vist www.slitaz.org
 services or setup your own server in a few minutes!\n")
-	yad --form --title="Ssfs GTK Setup" \
+	yad --form --title="Ssfs Setup" \
 		--window-icon=$pixmap \
 		--width=460 --height=200 --image-on-top \
 		--text="$text" --image=$pixmap \
