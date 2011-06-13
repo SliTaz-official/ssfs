@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ssfs Client 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-13 22:47+0200\n"
+"POT-Creation-Date: 2011-06-13 22:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,109 +143,150 @@ msgstr ""
 msgid "Ssfs vdisk is already mounted:"
 msgstr ""
 
-#: ssfs-server:162 ssfs-server:169 ssfs-server:176 ssfs-server:177
-#: ssfs-server:178 ssfs-server:186 ssfs-server:188 ssfs-server:217
-#: ssfs-server:219 ssfs-server:229 ssfs-server:231 ssfs-server:333
-#: ssfs-server:349 ssfs-server:352
-msgid "-e"
+#: ssfs-server:162 ssfs-server:187
+msgid "Checking:"
+msgstr ""
+
+#: ssfs-server:169
+msgid "WARNING: No config file"
 msgstr ""
 
 #: ssfs-server:173
 msgid "Users:"
 msgstr ""
 
-#: ssfs-server:199
+#: ssfs-server:176 ssfs-server:218
+msgid "Missing user login name."
+msgstr ""
+
+#: ssfs-server:177
+msgid "Missing user id."
+msgstr ""
+
+#: ssfs-server:178
+msgid "Missing user password."
+msgstr ""
+
+#: ssfs-server:189
+msgid "Exiting, user already exists:"
+msgstr ""
+
+#: ssfs-server:200
 msgid "Checking vdisk chroot:"
 msgstr ""
 
-#: ssfs-server:207
+#: ssfs-server:208
 msgid "Cleaning home and creating: Sync/..."
 msgstr ""
 
-#: ssfs-server:209
+#: ssfs-server:210
 msgid "Changing mode on user home: 0700..."
 msgstr ""
 
-#: ssfs-server:223
-msgid "Removing all files in:"
+#: ssfs-server:221
+msgid "Deleting user:"
 msgstr ""
 
 #: ssfs-server:225
+msgid "Removing all files in:"
+msgstr ""
+
+#: ssfs-server:227
 msgid "Removing user config:"
 msgstr ""
 
-#: ssfs-server:238
+#: ssfs-server:232
+msgid "Changing root to:"
+msgstr ""
+
+#: ssfs-server:235
+msgid "Back to the host system:"
+msgstr ""
+
+#: ssfs-server:242
 msgid "Adding note to:"
 msgstr ""
 
-#: ssfs-server:245
+#: ssfs-server:249
 msgid "A chroot already exists in:"
 msgstr ""
 
-#: ssfs-server:249
+#: ssfs-server:253
 msgid "Missing package ssfs-busybox"
 msgstr ""
 
-#: ssfs-server:253
+#: ssfs-server:257
 msgid "Creating Sshs vdisk minimal chroot"
 msgstr ""
 
-#: ssfs-server:259
+#: ssfs-server:263
 msgid "Creating virtual disk:"
 msgstr ""
 
-#: ssfs-server:262
+#: ssfs-server:266
 msgid "Creating ext3 filesystem..."
 msgstr ""
 
-#: ssfs-server:269
+#: ssfs-server:273
 msgid "Creating base files..."
 msgstr ""
 
-#: ssfs-server:285
+#: ssfs-server:289
 msgid "Installing Ssfs root filesystem..."
 msgstr ""
 
-#: ssfs-server:289
+#: ssfs-server:293
 msgid "Setting files permissions..."
 msgstr ""
 
-#: ssfs-server:297
+#: ssfs-server:301
 msgid "Installing Glibc libraries..."
 msgstr ""
 
-#: ssfs-server:304
+#: ssfs-server:308
 msgid "Installing Ssfs SHell..."
 msgstr ""
 
-#: ssfs-server:310
+#: ssfs-server:314
 msgid "Creating the list of files... "
 msgstr ""
 
-#: ssfs-server:325
+#: ssfs-server:329
 msgid "Vdisk used space:"
 msgstr ""
 
-#: ssfs-server:335
+#: ssfs-server:337
+msgid "Checking Ssfs virtual disk"
+msgstr ""
+
+#: ssfs-server:339
 msgid "Virtual disk     : "
 msgstr ""
 
-#: ssfs-server:336
+#: ssfs-server:340
 msgid "Filesystem usage : "
 msgstr ""
 
-#: ssfs-server:337
+#: ssfs-server:341
 msgid "Remounting vdisk read/only before e2fsck -p..."
 msgstr ""
 
-#: ssfs-server:340
+#: ssfs-server:344
 msgid "Remounting vdisk read/write..."
 msgstr ""
 
-#: ssfs-server:361
+#: ssfs-server:353
+msgid "No chroot found in:"
+msgstr ""
+
+#: ssfs-server:357
+msgid "Cleaning virtual disk\\n"
+msgstr ""
+
+#: ssfs-server:366
 msgid "Skipping:"
 msgstr ""
 
-#: ssfs-server:363
+#: ssfs-server:368
 msgid "Removing:"
 msgstr ""

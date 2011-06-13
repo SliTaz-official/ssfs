@@ -159,33 +159,34 @@ mount_vdisk() {
 
 case "$1" in
 	users)
-		gettext -e "\nChecking:"; echo " /etc/passwd"
+		echo "" && gettext "Checking:"; echo " /etc/passwd"
 		fgrep "Ssfs User" /etc/passwd | while read line
 		do
 			login=$(echo $line | cut -d ":" -f 1)
 			home="$root/home/$login"
 			usage=$(du -sm $home | awk '{print $1}')
 			config=$SSFS_USERS/$login.conf
-			. $config || gettext -e "WARNING: No config file\n"
+			. $config || gettext "WARNING: No config file"
 			user_info
 		done 
 		users=$(ls $SSFS_USERS | wc -l)
 		gettext "Users:"; echo -e " $users\n" ;;
 	adduser)
 		# Add a Ssfs user to the system with $HOME in chroot.
-		[ -z "$login" ] && gettext -e "Missing user login name.\n" && exit 0
-		[ -z "$id" ] && gettext -e "Missing user id.\n" && exit 0
-		[ -z "$pass" ] && gettext -e "Missing user password.\n" && exit 0
+		[ -z "$login" ] && gettext "Missing user login name." && exit 0
+		[ -z "$id" ] && gettext "Missing user id." && exit 0
+		[ -z "$pass" ] && gettext "Missing user password." && exit 0
 		user_paths
 
 		# We need chroot command allowed for users to chroot them on SSH
 		# login. Ssfs users have /bin/ssfs-sh as SHell.
 		grep -q ^chroot /etc/busybox.conf ||
 			echo 'chroot = ssx root.root' >> /etc/busybox.conf
-		
-		gettext -e "\nChecking:"; echo " /etc/passwd"
+
+		echo ""
+		gettext "Checking:"; echo " /etc/passwd"
 		if grep ^$login: /etc/passwd; then
-			gettext -e "Exiting, user already exists:"
+			gettext "Exiting, user already exists:"
 			echo -e " $login\n" && exit 0
 		fi
 		
@@ -214,9 +215,10 @@ case "$1" in
 		[ ! -d "$SSFS_USERS" ] && mkdir -p $SSFS_USERS
 		user_config ;;
 	deluser)
-		[ -z "$login" ] && gettext -e "Missing user login name.\n" && exit 0
+		[ -z "$login" ] && gettext "Missing user login name." && exit 0
 		user_paths
-		gettext -e "\nDeleting user:"; echo -n " $login..."
+		echo ""
+		gettext "Deleting user:"; echo -n " $login..."
 		sed -i /^$login:/d $root/etc/passwd
 		sed -i /^$login:/d $root/etc/group
 		deluser $login || status && status
@@ -226,9 +228,11 @@ case "$1" in
 		rm -rf $config && status
 		echo "" ;;
 	chroot)
-		gettext -e "\nChanging root to:"; echo -e " $root\n"
+		echo ""
+		gettext "Changing root to:"; echo -e " $root\n"
 		chroot $root
-		gettext -e "\nBack to the host system:"
+		echo ""
+		gettext "Back to the host system:"
 		echo -e " $(hostname)\n" ;;
 	note)
 		# Admin notes for users and displayed on the web interface.
@@ -330,7 +334,7 @@ case "$1" in
 	check-vdisk)
 		# Check vdisk with e2fsck.
 		echo ""
-		gettext -e "Checking Ssfs virtual disk\n"
+		gettext "Checking Ssfs virtual disk"; echo
 		separator
 		gettext "Virtual disk     : "; du -sh $vdisk
 		gettext "Filesystem usage : "; du -sh $root
@@ -346,10 +350,11 @@ case "$1" in
 	clean-vdisk)
 		# clean up the vdisk storage chroot.
 		if [ ! -d "$root/bin" ] || [ ! -d "$root/lib" ]; then
-			gettext -e "No chroot found in:"; echo " $root"
+			gettext "No chroot found in:"; echo " $root"
 			exit 0
 		fi
-		gettext -e "\nCleaning virtual disk\n"
+		echo ""
+		gettext "Cleaning virtual disk\n"
 		separator
 		echo "Chroot path: $root"
 		cd $root
