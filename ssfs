@@ -96,7 +96,7 @@ case "$1" in
 	setup)
 		# We need a login and host name or IP.
 		if [ -z "$login" ] || [ -z "$host" ]; then
-			gettext -e "\nUsage:"; echo -e \
+			gettext "Usage:"; echo -e \
 				" $(basename $0) setup --login=user --host=server\n" && exit 0
 		fi
 		gen_config
@@ -119,11 +119,12 @@ case "$1" in
 	sync)
 		# Sync can be called at session startup or from cmdline to retrive
 		# files from the server.
-		[ ! -f "$config" ] && gettext -e "Missing config file\n" && exit 1
+		[ ! -f "$config" ] && gettext "Missing config file" && \
+			echo "" && exit 1
 		at=$(fgrep host $config | cut -d '"' -f 2)
 		login=${at%@*}
 		host=${at#*@}
-		gettext -e "\nSyncing from:"; echo " $login@$host"
+		echo "" && gettext "Syncing from:"; echo " $login@$host"
 		
 		# First sync host with server.
 		rsync -r -a -v -h -z -u --delete \
@@ -138,7 +139,8 @@ case "$1" in
 		echo "" ;;
 	stop)
 		# Kill daemon and remove pidfile.
-		[ ! -s "$pid" ] && gettext -e "Daemon is not running\n" && exit 0
+		[ ! -s "$pid" ] && gettext "Daemon is not running\n" && \
+			echo "" && exit 0
 		kill=$(cat $pid)
 		gettext "Stopping"; echo " $app PID: $kill"
 		kill $kill 2>/dev/null

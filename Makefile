@@ -5,7 +5,7 @@ DOCDIR?=$(PREFIX)/share/doc
 DESTDIR?=
 
 PACKAGE=ssfs
-VERSION=0.1-beta
+VERSION=1.0
 LINGUAS?=fr
 
 all: msgmerge
@@ -14,9 +14,13 @@ all: msgmerge
 
 pot:
 	xgettext -o po/ssfs.pot -L Shell \
-		--package-name="Ssfs" \
+		--package-name="Ssfs Client" \
 		--package-version="$(VERSION)" \
 		./ssfs ./ssfs-box
+	#xgettext -o po/ssfs-server.pot -L Shell \
+		#--package-name="Ssfs Server" \
+		#--package-version="$(VERSION)" \
+		#./ssfs-server
 
 msgmerge:
 	@for l in $(LINGUAS); do \
