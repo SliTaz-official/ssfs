@@ -136,9 +136,10 @@ case "$1" in
 		echo "" ;;
 	stop)
 		# Kill daemon and remove pidfile.
-		[ ! -s "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
+		[ ! -s "$pid" ] && gettext -e "Daemon is not running\n" && exit 0
+		kill=$(cat $pid)
 		gettext "Stopping"; echo " $app PID: $kill"
-		kill $(cat $pid) 2>/dev/null
+		kill $kill 2>/dev/null
 		rm -f $pid ;;
 	login)
 		# Connect user to Ssfs server via SSH.
