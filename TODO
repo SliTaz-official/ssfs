@@ -1,7 +1,7 @@
 
 
 	* Check if we can use only Dropbear as SSH client and server
-	* A Web interface in CGI (SHell or Python) or PHP
-	* Handle user quota, use vdisk per user ?
+	* A better Web server interface in CGI (SHell or Python) or PHP
+	* Improve quota management, use vdisk per user ?
 	* A logo :-)
 
