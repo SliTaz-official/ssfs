@@ -128,17 +128,17 @@ case "$1" in
 		
 		# Monitor local folder if not yet running.
 		if [ ! -s "$pid" ]; then
-			gettext "Starting lsyncd daemon..."
-			lsyncd -pidfile $pid -log all -logfile $logdir/lsyncd.log $config
-		else
-			gettext "Lcyncd daemon running PID:"; echo " $(cat $pid)"
-		fi && echo "" ;;
+			kill $(cat $pid) 2>/dev/null
+			rm -f $pid
+		fi
+		gettext "Starting lsyncd daemon..."
+		lsyncd -pidfile $pid -log all -logfile $logdir/lsyncd.log $config
+		echo "" ;;
 	stop)
 		# Kill daemon and remove pidfile.
-		[ ! -f "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
-		kill=$(cat $pid)
+		[ ! -s "$pid" ] && gettext -e "Daemon is not running\n" && exit 0 
 		gettext "Stopping"; echo " $app PID: $kill"
-		kill $kill 2>/dev/null
+		kill $(cat $pid) 2>/dev/null
 		rm -f $pid ;;
 	login)
 		# Connect user to Ssfs server via SSH.

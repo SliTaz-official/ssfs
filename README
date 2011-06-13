@@ -105,9 +105,19 @@ The tool ssfs-sh is used to chroot a user on login and sets minimal environment
 variables. For each user ssfs-sh is the default SHell on the server and is
 executed inside the new root. So ssfs-sh must be installed on the server and
 in the virtual disk minimal chroot. Using a custom tool such as Ssfs SHell
-enforces security and lets you execute commands on login, ssfs-sh also exports the
-new user $HOME and changes the directory to it since chroot will drop us in / by
-default.
+enforces security and lets you execute commands on login, ssfs-sh also exports
+the new user $HOME and changes the directory to it since chroot will drop us
+in / by default.
+
+The SHell is part of Ssfs featurs and provide a secure access to user, SSH
+login is automated with a RSA key, when chrooted users have access to all
+commands in /bin and a helper tool called 'ssfs-env' in avalaible. Ssfs-env
+can display server info, list files and search for files or commands. Like
+all other Ssfs tools user can get a small built-in help usage. To connect
+to server and display ssfs-env help:
+
+$ ssfs login
+user@ssfs:~$ ssfs-env help
 
 
 Get configs on boot

@@ -26,8 +26,8 @@ else
 	# some env variables but don't source any profile.
 	clear && echo -e \
 		"\n\033[1m  Welcome to the Ssfs SHell $USER\033[0m\n"
-	PS1='\u@\h\e[0m:\e[1;34m\w\e[0m\$ '
-	PATH='/bin:/sbin'
+	PS1='\u@ssfs\e[0m:\e[1;34m\w\e[0m\$ '
+	PATH='/bin'
 	HOME=/home/$USER
 	SYNC=$HOME/Sync
 	SHELL=/bin/sh
