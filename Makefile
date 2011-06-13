@@ -6,7 +6,7 @@ DESTDIR?=
 
 PACKAGE=ssfs
 VERSION=1.0
-LINGUAS?=
+LINGUAS?=fr
 
 all: msgmerge
 
@@ -25,7 +25,7 @@ pot:
 msgmerge:
 	@for l in $(LINGUAS); do \
 		echo -n "Updating $$l po file."; \
-		msgmerge -U po/$$l.po po/ssfs/ssfs.pot; \
+		msgmerge -U po/ssfs/$$l.po po/ssfs/ssfs.pot; \
 	done;
 
 msgfmt:

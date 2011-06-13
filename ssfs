@@ -139,7 +139,7 @@ case "$1" in
 		echo "" ;;
 	stop)
 		# Kill daemon and remove pidfile.
-		[ ! -s "$pid" ] && gettext "Daemon is not running\n" && \
+		[ ! -s "$pid" ] && gettext "Daemon is not running" && \
 			echo "" && exit 0
 		kill=$(cat $pid)
 		gettext "Stopping"; echo " $app PID: $kill"
