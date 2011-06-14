@@ -3,6 +3,6 @@
 	* Check if we can use only Dropbear as SSH client and server
 	* A better Web server interface in CGI (SHell or Python) or PHP
 	* Improve quota management, use virtual disk per user ?
-	* Add doc and ensure client works on other Linux distro than SliTaz.
+	* Add doc and ensure client works on Linux distros other than SliTaz.
 	* A logo :-)
 

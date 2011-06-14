@@ -29,7 +29,7 @@ Overview
 
     * Online live sync with encrypted data
     * Drop files in a folder and they will be synced
-    * Even without any connection you have your data
+    * Even without any connection you still have your data
     * Fast and light using stable and mature GNU tools
     * Encrypted file transfer using SSH protocol
     * Easy to setup on the client and server side
@@ -52,7 +52,7 @@ Quick start guide
       $ ssfs setup --login=demo --host="server name or ip"
     * On the client you can start ssfs on user login via the WM
       autostart script and/or the command $ ssfs sync
-    * Get support and show your love for Ssfs on SCN group:
+    * Get support and show your love for Ssfs on the SCN group:
       http://scn.slitaz.org/groups/ssfs/
 
 
@@ -111,7 +111,7 @@ in / by default.
 
 The SHell is part of Ssfs features and provides a secure user access, SSH
 login is automated with a RSA key where chrooted users have access to all
-commands in /bin and a helper tool called 'ssfs-env' in available. Ssfs-env
+commands in /bin and a helper tool called 'ssfs-env' is available. Ssfs-env
 can display server info, list files and search for files or commands. Like
 all other Ssfs tools users can get a small built-in help usage. To connect
 to the server and display ssfs-env help:
@@ -212,9 +212,9 @@ login name.
 
 Server web interface
 --------------------
-Ssfs package provides a small CGI SHell web interface to the server. The goal is
-to provide a service status and information. It uses the server configuration to
-know the Ssfs virtual disk path and display statistics about the filesystem.
+The Ssfs package provides a small CGI SHell web interface to the server. The goal 
+is to provide a service status and information. It uses the server configuration 
+to know the Ssfs virtual disk path and display statistics about the filesystem.
 
 
 Development and Bugs
@@ -227,7 +227,7 @@ Install with 'make && make install' (DESTDIR is supported for packaging),
 update the POT file if any new strings have been added with 'make pot',
 and merger PO files with the command 'make msgmerge'. Any ideas are welcome
 and can be discussed. If you are searching for something to do you can have a
-look to the TODO file :-)
+look at the TODO file :-)
 
 Bugs can be reported on the SliTaz mailing list, forum or scn since the devel
 forum is synced. All sites are linked from: http://www.slitaz.org/
