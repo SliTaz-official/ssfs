@@ -11,6 +11,7 @@ app=$(basename $0)
 pid=$HOME/.local/var/run/$app.pid
 logdir=$HOME/.local/var/log/$app
 config=$HOME/.config/$app/client.lua
+key=$HOME/.ssh/id_rsa
 
 # Internationalization
 . /usr/bin/gettext.sh
@@ -90,7 +91,7 @@ case "$1" in
 	info)
 		size=$(du -sh $HOME/Sync | awk '{print $1}')
 		echo "" && config_info && echo ""
-		gettext "RSA key   :"; echo " $HOME/.ssh/id_rsa"
+		gettext "RSA key   :"; echo " $key"
 		gettext "Sync size :"; echo " $size"
 		echo "" ;;
 	setup)
@@ -103,9 +104,9 @@ case "$1" in
 		mkdir -p $logdir $(dirname $pid)
 		
 		# Configure passwordless login via RSA key.
-		if [ ! -f "$HOME/.ssh/id_rsa" ]; then
-			mkdir -p $HOME/.ssh
-			ssh-keygen -b 2048 -f $HOME/.ssh/id_rsa -P ''
+		if [ ! -f "$key" ]; then
+			mkdir -p $(dirname $key)
+			ssh-keygen -b 2048 -f $key -P ''
 		fi
 		echo ""
 		
@@ -113,7 +114,7 @@ case "$1" in
 		gettext "Sending RSA secure key to:"; echo " $host"
 		gettext "Please enter your Ssfs password."
 		echo -e "\n"
-		cat $HOME/.ssh/id_rsa.pub | \
+		cat $key.pub | \
 			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
 		gettext "Client is setup you can now sync"; echo ;;
 	sync)
@@ -125,18 +126,22 @@ case "$1" in
 		login=${at%@*}
 		host=${at#*@}
 		echo "" && gettext "Syncing from:"; echo " $login@$host"
+
+		# Clean logs.
+		echo "" > $logdir/lsyncd.log
+		echo "" > $logdir/rsync.log
 		
-		# First sync host with server.
+		# First sync client with server.
 		rsync -r -a -v -h -z -u --delete \
 			--log-file=$logdir/rsync.log \
 			-e "ssh -l $login" $host:~/Sync/ ~/Sync/ | \
 				sed -e "/^$/"d -e "/^.\/$/"d
 		
-		# Monitor local folder if not yet running.
+		# Monitor local folder.
 		killall lsyncd 2>/dev/null
 		gettext "Starting lsyncd daemon..."
-		lsyncd -pidfile $pid -log all -logfile $logdir/lsyncd.log $config
-		echo "" ;;
+		lsyncd -pidfile $pid -log scarce -logfile $logdir/lsyncd.log $config
+		echo -e "\n" ;;
 	stop)
 		# Kill daemon and remove pidfile.
 		[ ! -s "$pid" ] && gettext "Daemon is not running" && \
