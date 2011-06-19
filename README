@@ -59,7 +59,7 @@ Quick start guide
 Installation
 ------------
 To work you need a SSH client, 'rsync' and 'lsyncd' installed. On SliTaz you
-can simply install ssfs and it's dependencies or 'make install' from the
+can simply install ssfs and its dependencies or 'make install' from the
 source directory (see the Development section). 
 
 
