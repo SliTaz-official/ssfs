@@ -131,8 +131,8 @@ EOT
 
 # Handle Ssfs virtual disk.
 umount_vdisk() {
-	if mount | fgrep -q $root; then
-		loop=$(mount | fgrep $root | awk '{print $1}')
+	if mount | fgrep -q "$root "; then
+		loop=$(mount | fgrep "$root " | awk '{print $1}')
 		gettext "Unmounting Ssfs vdisk:"; echo " $vdisk"
 		umount $root && sleep 1
 		gettext "Detaching loop device:"; echo " $loop"
@@ -143,7 +143,7 @@ umount_vdisk() {
 }
 
 mount_vdisk() {
-	if ! mount | fgrep -q $root; then
+	if ! mount | fgrep -q "$root "; then
 		[ -d "$root" ] || mkdir -p $root
 		gettext "Mounting virtual disk:"
 		mount -o loop -t ext3 $vdisk $root
