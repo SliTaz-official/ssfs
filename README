@@ -90,7 +90,7 @@ GUI & Web interface
 -------------------
 Actually there is a small GTK/Yad but no web interface. The tool ssfs-box will
 display info if a configuration file exists or start the setup box. There is no
-plan for a users files web interface since security if more important, actually
+plan for a users files web interface since security is more important, actually
 a user's home has 0700 mode so a standard web server running user www can't see
 the files. We may implement a HTTP Public dir which could handle xHTML pages, a
 wiki, etc.
@@ -163,7 +163,7 @@ to users. The minimal SliTaz chroot is easily maintainable and built using
 standard SliTaz packages. The package ssfs-busybox provides the minimal base
 commands such as ls, cp, mc, cat, grep and has no dependencies since we just
 need a few shared libs in /lib. Ssfs original chroot files are stored in the
-directory /usr/share/ssfs/rootfs. The virtual disk contains a Linux journalled
+directory /usr/share/ssfs/rootfs. The virtual disk contains a Linux journaled
 ext3 filesystem that you can check and verify with:
 
 # ssfs-server check-vdisk
