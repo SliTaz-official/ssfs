@@ -6,7 +6,7 @@ DESTDIR?=
 
 PACKAGE=ssfs
 VERSION=1.0
-LINGUAS?=fr
+LINGUAS?=fr ru
 
 all: msgfmt
 

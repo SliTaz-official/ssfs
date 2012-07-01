@@ -3,27 +3,31 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Ssfs Client 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-01 20:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2012-07-01 20:45-0000\n"
+"Last-Translator: Aleksej Bobylev <al.bobylev@gmail.com>\n"
+"Language-Team: Russian\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: ssfs:42 ssfs:100
+#: ssfs:42
+#: ssfs:100
 msgid "Usage:"
-msgstr ""
+msgstr "Использование:"
 
 #: ssfs:44
 msgid "Commands:"
-msgstr ""
+msgstr "Команды:"
 
 #: ssfs:45
 msgid "Display this short help usage."
@@ -51,7 +55,7 @@ msgstr ""
 
 #: ssfs:52
 msgid "Options:"
-msgstr ""
+msgstr "Параметры:"
 
 #: ssfs:53
 msgid "Login name on remote host."
@@ -103,7 +107,7 @@ msgstr ""
 
 #: ssfs-box:41
 msgid "<b>Welcome to the Ssfs Client user interface</b>"
-msgstr ""
+msgstr "<b>Интерфейс пользователя клиента SSFS</b>"
 
 #: ssfs-box:46
 msgid "Value"
@@ -127,7 +131,8 @@ msgstr ""
 
 #: ssfs-box:82
 msgid ""
-"<b>Welcome to the Ssfs Setup</b>\\n\n"
+"<b>Welcome to the Ssfs Setup</b>\\n"
+"\n"
 "Any account on a server yet ? You can vist www.slitaz.org\n"
 "services or setup your own server in a few minutes!\\n"
 msgstr ""
@@ -135,3 +140,4 @@ msgstr ""
 #: ssfs-box:109
 msgid "Ssfs Live Sync storage"
 msgstr ""
+
