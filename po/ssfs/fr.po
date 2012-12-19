@@ -39,15 +39,15 @@ msgstr "Mise en route du client et envoi de la clé RSA."
 
 #: ssfs:48
 msgid "Sync from server and start daemon."
-msgstr "Synchronise depuis le server et lance le démon."
+msgstr "Synchronisation depuis le server et lancement du démon."
 
 #: ssfs:49
 msgid "Stop monitoring ~/Sync folder."
-msgstr "Stop le monitoring du dossier ~/Sync."
+msgstr "Arrête le monitoring du dossier ~/Sync."
 
 #: ssfs:50
 msgid "Connect to remote host via SSH."
-msgstr "Se connecte $ l'hôte distant via SSH."
+msgstr "Se connecte à l'hôte distant via SSH."
 
 #: ssfs:52
 msgid "Options:"
@@ -55,11 +55,11 @@ msgstr "Options:"
 
 #: ssfs:53
 msgid "Login name on remote host."
-msgstr "Non de login sur l'hôte distant."
+msgstr "Nom de login sur l'hôte distant."
 
 #: ssfs:54
 msgid "Server host name or IP."
-msgstr "Non du server ou IP."
+msgstr "Nom du server ou adresse IP."
 
 #: ssfs:94
 msgid "RSA key   :"
@@ -67,7 +67,7 @@ msgstr "Clé RSA          :"
 
 #: ssfs:95
 msgid "Sync size :"
-msgstr "Taille de Sync :"
+msgstr "Taille pour la synchronisation :"
 
 #: ssfs:114
 msgid "Sending RSA secure key to:"
@@ -79,11 +79,11 @@ msgstr "Veuillez entrer votre mot de passe Ssfs."
 
 #: ssfs:119
 msgid "Client is setup you can now sync"
-msgstr "Le client est installé, vous pouvez synvhroniser maintenant"
+msgstr "Le client est installé, vous pouvez maintenant synchroniser vos données"
 
 #: ssfs:123
 msgid "Missing config file"
-msgstr "Manque le fichier de config"
+msgstr "Le fichier de configuration est manquant"
 
 #: ssfs:128
 msgid "Syncing from:"
@@ -103,7 +103,7 @@ msgstr "Arrêt"
 
 #: ssfs-box:41
 msgid "<b>Welcome to the Ssfs Client user interface</b>"
-msgstr "<b>Bienvenue à l'interface utilisateur du client Ssfs</b>"
+msgstr "<b>Bienvenue sur l'interface utilisateur du client Ssfs</b>"
 
 #: ssfs-box:46
 msgid "Value"
@@ -123,7 +123,7 @@ msgstr "Fichiers"
 
 #: ssfs-box:50
 msgid "SSH Login"
-msgstr ""
+msgstr "Identifiant SSH"
 
 #: ssfs-box:82
 msgid ""
@@ -131,7 +131,7 @@ msgid ""
 "Any account on a server yet ? You can vist www.slitaz.org\n"
 "services or setup your own server in a few minutes!\\n"
 msgstr ""
-"<b>Bienvenue à la mise en place du client Ssfs</b>\\n\n"
+"<b>Bienvenue dans la configuration du client Ssfs</b>\\n\n"
 "Aucun compte sur un server ? Vous pouvez visiter les services\n"
 "sur www.slitaz.org ou mettre en place votre propre server Ssfs\n"
 "en quelques minutes!\\n"
