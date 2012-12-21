@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Constantine Mousafiris <kvisitor@gnugr.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Client 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-01 20:41+0000\n"
+"PO-Revision-Date: 2012-12-21 23:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: Kostis Mousafiris\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.5.2\n"
+
+#: ssfs:42
+#: ssfs:100
+msgid "Usage:"
+msgstr "Χρήση:"
+
+#: ssfs:44
+msgid "Commands:"
+msgstr "Εντολές:"
+
+#: ssfs:45
+msgid "Display this short help usage."
+msgstr "Εμφάνιση αυτής της σύντομης βοήθειας χρήσης."
+
+#: ssfs:46
+msgid "Display configuration settings."
+msgstr "Εμφάνιση των ρυθμίσεων διαμόρφωσης."
+
+#: ssfs:47
+msgid "Setup client configuration and RSA key."
+msgstr "Διαμόρφωση των ρυθμίσεων Πελάτη και του κλειδιού RSA."
+
+#: ssfs:48
+msgid "Sync from server and start daemon."
+msgstr "Κάντε συγχρονισμό αρχείων από τον διακομιστή και ξεκινήστε τον Δαίμονα."
+
+#: ssfs:49
+msgid "Stop monitoring ~/Sync folder."
+msgstr "Διακοπή της παρακολούθησης του καταλόγου ~/Sync."
+
+#: ssfs:50
+msgid "Connect to remote host via SSH."
+msgstr "Συνδεθείτε με ένα απομεμακρυσμένο host μέσω SSH."
+
+#: ssfs:52
+msgid "Options:"
+msgstr "Επιλογές:"
+
+#: ssfs:53
+msgid "Login name on remote host."
+msgstr "Όνομα σύνδεσης σε έναν απομεμακρυσμένο host."
+
+#: ssfs:54
+msgid "Server host name or IP."
+msgstr "Όνομα διακομιστή host ή Διεύθυνση IP."
+
+#: ssfs:94
+msgid "RSA key   :"
+msgstr "Κλειδί RSA   :"
+
+#: ssfs:95
+msgid "Sync size :"
+msgstr "Μέγεθος αρχείων υπό συγχρονισμό :"
+
+#: ssfs:114
+msgid "Sending RSA secure key to:"
+msgstr "Αποστολή του ασφαλούς κλειδιού RSA προς:"
+
+#: ssfs:115
+msgid "Please enter your Ssfs password."
+msgstr "Παρακαλώ, εισάγετε τον κωδικό σας για το Ssfs."
+
+#: ssfs:119
+msgid "Client is setup you can now sync"
+msgstr "Ο πελάτης ρυθμίστηκε. Τώρα, μπορείτε να κάνετε συγχρονισμό"
+
+#: ssfs:123
+msgid "Missing config file"
+msgstr "Λείπει το αρχείο ρυθμίσεων"
+
+#: ssfs:128
+msgid "Syncing from:"
+msgstr "Γίνεται συγχρονισμός από:"
+
+#: ssfs:142
+msgid "Starting lsyncd daemon..."
+msgstr "Γίνεται εκκίνηση του Δαίμονα lsyncd"
+
+#: ssfs:147
+msgid "Daemon is not running"
+msgstr "Ο Δαίμονας δεν τρέχει"
+
+#: ssfs:150
+msgid "Stopping"
+msgstr "Γίνεται διακοπή"
+
+#: ssfs-box:41
+msgid "<b>Welcome to the Ssfs Client user interface</b>"
+msgstr "<b>Καλωσήλθατε στην διεπαφή χρήστη του Πελάτη Ssfs</b>"
+
+#: ssfs-box:46
+msgid "Value"
+msgstr "Τιμή"
+
+#: ssfs-box:47
+msgid "Setup client"
+msgstr "Ρύθμιση του Πελάτη"
+
+#: ssfs-box:48
+msgid "Edit config"
+msgstr "Επεξεργασία ρυθμίσεων"
+
+#: ssfs-box:49
+msgid "Browse files"
+msgstr "Διερεύνηση αρχείων"
+
+#: ssfs-box:50
+msgid "SSH Login"
+msgstr "Σύνδεση SSH"
+
+#: ssfs-box:82
+msgid ""
+"<b>Welcome to the Ssfs Setup</b>\\n"
+"\n"
+"Any account on a server yet ? You can vist www.slitaz.org\n"
+"services or setup your own server in a few minutes!\\n"
+msgstr ""
+"<b>Καλωσήλθατε στη ρύθμιση του Ssfs</b>\\n"
+"\n"
+"Μήπως έχετε ήδη λογαριασμό σε έναν διακομιστή ; Μπορείτε να επισκεφθείτε τις υπηρεσίες του www.slitaz.org\n"
+"ή να ρυθμίσετε τον δικό σας διακομιστή μέσα σε λίγα λεπτά!\\n"
+
+#: ssfs-box:109
+msgid "Ssfs Live Sync storage"
+msgstr "Συγχρονισμένη αποθήκευση Ssfs."
+
