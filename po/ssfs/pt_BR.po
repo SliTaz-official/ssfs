@@ -1,0 +1,140 @@
+# Portuguese translations for Ssfs Client package.
+# Copyright (C) 2013 SliTaz Association 
+# This file is distributed under the same license as the Ssfs Client package.
+# Claudinei Pereira <claudinei@slitaz.org>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Client 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-01 20:41+0000\n"
+"PO-Revision-Date: 2013-01-26 02:37-0300\n"
+"Last-Translator: Claudinei Pereira <claudinei@slitaz.org>\n"
+"Language-Team: Brazilian Portuguese <i18n@slitaz.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ssfs:42 ssfs:100
+msgid "Usage:"
+msgstr "Utilização:"
+
+#: ssfs:44
+msgid "Commands:"
+msgstr "Comandos:"
+
+#: ssfs:45
+msgid "Display this short help usage."
+msgstr "Mostra esta utilização."
+
+#: ssfs:46
+msgid "Display configuration settings."
+msgstr "Mostra a configuração."
+
+#: ssfs:47
+msgid "Setup client configuration and RSA key."
+msgstr "Configura o cliente e a chave RSA."
+
+#: ssfs:48
+msgid "Sync from server and start daemon."
+msgstr "Sincroniza a partir do servido e inicia o daemon."
+
+#: ssfs:49
+msgid "Stop monitoring ~/Sync folder."
+msgstr "Para a monitoração da pasta ~/Sync."
+
+#: ssfs:50
+msgid "Connect to remote host via SSH."
+msgstr "Conecta ao host remoto via SSH."
+
+#: ssfs:52
+msgid "Options:"
+msgstr "Opções:"
+
+#: ssfs:53
+msgid "Login name on remote host."
+msgstr "Login no host remoto."
+
+#: ssfs:54
+msgid "Server host name or IP."
+msgstr "Nome do host remoto ou IP."
+
+#: ssfs:94
+msgid "RSA key   :"
+msgstr "Chave RSA:"
+
+#: ssfs:95
+msgid "Sync size :"
+msgstr "Tamanho da sincronização:"
+
+#: ssfs:114
+msgid "Sending RSA secure key to:"
+msgstr "Enviando chave RSA para:"
+
+#: ssfs:115
+msgid "Please enter your Ssfs password."
+msgstr "Informe a senha do Ssfs."
+
+#: ssfs:119
+msgid "Client is setup you can now sync"
+msgstr "Clente configurado e pronto para sincronização"
+
+#: ssfs:123
+msgid "Missing config file"
+msgstr "Arquivo de configuração não encontrado"
+
+#: ssfs:128
+msgid "Syncing from:"
+msgstr "Sincronizando de:"
+
+#: ssfs:142
+msgid "Starting lsyncd daemon..."
+msgstr "Iniciando lsyncd daemon..."
+
+#: ssfs:147
+msgid "Daemon is not running"
+msgstr "Deamon não está sendo executado"
+
+#: ssfs:150
+msgid "Stopping"
+msgstr "Parando"
+
+#: ssfs-box:41
+msgid "<b>Welcome to the Ssfs Client user interface</b>"
+msgstr "<b>Bem-vindo à interface de usuário do Cliente Ssfs</b>"
+
+#: ssfs-box:46
+msgid "Value"
+msgstr "Valor"
+
+#: ssfs-box:47
+msgid "Setup client"
+msgstr "Configurar cliente"
+
+#: ssfs-box:48
+msgid "Edit config"
+msgstr "Editar configuração"
+
+#: ssfs-box:49
+msgid "Browse files"
+msgstr "Procurar arquivos"
+
+#: ssfs-box:50
+msgid "SSH Login"
+msgstr "Login SSH"
+
+#: ssfs-box:82
+msgid ""
+"<b>Welcome to the Ssfs Setup</b>\\n\n"
+"Any account on a server yet ? You can vist www.slitaz.org\n"
+"services or setup your own server in a few minutes!\\n"
+msgstr ""
+"<b>Bem-vindo à configuração do Ssfs</b>\\n\n"
+"Já existe uma conta no servidor? Você pode visitar os serviços\n"
+"em www.slitaz.org ou configurar seu próprio servidor em poucos minutos!\\n"
+
+#: ssfs-box:109
+msgid "Ssfs Live Sync storage"
+msgstr "Armazenamento do Ssfs"
