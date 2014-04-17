@@ -137,7 +137,7 @@ it assigns a default quota that could be used as a per user quota.
 
 Server setup
 ------------
-On the server you must have a SSH server running and an user account with a
+On the server you must have a SSH server running and a user account with a
 ~/Sync folder in user home. You can have both, standard accounts or chrooted
 accounts, for a hosted service it is recommended to use a chroot and a Ssfs
 virtual disk. The vdisk can be any size you want and have a minimal chroot
@@ -225,7 +225,7 @@ philosophy with speed and security in mind: hg clone http://hg.slitaz.org/ssfs
 
 Install with 'make && make install' (DESTDIR is supported for packaging),
 update the POT file if any new strings have been added with 'make pot',
-and merger PO files with the command 'make msgmerge'. Any ideas are welcome
+and merge PO files with the command 'make msgmerge'. Any ideas are welcome
 and can be discussed. If you are searching for something to do you can have a
 look at the TODO file :-)
 

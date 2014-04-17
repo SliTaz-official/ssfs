@@ -118,7 +118,7 @@ case "$1" in
 			ssh $login@$host 'cat - >> ~/.ssh/authorized_keys' || exit 1
 		gettext "Client is setup you can now sync"; echo ;;
 	sync)
-		# Sync can be called at session startup or from cmdline to retrive
+		# Sync can be called at session startup or from cmdline to retrieve
 		# files from the server.
 		[ ! -f "$config" ] && gettext "Missing config file" && \
 			echo "" && exit 1
