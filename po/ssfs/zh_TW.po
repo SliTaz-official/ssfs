@@ -1,0 +1,139 @@
+# Traditional Chinese translations for SliTaz ssfs package.
+# Copyright (C) 2014 Slitaz Association
+# This file is distributed under the same license as the Slitaz ssfs package.
+# lunglungyu <lunglungyu2004@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Client 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-08 02:05+0800\n"
+"PO-Revision-Date: 2014-06-08 02:05+0800\n"
+"Last-Translator: <lunglungyu2004@gmail.com>\n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ssfs:42 ssfs:100
+msgid "Usage:"
+msgstr "用法:"
+
+#: ssfs:44
+msgid "Commands:"
+msgstr "命令:"
+
+#: ssfs:45
+msgid "Display this short help usage."
+msgstr "顯示簡短使用幫助訊息"
+
+#: ssfs:46
+msgid "Display configuration settings."
+msgstr "顯示配置設定."
+
+#: ssfs:47
+msgid "Setup client configuration and RSA key."
+msgstr "設定客戶端配置及RSA key."
+
+#: ssfs:48
+msgid "Sync from server and start daemon."
+msgstr "由伺服器同步並運行服務(daemon)."
+
+#: ssfs:49
+msgid "Stop monitoring ~/Sync folder."
+msgstr "停止監視 ~/Sync 文件夾."
+
+#: ssfs:50
+msgid "Connect to remote host via SSH."
+msgstr "透過SSH連接到遠端主機."
+
+#: ssfs:52
+msgid "Options:"
+msgstr "選項："
+
+#: ssfs:53
+msgid "Login name on remote host."
+msgstr "遠端主機的登入名稱."
+
+#: ssfs:54
+msgid "Server host name or IP."
+msgstr "伺服器主機名稱或IP地址."
+
+#: ssfs:94
+msgid "RSA key   :"
+msgstr "RSA 密鑰   :"
+
+#: ssfs:95
+msgid "Sync size :"
+msgstr "同步大小 :"
+
+#: ssfs:114
+msgid "Sending RSA secure key to:"
+msgstr "正在發送RSA安全密鑰:"
+
+#: ssfs:115
+msgid "Please enter your Ssfs password."
+msgstr "請輸入你的Ssfs密碼."
+
+#: ssfs:119
+msgid "Client is setup you can now sync"
+msgstr "客戶端已設置好,可以開始同步"
+
+#: ssfs:123
+msgid "Missing config file"
+msgstr "欠缺配置文件"
+
+#: ssfs:128
+msgid "Syncing from:"
+msgstr "同步來源:"
+
+#: ssfs:142
+msgid "Starting lsyncd daemon..."
+msgstr "開始lsyncd 服務daemon..."
+
+#: ssfs:147
+msgid "Daemon is not running"
+msgstr "Daemon服務不在運行中"
+
+#: ssfs:150
+msgid "Stopping"
+msgstr "停止"
+
+#: ssfs-box:41
+msgid "<b>Welcome to the Ssfs Client user interface</b>"
+msgstr "<b>歡迎來到Ssfs客戶端使用介面</b>"
+
+#: ssfs-box:46
+msgid "Value"
+msgstr "值"
+
+#: ssfs-box:47
+msgid "Setup client"
+msgstr "設定客戶端"
+
+#: ssfs-box:48
+msgid "Edit config"
+msgstr "更改配置"
+
+#: ssfs-box:49
+msgid "Browse files"
+msgstr "瀏覽文件"
+
+#: ssfs-box:50
+msgid "SSH Login"
+msgstr "SSH登入"
+
+#: ssfs-box:82
+msgid ""
+"<b>Welcome to the Ssfs Setup</b>\\n\n"
+"Any account on a server yet ? You can vist www.slitaz.org\n"
+"services or setup your own server in a few minutes!\\n"
+msgstr "
+“<b>歡迎來到Ssfs設定</b>\\n\n"
+"在伺服器上有帳戶嗎?你可以瀏覽www.slitaz.org\n"
+"服務或在幾分鐘內設立你自己的伺服器!\\n"
+
+#: ssfs-box:109
+msgid "Ssfs Live Sync storage"
+msgstr "SSfs Live 同步存儲"
