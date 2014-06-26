@@ -1,0 +1,292 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Server 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-26 15:12+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ssfs-server:22
+msgid "You must be root to run:"
+msgstr ""
+
+#: ssfs-server:58
+msgid "Usage:"
+msgstr ""
+
+#: ssfs-server:60
+msgid "Commands:"
+msgstr ""
+
+#: ssfs-server:61
+msgid "Display this short help usage."
+msgstr ""
+
+#: ssfs-server:62
+msgid "List user accounts and stats."
+msgstr ""
+
+#: ssfs-server:63
+#, sh-format
+msgid "Add a user to the system with $HOME in chroot."
+msgstr ""
+
+#: ssfs-server:64
+#, sh-format
+msgid "Delete a user and remove $HOME files."
+msgstr ""
+
+#: ssfs-server:65
+msgid "Chroot to Ssfs storage root."
+msgstr ""
+
+#: ssfs-server:66
+msgid "Create a vdisk with chroot for files storage."
+msgstr ""
+
+#: ssfs-server:67
+msgid "Clean the vdisk but skip home and root."
+msgstr ""
+
+#: ssfs-server:68
+msgid "Check the vdisk filesystem with e2fsck."
+msgstr ""
+
+#: ssfs-server:69
+msgid "Update a vdisk filesystem."
+msgstr ""
+
+#: ssfs-server:70
+msgid "Mount a ssfs virtual disk."
+msgstr ""
+
+#: ssfs-server:71
+msgid "Unmount the vdisk and free loop device."
+msgstr ""
+
+#: ssfs-server:72
+msgid "Write a public note for users."
+msgstr ""
+
+#: ssfs-server:74
+msgid "Options:"
+msgstr ""
+
+#: ssfs-server:75
+msgid "Login name to add or del an user."
+msgstr ""
+
+#: ssfs-server:76
+msgid "User id for adduser command."
+msgstr ""
+
+#: ssfs-server:77
+msgid "User password for adduser."
+msgstr ""
+
+#: ssfs-server:78
+msgid "The path to the Ssfs vdisk chroot."
+msgstr ""
+
+#: ssfs-server:79
+msgid "Set the Ssfs vdisk path and name."
+msgstr ""
+
+#: ssfs-server:80
+msgid "Set the ext3 vdisk size in Gb."
+msgstr ""
+
+#: ssfs-server:103
+msgid "User login :"
+msgstr ""
+
+#: ssfs-server:104
+msgid "User quota :"
+msgstr ""
+
+#: ssfs-server:105
+msgid "Home usage :"
+msgstr ""
+
+#: ssfs-server:111
+msgid "Creating Ssfs user configuration file..."
+msgstr ""
+
+#: ssfs-server:136
+msgid "Unmounting Ssfs vdisk:"
+msgstr ""
+
+#: ssfs-server:138
+msgid "Detaching loop device:"
+msgstr ""
+
+#: ssfs-server:141
+msgid "Ssfs vdisk is not mounted:"
+msgstr ""
+
+#: ssfs-server:148
+msgid "Mounting virtual disk:"
+msgstr ""
+
+#: ssfs-server:151
+msgid "Ssfs vdisk is already mounted:"
+msgstr ""
+
+#: ssfs-server:162 ssfs-server:187
+msgid "Checking:"
+msgstr ""
+
+#: ssfs-server:169
+msgid "WARNING: No config file"
+msgstr ""
+
+#: ssfs-server:173
+msgid "Users:"
+msgstr ""
+
+#: ssfs-server:176 ssfs-server:218
+msgid "Missing user login name."
+msgstr ""
+
+#: ssfs-server:177
+msgid "Missing user id."
+msgstr ""
+
+#: ssfs-server:178
+msgid "Missing user password."
+msgstr ""
+
+#: ssfs-server:189
+msgid "Exiting, user already exists:"
+msgstr ""
+
+#: ssfs-server:200
+msgid "Checking vdisk chroot:"
+msgstr ""
+
+#: ssfs-server:208
+msgid "Cleaning home and creating: Sync/..."
+msgstr ""
+
+#: ssfs-server:210
+msgid "Changing mode on user home: 0700..."
+msgstr ""
+
+#: ssfs-server:221
+msgid "Deleting user:"
+msgstr ""
+
+#: ssfs-server:225
+msgid "Removing all files in:"
+msgstr ""
+
+#: ssfs-server:227
+msgid "Removing user config:"
+msgstr ""
+
+#: ssfs-server:232
+msgid "Changing root to:"
+msgstr ""
+
+#: ssfs-server:235
+msgid "Back to the host system:"
+msgstr ""
+
+#: ssfs-server:242
+msgid "Adding note to:"
+msgstr ""
+
+#: ssfs-server:249
+msgid "A chroot already exists in:"
+msgstr ""
+
+#: ssfs-server:253
+msgid "Missing package ssfs-busybox"
+msgstr ""
+
+#: ssfs-server:257
+msgid "Creating Sshs vdisk minimal chroot"
+msgstr ""
+
+#: ssfs-server:263
+msgid "Creating virtual disk:"
+msgstr ""
+
+#: ssfs-server:266
+msgid "Creating ext3 filesystem..."
+msgstr ""
+
+#: ssfs-server:273
+msgid "Creating base files..."
+msgstr ""
+
+#: ssfs-server:289
+msgid "Installing Ssfs root filesystem..."
+msgstr ""
+
+#: ssfs-server:293
+msgid "Setting files permissions..."
+msgstr ""
+
+#: ssfs-server:301
+msgid "Installing Glibc libraries..."
+msgstr ""
+
+#: ssfs-server:308
+msgid "Installing Ssfs SHell..."
+msgstr ""
+
+#: ssfs-server:314
+msgid "Creating the list of files... "
+msgstr ""
+
+#: ssfs-server:329
+msgid "Vdisk used space:"
+msgstr ""
+
+#: ssfs-server:337
+msgid "Checking Ssfs virtual disk"
+msgstr ""
+
+#: ssfs-server:339
+msgid "Virtual disk     : "
+msgstr ""
+
+#: ssfs-server:340
+msgid "Filesystem usage : "
+msgstr ""
+
+#: ssfs-server:341
+msgid "Remounting vdisk read/only before e2fsck -p..."
+msgstr ""
+
+#: ssfs-server:344
+msgid "Remounting vdisk read/write..."
+msgstr ""
+
+#: ssfs-server:353
+msgid "No chroot found in:"
+msgstr ""
+
+#: ssfs-server:357
+msgid "Cleaning virtual disk\\n"
+msgstr ""
+
+#: ssfs-server:366
+msgid "Skipping:"
+msgstr ""
+
+#: ssfs-server:368
+msgid "Removing:"
+msgstr ""

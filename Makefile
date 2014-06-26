@@ -6,7 +6,8 @@ DESTDIR?=
 
 PACKAGE=ssfs
 VERSION=1.0
-LINGUAS?=fr ru
+PROJECTS=ssfs-server ssfs
+LINGUAS=el fr pt_BR ru zh_CN zh_TW
 
 all: msgfmt
 
@@ -17,24 +18,32 @@ pot:
 		--package-name="Ssfs Client" \
 		--package-version="$(VERSION)" \
 		./ssfs ./ssfs-box
-	xgettext -o po/server/ssfs-server.pot -L Shell \
-		--package-name="Ssfs Client" \
+	xgettext -o po/ssfs-server/ssfs-server.pot -L Shell \
+		--package-name="Ssfs Server" \
 		--package-version="$(VERSION)" \
 		./ssfs-server
 
 msgmerge:
-	@for l in $(LINGUAS); do \
-		echo -n "Updating $$l po file."; \
-		msgmerge -U po/ssfs/$$l.po po/ssfs/ssfs.pot; \
+	@for p in $(PROJECTS); do \
+		for l in $(LINGUAS); do \
+			if [ -f "po/$$p/$$l.po" ]; then \
+				echo -n "Updating $$p $$l po file."; \
+				msgmerge -U po/$$p/$$l.po po/$$p/$$p.pot; \
+			fi; \
+		done; \
 	done;
 
 msgfmt:
-	@for l in $(LINGUAS); do \
-		echo "Compiling $$l mo file..."; \
-		mkdir -p po/mo/$$l/LC_MESSAGES; \
-		msgfmt -o po/mo/$$l/LC_MESSAGES/ssfs.mo po/ssfs/$$l.po; \
+	@for p in $(PROJECTS); do \
+		for l in $(LINGUAS); do \
+			if [ -f "po/$$p/$$l.po" ]; then \
+				echo -e "Compiling $$p $$l mo file...\n"; \
+				mkdir -p po/mo/$$l; \
+				msgfmt -o po/mo/$$l/$$p.mo po/$$p/$$l.po; \
+			fi; \
+		done; \
 	done;
-	
+
 # Installation
 
 install:
@@ -65,3 +74,8 @@ install:
 clean:
 	rm -rf po/mo
 	rm -f po/*/*~
+
+help:
+	@echo ""
+	@echo "make: pot msgmerge msgfmt install clean"
+	@echo ""

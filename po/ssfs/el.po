@@ -17,8 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.5.2\n"
 
-#: ssfs:42
-#: ssfs:100
+#: ssfs:42 ssfs:100
 msgid "Usage:"
 msgstr "Χρήση:"
 
@@ -40,7 +39,8 @@ msgstr "Διαμόρφωση των ρυθμίσεων Πελάτη και το�
 
 #: ssfs:48
 msgid "Sync from server and start daemon."
-msgstr "Κάντε συγχρονισμό αρχείων από τον διακομιστή και ξεκινήστε τον Δαίμονα."
+msgstr ""
+"Κάντε συγχρονισμό αρχείων από τον διακομιστή και ξεκινήστε τον Δαίμονα."
 
 #: ssfs:49
 msgid "Stop monitoring ~/Sync folder."
@@ -128,17 +128,15 @@ msgstr "Σύνδεση SSH"
 
 #: ssfs-box:82
 msgid ""
-"<b>Welcome to the Ssfs Setup</b>\\n"
-"\n"
+"<b>Welcome to the Ssfs Setup</b>\\n\n"
 "Any account on a server yet ? You can vist www.slitaz.org\n"
 "services or setup your own server in a few minutes!\\n"
 msgstr ""
-"<b>Καλωσήλθατε στη ρύθμιση του Ssfs</b>\\n"
-"\n"
-"Μήπως έχετε ήδη λογαριασμό σε έναν διακομιστή ; Μπορείτε να επισκεφθείτε τις υπηρεσίες του www.slitaz.org\n"
+"<b>Καλωσήλθατε στη ρύθμιση του Ssfs</b>\\n\n"
+"Μήπως έχετε ήδη λογαριασμό σε έναν διακομιστή ; Μπορείτε να επισκεφθείτε τις "
+"υπηρεσίες του www.slitaz.org\n"
 "ή να ρυθμίσετε τον δικό σας διακομιστή μέσα σε λίγα λεπτά!\\n"
 
 #: ssfs-box:109
 msgid "Ssfs Live Sync storage"
 msgstr "Συγχρονισμένη αποθήκευση Ssfs."
-

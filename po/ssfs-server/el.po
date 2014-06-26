@@ -1,0 +1,294 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Constantine Mousafiris <kvisitor@gnugr.org>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Client 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-01 20:41+0000\n"
+"PO-Revision-Date: 2012-11-23 11:31+0200\n"
+"Last-Translator: Constantine Mousafiris <kvisitor@gnugr.org>\n"
+"Language-Team: Kostis Mousafiris\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.5.2\n"
+
+#: ssfs-server:22
+msgid "You must be root to run:"
+msgstr "Πρέπει να είστε ο root για να τρέξετε:"
+
+#: ssfs-server:58
+msgid "Usage:"
+msgstr "Χρήση:"
+
+#: ssfs-server:60
+msgid "Commands:"
+msgstr "Εντολές:"
+
+#: ssfs-server:61
+msgid "Display this short help usage."
+msgstr "Εμφάνιση αυτή τη σύντομη βοήθεια χρήσης."
+
+#: ssfs-server:62
+msgid "List user accounts and stats."
+msgstr "Εμφάνιση σε λίστα των λογαριασμών χρήστη και των στατιστικών."
+
+#: ssfs-server:63
+#, sh-format
+msgid "Add a user to the system with $HOME in chroot."
+msgstr "Προσθήκη ενός χρήστη στο σύστημα με $HOME στο chroot."
+
+#: ssfs-server:64
+#, sh-format
+msgid "Delete a user and remove $HOME files."
+msgstr "Διαγραφή ενός χρήστη και απομάκρυνση των αρχείων $HOME"
+
+#: ssfs-server:65
+msgid "Chroot to Ssfs storage root."
+msgstr ""
+
+#: ssfs-server:66
+msgid "Create a vdisk with chroot for files storage."
+msgstr "Δημιουργία ενός vdisk με το chroot, για αποθήκευση αρχείων."
+
+#: ssfs-server:67
+msgid "Clean the vdisk but skip home and root."
+msgstr ""
+"Καθαρισμός του vdisk, αλλά παράκαμψη του φακέλλου χρήστη (home) και του "
+"καταλόγου συστήματος (root)"
+
+#: ssfs-server:68
+msgid "Check the vdisk filesystem with e2fsck."
+msgstr "Διεξαγωγή ελέγχου του συστήματος αρχείων vdisk με το e2fsk."
+
+#: ssfs-server:69
+msgid "Update a vdisk filesystem."
+msgstr "Ενημέρωση ενός συστήματος αρχείων vdisk."
+
+#: ssfs-server:70
+msgid "Mount a ssfs virtual disk."
+msgstr "Προσάρτηση ενός εικονικού δίσκου ssfs."
+
+#: ssfs-server:71
+msgid "Unmount the vdisk and free loop device."
+msgstr "Αποπροσάρτηση του vdsik και απελευθέρωση συσκευής loop."
+
+#: ssfs-server:72
+msgid "Write a public note for users."
+msgstr "Γράψτε μια δημόσια σημείωση για τους χρήστες."
+
+#: ssfs-server:74
+msgid "Options:"
+msgstr "Επιλογές:"
+
+#: ssfs-server:75
+msgid "Login name to add or del an user."
+msgstr "Όνομα σύνδεσης για προσθήκη ή διαγραφή ενός χρήστη."
+
+#: ssfs-server:76
+msgid "User id for adduser command."
+msgstr "Κωδικός ταυτοποίησης iD χρήστη για την εντολή adduser."
+
+#: ssfs-server:77
+msgid "User password for adduser."
+msgstr "Κωδικός χρήστη για προσθήκη ενός χρήστη (adduser)."
+
+#: ssfs-server:78
+msgid "The path to the Ssfs vdisk chroot."
+msgstr "Η διαδρομή για το Ssfs vdisk chroot."
+
+#: ssfs-server:79
+msgid "Set the Ssfs vdisk path and name."
+msgstr "Καθορίστε τη διαδρομή και το όνομα του Ssfs vdisk."
+
+#: ssfs-server:80
+msgid "Set the ext3 vdisk size in Gb."
+msgstr "Καθορίστε το μέγεθος του ext3 vdisk σε Gb."
+
+#: ssfs-server:103
+msgid "User login :"
+msgstr "Σύνδεση χρήστη:"
+
+#: ssfs-server:104
+msgid "User quota :"
+msgstr "Χώρος που έχει αποδοθεί στον χρήστη (quota):"
+
+#: ssfs-server:105
+msgid "Home usage :"
+msgstr "Χρήση του φακέλλου χρήστη (home):"
+
+#: ssfs-server:111
+msgid "Creating Ssfs user configuration file..."
+msgstr "Δημιουργούνται αρχεία ρυθμίσεων χρήστη του Ssfs..."
+
+#: ssfs-server:136
+msgid "Unmounting Ssfs vdisk:"
+msgstr "Γίνεται αποπροσάρτηση του Ssfs vdisk:"
+
+#: ssfs-server:138
+msgid "Detaching loop device:"
+msgstr "Απόσπαση της συσκευής loop:"
+
+#: ssfs-server:141
+msgid "Ssfs vdisk is not mounted:"
+msgstr "Ο Ssfs vdisk δεν προσαρτήθηκε:"
+
+#: ssfs-server:148
+msgid "Mounting virtual disk:"
+msgstr "Γίνεται προσάρτηση εικονικού δίσκου:"
+
+#: ssfs-server:151
+msgid "Ssfs vdisk is already mounted:"
+msgstr "Ο Ssfs vdisk είναι ήδη προσαρτημένο:"
+
+#: ssfs-server:162 ssfs-server:187
+msgid "Checking:"
+msgstr "Γίνεται έλεγχος:"
+
+#: ssfs-server:169
+msgid "WARNING: No config file"
+msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Δεν υπάρχουν αρχεία ρυθμίσεων"
+
+#: ssfs-server:173
+msgid "Users:"
+msgstr "Χρήστες:"
+
+#: ssfs-server:176 ssfs-server:218
+msgid "Missing user login name."
+msgstr "Λείπει το όνομα σύνδεσης χρήστη."
+
+#: ssfs-server:177
+msgid "Missing user id."
+msgstr "Λείπει ο κωδικός ID ταυτοποίησης χρήστη."
+
+#: ssfs-server:178
+msgid "Missing user password."
+msgstr "Λείπει ο κωδικός πρόσβασης χρήστη."
+
+#: ssfs-server:189
+msgid "Exiting, user already exists:"
+msgstr "Γίνεται έξοδος, αυτός ο χρήστης υπάρχει ήδη:"
+
+#: ssfs-server:200
+msgid "Checking vdisk chroot:"
+msgstr "Γίνεται έλεγχος του vdisk chroot:"
+
+#: ssfs-server:208
+msgid "Cleaning home and creating: Sync/..."
+msgstr "Γίνεται καθαρισμός και δημιουργία: Sync/..."
+
+#: ssfs-server:210
+msgid "Changing mode on user home: 0700..."
+msgstr "Γίνεται αλλαγή τρόπου (mode) στον κατάλογο χρήστη (user home): 0700.."
+
+#: ssfs-server:221
+msgid "Deleting user:"
+msgstr "Γίνεται διαγραφή χρήστη:"
+
+#: ssfs-server:225
+msgid "Removing all files in:"
+msgstr "Διαγραφή όλων των αρχείων στο:"
+
+#: ssfs-server:227
+msgid "Removing user config:"
+msgstr "Διαγραφή ρυθμίσεων χρήστη:"
+
+#: ssfs-server:232
+msgid "Changing root to:"
+msgstr "Γίνεται αλλαγή του root σε:"
+
+#: ssfs-server:235
+msgid "Back to the host system:"
+msgstr "Επιστροφή στο σύστημα host:"
+
+#: ssfs-server:242
+msgid "Adding note to:"
+msgstr "Προσθήκη σημείωσης:"
+
+#: ssfs-server:249
+msgid "A chroot already exists in:"
+msgstr "Το chroot υπάρχει ήδη στο:"
+
+#: ssfs-server:253
+msgid "Missing package ssfs-busybox"
+msgstr "Λείπει το πακέτο ssfs-busybox"
+
+#: ssfs-server:257
+msgid "Creating Sshs vdisk minimal chroot"
+msgstr "Δημιουργείται το Sshs vdisk minimal chroot"
+
+#: ssfs-server:263
+msgid "Creating virtual disk:"
+msgstr "Δημιουργείται εικονικός δίσκος..."
+
+#: ssfs-server:266
+msgid "Creating ext3 filesystem..."
+msgstr "Δημιουργείται ένα σύστημα αρχείων σε ext3..."
+
+#: ssfs-server:273
+msgid "Creating base files..."
+msgstr "Δημιουργούνται τα βασικά αρχεία..."
+
+#: ssfs-server:289
+msgid "Installing Ssfs root filesystem..."
+msgstr "Γίνεται εγκατάσταση του Ssfs root συστήματος αρχείων"
+
+#: ssfs-server:293
+msgid "Setting files permissions..."
+msgstr "Καθορίζονται τα δικαιώματα αρχείων"
+
+#: ssfs-server:301
+msgid "Installing Glibc libraries..."
+msgstr "Γίνεται εγκατάσταση των βιβλιοθηκών Glibc..."
+
+#: ssfs-server:308
+msgid "Installing Ssfs SHell..."
+msgstr "Γίνεται εγκατάσταση του Ssfs SHell..."
+
+#: ssfs-server:314
+msgid "Creating the list of files... "
+msgstr "Δημιουργείται η λίστα αρχείων..."
+
+#: ssfs-server:329
+msgid "Vdisk used space:"
+msgstr "Χρησιμοποιημένος χώρος στον εικονικό δίσκο Vdisk:"
+
+#: ssfs-server:337
+msgid "Checking Ssfs virtual disk"
+msgstr "Γίνεται έλεγχος του εικονικού δίσκου  SSfs"
+
+#: ssfs-server:339
+msgid "Virtual disk     : "
+msgstr "Εικονικός δίσκος     : "
+
+#: ssfs-server:340
+msgid "Filesystem usage : "
+msgstr "Χρήση συστήματος αρχείων:"
+
+#: ssfs-server:341
+msgid "Remounting vdisk read/only before e2fsck -p..."
+msgstr " Επαναπροσάρτηση του Vdisk μόνο/ανάγνωση πριν το e2fsck -p..."
+
+#: ssfs-server:344
+msgid "Remounting vdisk read/write..."
+msgstr "Γίνεται επαναπροσάρτηση ανάγνωσης/εγγραφής vdisk..."
+
+#: ssfs-server:353
+msgid "No chroot found in:"
+msgstr "Δεν βρέθηκε chroot στο:"
+
+#: ssfs-server:357
+msgid "Cleaning virtual disk\\n"
+msgstr "Γίνεται καθαρισμός εικονικού δίσκου\\n"
+
+#: ssfs-server:366
+msgid "Skipping:"
+msgstr "Γίνεται παράκαμψη:"
+
+#: ssfs-server:368
+msgid "Removing:"
+msgstr "Γίνεται απομάκρυνση:"
