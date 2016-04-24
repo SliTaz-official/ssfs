@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ssfs Server 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 20:41+0000\n"
+"POT-Creation-Date: 2016-04-24 15:40+0100\n"
 "PO-Revision-Date: 2012-12-19 11:00+0100\n"
 "Last-Translator: Stanislas Leduc <shann@slitaz.org>\n"
 "Language-Team: French\n"
@@ -87,7 +87,8 @@ msgid "Options:"
 msgstr "Options:"
 
 #: ssfs-server:75
-msgid "Login name to add or del an user."
+#, fuzzy
+msgid "Login name to add or del a user."
 msgstr "Identifiant pour ajouter/supprimer un utilisateur."
 
 #: ssfs-server:76

@@ -72,7 +72,7 @@ $(echo -e "\033[1m$(gettext "Commands:")\033[0m")
   note          $(gettext "Write a public note for users.")
 
 $(echo -e "\033[1m$(gettext "Options:")\033[0m")
-  --login=      $(gettext "Login name to add or del an user.")
+  --login=      $(gettext "Login name to add or del a user.")
   --id=         $(gettext "User id for adduser command.")
   --pass=       $(gettext "User password for adduser.")
   --root=       $(gettext "The path to the Ssfs vdisk chroot.")
@@ -284,7 +284,7 @@ case "$1" in
 			echo "root:x:0:" > $root/etc/group
 		fi
 		
-		# Ssfs Busybox package install files in $share and allow easy vdisk
+		# Ssfs Busybox package installs files in $share and allows easy vdisk
 		# upgrade following SliTaz repo.
 		gettext "Installing Ssfs root filesystem..."
 		cp -a $rootfs/* $root
