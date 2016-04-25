@@ -2,7 +2,7 @@
 # Copyright (C) 2011 THE Ssfs Server'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Ssfs Server package.
 # Linux User <pankso@slitaz.org>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Ssfs Server 1.0\n"
@@ -87,7 +87,6 @@ msgid "Options:"
 msgstr "Options:"
 
 #: ssfs-server:75
-#, fuzzy
 msgid "Login name to add or del a user."
 msgstr "Identifiant pour ajouter/supprimer un utilisateur."
 

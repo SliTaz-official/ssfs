@@ -84,7 +84,6 @@ msgid "Options:"
 msgstr "Opções:"
 
 #: ssfs-server:75
-#, fuzzy
 msgid "Login name to add or del a user."
 msgstr "Login para adicionar ou deleter um usuário."
 

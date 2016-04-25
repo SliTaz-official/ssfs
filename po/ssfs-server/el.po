@@ -86,7 +86,6 @@ msgid "Options:"
 msgstr "Επιλογές:"
 
 #: ssfs-server:75
-#, fuzzy
 msgid "Login name to add or del a user."
 msgstr "Όνομα σύνδεσης για προσθήκη ή διαγραφή ενός χρήστη."
 
