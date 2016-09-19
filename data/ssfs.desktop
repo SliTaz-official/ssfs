@@ -1,10 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Ssfs Client
+Name[fr]=Client Ssfs
 Name[pt]=Cliente Ssfs
 Name[pt_BR]=Cliente Ssfs
 Name[ru]=Клиент SSFS
 Comment=Online SliTaz Secure File Storage
+Comment[fr]=Stockage en ligne sécurisé par SliTaz
 Comment[pt]=Armazenamento online seguro do SliTaz
 Comment[pt_BR]=Armazenamento online seguro do SliTaz
 Comment[ru]=Онлайновое защищенное файловое хранилище SliTaz
