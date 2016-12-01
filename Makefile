@@ -7,7 +7,7 @@ DESTDIR?=
 PACKAGE=ssfs
 VERSION=1.0
 PROJECTS=ssfs-server ssfs
-LINGUAS=el fr pt_BR ru zh_CN zh_TW
+LINGUAS=de el fr pt_BR ru zh_CN zh_TW
 
 all: msgfmt
 
