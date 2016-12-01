@@ -1,0 +1,292 @@
+# German translations for Ssfs Server.
+# Copyright (C) 2016 SliTaz
+# This file is distributed under the same license as the Ssfs Server package.
+# Hans-Günter Theisgen, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Server 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-24 15:44+0100\n"
+"PO-Revision-Date: 2016-12-01 17:38+0100\n"
+"Last-Translator: Hans-Günter Theisgen\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ssfs-server:22
+msgid "You must be root to run:"
+msgstr "Kann nur mit Administratorrechten ausgeführt werden:"
+
+#: ssfs-server:58
+msgid "Usage:"
+msgstr "Anwendung:"
+
+#: ssfs-server:60
+msgid "Commands:"
+msgstr "Kommandos:"
+
+#: ssfs-server:61
+msgid "Display this short help usage."
+msgstr "Diese Kurzanleitung anzeigen."
+
+#: ssfs-server:62
+msgid "List user accounts and stats."
+msgstr "Benutzerkennungen und Statistiken anzeigen."
+
+#: ssfs-server:63
+#, sh-format
+msgid "Add a user to the system with $HOME in chroot."
+msgstr "Eine Benutzerkennung dem System mit $HOME in chroot hinzufügen."
+
+#: ssfs-server:64
+#, sh-format
+msgid "Delete a user and remove $HOME files."
+msgstr "Eine Benutzerkennung und deren Dateien in $HOME entfernen."
+
+#: ssfs-server:65
+msgid "Chroot to Ssfs storage root."
+msgstr "'chroot' ins Wurzelverzeichnis des Ssfs-Speichers."
+
+#: ssfs-server:66
+msgid "Create a vdisk with chroot for files storage."
+msgstr "Eine virtuelle Platte zum Speichern von Dateien mit chroot erzeugen."
+
+#: ssfs-server:67
+msgid "Clean the vdisk but skip home and root."
+msgstr "Die virtuelle Platte löschen, aber home und root überspringen."
+
+#: ssfs-server:68
+msgid "Check the vdisk filesystem with e2fsck."
+msgstr "Das Dateisystem auf der virtuellen Platte mit e2fsck prüfen."
+
+#: ssfs-server:69
+msgid "Update a vdisk filesystem."
+msgstr "Das Dateisystem einer virtuellen Platte aktualisieren."
+
+#: ssfs-server:70
+msgid "Mount a ssfs virtual disk."
+msgstr "Eine virtuelle ssfs-Platte einhängen."
+
+#: ssfs-server:71
+msgid "Unmount the vdisk and free loop device."
+msgstr "Eine virtuelle Platte aushängen und das virtuelle Gerät freigeben."
+
+#: ssfs-server:72
+msgid "Write a public note for users."
+msgstr "Eine öffentliche Benachrichtigung für Anwender schreiben."
+
+#: ssfs-server:74
+msgid "Options:"
+msgstr "Optionen:"
+
+#: ssfs-server:75
+msgid "Login name to add or del a user."
+msgstr "Name des hinzuzufügenden oder zu entfernenden Benutzers"
+
+#: ssfs-server:76
+msgid "User id for adduser command."
+msgstr "Benutzernummer für das Kommando adduser."
+
+#: ssfs-server:77
+msgid "User password for adduser."
+msgstr "Benutzerkennwort für das Kommando adduser."
+
+#: ssfs-server:78
+msgid "The path to the Ssfs vdisk chroot."
+msgstr "Pfad des Wuzelverzeichnisses der virtuellen Ssfs-Platte."
+
+#: ssfs-server:79
+msgid "Set the Ssfs vdisk path and name."
+msgstr "Pfad und Namen der virtuellen Ssfs-Platte festlegen."
+
+#: ssfs-server:80
+msgid "Set the ext3 vdisk size in Gb."
+msgstr "Größe der virtuellen Platte mit ext3-Dateisystem in GiB."
+
+#: ssfs-server:103
+msgid "User login :"
+msgstr "Benutzerkennung                      :"
+
+#: ssfs-server:104
+msgid "User quota :"
+msgstr "Plattenplatzberechtigung für Benutzer:"
+
+#: ssfs-server:105
+msgid "Home usage :"
+msgstr "Platzbelegung im Verzeichnis home    :"
+
+#: ssfs-server:111
+msgid "Creating Ssfs user configuration file..."
+msgstr "Ssfs-Benutzerdatei wird erzeugt..."
+
+#: ssfs-server:136
+msgid "Unmounting Ssfs vdisk:"
+msgstr "Aushängen von virtueller Ssfs-Platte:"
+
+#: ssfs-server:138
+msgid "Detaching loop device:"
+msgstr "Wegschalten des virtuellen Gerätes:"
+
+#: ssfs-server:141
+msgid "Ssfs vdisk is not mounted:"
+msgstr "Virtuelle Ssfs-Platte ist nicht eingehängt:"
+
+#: ssfs-server:148
+msgid "Mounting virtual disk:"
+msgstr "Virtuelle Platte wird eingehängt:"
+
+#: ssfs-server:151
+msgid "Ssfs vdisk is already mounted:"
+msgstr "Virtuelle Ssfs-Platte ist bereits eingehängt:"
+
+#: ssfs-server:162 ssfs-server:187
+msgid "Checking:"
+msgstr "Prüfe:"
+
+#: ssfs-server:169
+msgid "WARNING: No config file"
+msgstr "WARNUNG: Keine Konfigurationsdatei"
+
+#: ssfs-server:173
+msgid "Users:"
+msgstr "Benutzer:"
+
+#: ssfs-server:176 ssfs-server:218
+msgid "Missing user login name."
+msgstr "Benutzername fehlt."
+
+#: ssfs-server:177
+msgid "Missing user id."
+msgstr "Benutzernummer fehlt."
+
+#: ssfs-server:178
+msgid "Missing user password."
+msgstr "Benutzerkennwort fehlt."
+
+#: ssfs-server:189
+msgid "Exiting, user already exists:"
+msgstr "Abbruch, Benutzerkennung existiert schon:"
+
+#: ssfs-server:200
+msgid "Checking vdisk chroot:"
+msgstr "Prüfe virtuelle Platte chroot:"
+
+#: ssfs-server:208
+msgid "Cleaning home and creating: Sync/..."
+msgstr "home wird gelöscht und Sync wird erzeugt..."
+
+#: ssfs-server:210
+msgid "Changing mode on user home: 0700..."
+msgstr "Berechtigungen für home werden auf 0700 gesetzt..."
+
+#: ssfs-server:221
+msgid "Deleting user:"
+msgstr "Benutzer wird entfernt:"
+
+#: ssfs-server:225
+msgid "Removing all files in:"
+msgstr "Alle Dateien werden gelöscht in:"
+
+#: ssfs-server:227
+msgid "Removing user config:"
+msgstr "Benutzerkonfiguration wird entfernt:"
+
+#: ssfs-server:232
+msgid "Changing root to:"
+msgstr "Wurzelverzeichnis wird:"
+
+#: ssfs-server:235
+msgid "Back to the host system:"
+msgstr "Zurück zum Rechner:"
+
+#: ssfs-server:242
+msgid "Adding note to:"
+msgstr "Hinzufügen von Notiz zu:"
+
+#: ssfs-server:249
+msgid "A chroot already exists in:"
+msgstr "Es existiert bereits eine chroot-Umgebung in:"
+
+#: ssfs-server:253
+msgid "Missing package ssfs-busybox"
+msgstr "Das Paket ssfs-busybox fehlt"
+
+#: ssfs-server:257
+msgid "Creating Sshs vdisk minimal chroot"
+msgstr "Es wird eine virtuelle Ssfs-Platte mit minimaler chroot-Umgebung erzeugt"
+
+#: ssfs-server:263
+msgid "Creating virtual disk:"
+msgstr "Erzeuge virtuelle Platte:"
+
+#: ssfs-server:266
+msgid "Creating ext3 filesystem..."
+msgstr "Dateisystem vom Typ ext3 wird erzeugt..."
+
+#: ssfs-server:273
+msgid "Creating base files..."
+msgstr "Basisdateien werden erzeugt..."
+
+#: ssfs-server:289
+msgid "Installing Ssfs root filesystem..."
+msgstr "Ein Ssfs-Wurzeldateisystem wird installiert..."
+
+#: ssfs-server:293
+msgid "Setting files permissions..."
+msgstr "Berechtigungen für Dateien werden gesetzt..."
+
+#: ssfs-server:301
+msgid "Installing Glibc libraries..."
+msgstr "Bibliotheken von Glibc werden installiert..."
+
+#: ssfs-server:308
+msgid "Installing Ssfs SHell..."
+msgstr "Ssfs-Kommandointerpreter wird installiert..."
+
+#: ssfs-server:314
+msgid "Creating the list of files... "
+msgstr "Liste der Dateien wird erstellt..."
+
+#: ssfs-server:329
+msgid "Vdisk used space:"
+msgstr "Auf virtueller Platte belegter Platz:"
+
+#: ssfs-server:337
+msgid "Checking Ssfs virtual disk"
+msgstr "Virtuelle Ssfs-Platte wird geprüft"
+
+#: ssfs-server:339
+msgid "Virtual disk     : "
+msgstr "Virtuelle Platte         : "
+
+#: ssfs-server:340
+msgid "Filesystem usage : "
+msgstr "Belegung des Dateisystems: "
+
+#: ssfs-server:341
+msgid "Remounting vdisk read/only before e2fsck -p..."
+msgstr "Virtuelle Platte wird vor e2fsck -p nur zum Lesen wiedereingehängt..."
+
+#: ssfs-server:344
+msgid "Remounting vdisk read/write..."
+msgstr "Virtuelle Platte wird zum Lesen und Schreiben wiedereingehängt..."
+
+#: ssfs-server:353
+msgid "No chroot found in:"
+msgstr "Keine chroot-Umgebung gefunden in:"
+
+#: ssfs-server:357
+msgid "Cleaning virtual disk\\n"
+msgstr "Virtuelle Platte wird gelöscht\\n"
+
+#: ssfs-server:366
+msgid "Skipping:"
+msgstr "Überspringe:"
+
+#: ssfs-server:368
+msgid "Removing:"
+msgstr "Entferne:"
