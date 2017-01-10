@@ -1,0 +1,293 @@
+# Japanese translations for the ssfs package.
+# Copyright (C) 2017 SliTaz
+# This file is distributed under the same license as the ssfs package.
+# BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen AT gmail DOT com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ssfs Server 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-02 18:45+0900\n"
+"PO-Revision-Date: 2017-01-08 14:38+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <balloonakafusen　AT gmail DOT com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja_JP\n"
+
+#: ssfs-server:22
+msgid "You must be root to run:"
+msgstr "実行するには root でなければなりません："
+
+#: ssfs-server:58
+msgid "Usage:"
+msgstr "用途:"
+
+#: ssfs-server:60
+msgid "Commands:"
+msgstr "コマンド:"
+
+#: ssfs-server:61
+msgid "Display this short help usage."
+msgstr "この短い使用法を表示します。"
+
+#: ssfs-server:62
+msgid "List user accounts and stats."
+msgstr "ユーザーアカウントと状態を一覧表示します。"
+
+#: ssfs-server:63
+#, sh-format
+msgid "Add a user to the system with $HOME in chroot."
+msgstr "chroot　に $HOME を持つユーザをシステムに追加します。"
+
+#: ssfs-server:64
+#, sh-format
+msgid "Delete a user and remove $HOME files."
+msgstr "ユーザーを削除して $HOME ファイルを削除します。"
+
+#: ssfs-server:65
+msgid "Chroot to Ssfs storage root."
+msgstr "Chroot で Ssfs へのストレージルート。"
+
+#: ssfs-server:66
+msgid "Create a vdisk with chroot for files storage."
+msgstr "ファイルストレージ用の chroot を持つ vdisk を作成します。"
+
+#: ssfs-server:67
+msgid "Clean the vdisk but skip home and root."
+msgstr "仮想ディスクをクリーンアップ。ホームとルートはスキップ。"
+
+#: ssfs-server:68
+msgid "Check the vdisk filesystem with e2fsck."
+msgstr "e2fsck で仮想ディスクファイルシステムを確認します。"
+
+#: ssfs-server:69
+msgid "Update a vdisk filesystem."
+msgstr "仮想ディスクファイルシステムを更新します。"
+
+#: ssfs-server:70
+msgid "Mount a ssfs virtual disk."
+msgstr "ssfs　仮想ディスクをマウントします。"
+
+#: ssfs-server:71
+msgid "Unmount the vdisk and free loop device."
+msgstr "仮想ディスクのマウント解除し loop デバイスの空きをつくります。"
+
+#: ssfs-server:72
+msgid "Write a public note for users."
+msgstr "ユーザー用の公開メモを作成します。"
+
+#: ssfs-server:74
+msgid "Options:"
+msgstr "オプション:"
+
+#: ssfs-server:75
+msgid "Login name to add or del a user."
+msgstr "ユーザーを追加または削除するログイン名。"
+
+#: ssfs-server:76
+msgid "User id for adduser command."
+msgstr "adduser　コマンドのユーザー ID。"
+
+#: ssfs-server:77
+msgid "User password for adduser."
+msgstr "adduser のユーザーパスワード。"
+
+#: ssfs-server:78
+msgid "The path to the Ssfs vdisk chroot."
+msgstr "Ssfs 仮想ディスク chroot のパス。"
+
+#: ssfs-server:79
+msgid "Set the Ssfs vdisk path and name."
+msgstr "Ssfs 仮想ディスクパス・名前の設定。"
+
+#: ssfs-server:80
+msgid "Set the ext3 vdisk size in Gb."
+msgstr "ext3 仮想ディスクサイズの設定。(GB)"
+
+#: ssfs-server:103
+msgid "User login :"
+msgstr "ユーザーログイン :"
+
+#: ssfs-server:104
+msgid "User quota :"
+msgstr "ユーザーサイズ制限 :"
+
+#: ssfs-server:105
+msgid "Home usage :"
+msgstr "ホームの使用 :"
+
+#: ssfs-server:111
+msgid "Creating Ssfs user configuration file..."
+msgstr "Ssfs ユーザー設定ファイルを作成しています..."
+
+#: ssfs-server:136
+msgid "Unmounting Ssfs vdisk:"
+msgstr "Ssfs 仮想ディスクマウント解除中:"
+
+#: ssfs-server:138
+msgid "Detaching loop device:"
+msgstr "ループデバイスの取り外し中："
+
+#: ssfs-server:141
+msgid "Ssfs vdisk is not mounted:"
+msgstr "Ssfs 仮想ディスクはマウントされていません:"
+
+#: ssfs-server:148
+msgid "Mounting virtual disk:"
+msgstr "仮想ディスクをマウント中:"
+
+#: ssfs-server:151
+msgid "Ssfs vdisk is already mounted:"
+msgstr "Ssfs 仮想ディスクはすでにマウントしてます:"
+
+#: ssfs-server:162 ssfs-server:187
+msgid "Checking:"
+msgstr "確認中"
+
+#: ssfs-server:169
+msgid "WARNING: No config file"
+msgstr "警告: 設定ファイルがありません"
+
+#: ssfs-server:173
+msgid "Users:"
+msgstr "ユーザー:"
+
+#: ssfs-server:176 ssfs-server:218
+msgid "Missing user login name."
+msgstr "ユーザーのログイン名がありません。"
+
+#: ssfs-server:177
+msgid "Missing user id."
+msgstr "ユーザー id がありません。"
+
+#: ssfs-server:178
+msgid "Missing user password."
+msgstr "ユーザーパスワードがありません。"
+
+#: ssfs-server:189
+msgid "Exiting, user already exists:"
+msgstr "終了します。ユーザーはすでに存在します:"
+
+#: ssfs-server:200
+msgid "Checking vdisk chroot:"
+msgstr "仮想ディスクの chroot を確認中:"
+
+#: ssfs-server:208
+msgid "Cleaning home and creating: Sync/..."
+msgstr "ホームのクリーンと生成中: Sync/..."
+
+#: ssfs-server:210
+msgid "Changing mode on user home: 0700..."
+msgstr "ユーザー home のモードを変更中: 0700..."
+
+#: ssfs-server:221
+msgid "Deleting user:"
+msgstr "ユーザーを削除中:"
+
+#: ssfs-server:225
+msgid "Removing all files in:"
+msgstr "すべてのファイルを削除中:"
+
+#: ssfs-server:227
+msgid "Removing user config:"
+msgstr "ユーザー設定の削除中:"
+
+#: ssfs-server:232
+msgid "Changing root to:"
+msgstr "root へ変更中:"
+
+#: ssfs-server:235
+msgid "Back to the host system:"
+msgstr "ホストシステムへ戻ります:"
+
+#: ssfs-server:242
+msgid "Adding note to:"
+msgstr "ノートへ追加中:"
+
+#: ssfs-server:249
+msgid "A chroot already exists in:"
+msgstr "chroot はすでに存在します:"
+
+#: ssfs-server:253
+msgid "Missing package ssfs-busybox"
+msgstr "パッケージ ssfs-busybox は存在しません"
+
+#: ssfs-server:257
+msgid "Creating Sshs vdisk minimal chroot"
+msgstr "Sshs 仮想ディスク最小 chroot を生成中"
+
+#: ssfs-server:263
+msgid "Creating virtual disk:"
+msgstr "仮想ディスクを生成中:"
+
+#: ssfs-server:266
+msgid "Creating ext3 filesystem..."
+msgstr "ext3 ファイルシステムを生成中..."
+
+#: ssfs-server:273
+msgid "Creating base files..."
+msgstr "ベースファイルを生成中..."
+
+#: ssfs-server:289
+msgid "Installing Ssfs root filesystem..."
+msgstr "Ssfs root ファイルシステムをインストール中..."
+
+#: ssfs-server:293
+msgid "Setting files permissions..."
+msgstr "ファイルパーミッションを設定中..."
+
+#: ssfs-server:301
+msgid "Installing Glibc libraries..."
+msgstr "Glibc ライブラリをインストール中..."
+
+#: ssfs-server:308
+msgid "Installing Ssfs SHell..."
+msgstr "Ssfs シェルをインストール中..."
+
+#: ssfs-server:314
+msgid "Creating the list of files... "
+msgstr "ファイル一覧を生成中..."
+
+#: ssfs-server:329
+msgid "Vdisk used space:"
+msgstr "仮想ディスク使用量:"
+
+#: ssfs-server:337
+msgid "Checking Ssfs virtual disk"
+msgstr "Ssfs 仮想ディスクの確認中"
+
+#: ssfs-server:339
+msgid "Virtual disk     : "
+msgstr "仮想ディスク     : "
+
+#: ssfs-server:340
+msgid "Filesystem usage : "
+msgstr "ファイルシステム : "
+
+#: ssfs-server:341
+msgid "Remounting vdisk read/only before e2fsck -p..."
+msgstr "e2fsck -p 前の仮想ディスク読込・再マウント..."
+
+#: ssfs-server:344
+msgid "Remounting vdisk read/write..."
+msgstr "読書仮想ディスクの再マウント中..."
+
+#: ssfs-server:353
+msgid "No chroot found in:"
+msgstr "chroot が見つかりません:"
+
+#: ssfs-server:357
+msgid "Cleaning virtual disk\\n"
+msgstr "仮想ディスクのクリーン中\\n"
+
+#: ssfs-server:366
+msgid "Skipping:"
+msgstr "スキップ中:"
+
+#: ssfs-server:368
+msgid "Removing:"
+msgstr "削除中:"
