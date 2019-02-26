@@ -93,7 +93,7 @@ services or setup your own server in a few minutes!\n")
 setup() {
 	# Store box results and setup.
 	main=$(setup_main)
-	[ $? == 1 ] && exit 0
+	[ $? = 1 ] && exit 0
 	login=$(echo $main | cut -d '|' -f 1)
 	host=$(echo $main | cut -d '|' -f 2)
 	[ "$host" ] || exit 0
